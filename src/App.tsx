@@ -1,10 +1,18 @@
 import React from 'react';
-import { StudyProvider, useStudy } from './context/StudyContext';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import { StudyProvider } from './context/StudyContext';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import SignInForm from './components/auth/SignInForm';
+import SignUpForm from './components/auth/SignUpForm';
+import ForgotPasswordForm from './components/auth/ForgotPasswordForm';
+import ResetPasswordForm from './components/auth/ResetPasswordForm';
 import Header from './components/Header';
 import CalendarView from './components/CalendarView';
 import DailyTaskView from './components/DailyTaskView';
 import ProgressAnalytics from './components/ProgressAnalytics';
 import FloatingVoiceButton from './components/FloatingVoiceButton';
+import { useStudy } from './context/StudyContext';
 
 const AppContent: React.FC = () => {
   const { currentView } = useStudy();
@@ -33,11 +41,35 @@ const AppContent: React.FC = () => {
   );
 };
 
+const ProtectedApp: React.FC = () => {
+  return (
+    <ProtectedRoute>
+      <StudyProvider>
+        <AppContent />
+      </StudyProvider>
+    </ProtectedRoute>
+  );
+};
+
 function App() {
   return (
-    <StudyProvider>
-      <AppContent />
-    </StudyProvider>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          {/* Auth Routes */}
+          <Route path="/signin" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/forgot-password" element={<ForgotPasswordForm />} />
+          <Route path="/reset-password" element={<ResetPasswordForm />} />
+          
+          {/* Protected App Routes */}
+          <Route path="/" element={<ProtectedApp />} />
+          
+          {/* Catch all route */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
