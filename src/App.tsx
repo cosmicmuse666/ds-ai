@@ -5,6 +5,7 @@ import CalendarView from './components/CalendarView';
 import DailyTaskView from './components/DailyTaskView';
 import ProgressAnalytics from './components/ProgressAnalytics';
 import FloatingVoiceButton from './components/FloatingVoiceButton';
+import StudyNotificationSystem from './components/StudyNotificationSystem';
 
 const AppContent: React.FC = () => {
   const { currentView } = useStudy();
@@ -29,6 +30,7 @@ const AppContent: React.FC = () => {
         {renderCurrentView()}
       </main>
       <FloatingVoiceButton />
+      <StudyNotificationSystem />
     </div>
   );
 };
