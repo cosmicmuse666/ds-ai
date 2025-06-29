@@ -61,7 +61,7 @@ const ProgressAnalytics: React.FC = () => {
     };
   }, [schedule]);
 
-  const chartColors = ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4'];
+  const chartColors = ['#C8A8E9', '#F4E76E', '#FF8A65', '#A688C7', '#F9ED7A', '#FFB74D'];
 
   const subjectChartData = Object.entries(analyticsData.subjectProgress).map(([subject, data], index) => ({
     subject: subject.length > 12 ? subject.substring(0, 12) + '...' : subject,
@@ -76,29 +76,29 @@ const ProgressAnalytics: React.FC = () => {
       label: 'Overall Progress',
       value: `${analyticsData.averageCompletion}%`,
       icon: TrendingUp,
-      gradient: 'from-blue-500 to-blue-600',
-      bgColor: 'from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20'
+      gradient: 'from-palette-purple to-palette-purple-dark',
+      bgColor: 'from-palette-purple/10 to-palette-purple/5'
     },
     {
       label: 'Days Completed',
       value: `${analyticsData.completedDays}/${analyticsData.totalDays}`,
       icon: Target,
-      gradient: 'from-green-500 to-green-600',
-      bgColor: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20'
+      gradient: 'from-palette-yellow to-palette-yellow-bright',
+      bgColor: 'from-palette-yellow/10 to-palette-yellow/5'
     },
     {
       label: 'Hours Studied',
       value: `${analyticsData.totalActualHours}h`,
       icon: Clock,
-      gradient: 'from-orange-500 to-orange-600',
-      bgColor: 'from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20'
+      gradient: 'from-palette-coral to-palette-coral-light',
+      bgColor: 'from-palette-coral/10 to-palette-coral/5'
     },
     {
       label: 'Study Streak',
       value: '7 days',
       icon: Award,
-      gradient: 'from-purple-500 to-purple-600',
-      bgColor: 'from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20'
+      gradient: 'from-palette-purple to-palette-coral',
+      bgColor: 'from-palette-purple/10 to-palette-coral/5'
     }
   ];
 
@@ -108,14 +108,14 @@ const ProgressAnalytics: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map(({ label, value, icon: Icon, gradient, bgColor }) => (
           <div key={label} className="group relative overflow-hidden">
-            <div className={`bg-gradient-to-br ${bgColor} rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200/50 dark:border-gray-700/50 group-hover:scale-105`}>
+            <div className={`glass-card bg-gradient-to-br ${bgColor} rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 group-hover:scale-105`}>
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
-                  <p className="text-sm font-semibold text-gray-600 dark:text-gray-400">{label}</p>
-                  <p className="text-3xl font-bold text-gray-900 dark:text-white">{value}</p>
+                  <p className="text-sm font-semibold text-palette-text-light/70">{label}</p>
+                  <p className="text-3xl font-bold text-palette-text-light">{value}</p>
                 </div>
                 <div className={`bg-gradient-to-r ${gradient} p-4 rounded-2xl shadow-lg`}>
-                  <Icon className="h-7 w-7 text-white" />
+                  <Icon className="h-7 w-7 text-palette-dark" />
                 </div>
               </div>
             </div>
@@ -126,42 +126,43 @@ const ProgressAnalytics: React.FC = () => {
       {/* Enhanced Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Weekly Progress Chart */}
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2.5 rounded-xl shadow-lg mr-3">
-              <TrendingUp className="h-5 w-5 text-white" />
+        <div className="glass-card rounded-2xl shadow-xl p-6">
+          <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
+            <div className="bg-gradient-to-r from-palette-purple to-palette-coral p-2.5 rounded-xl shadow-lg mr-3">
+              <TrendingUp className="h-5 w-5 text-palette-white" />
             </div>
             Weekly Progress Trend
           </h3>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={analyticsData.weeklyProgress}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="week" stroke="#6b7280" />
-                <YAxis stroke="#6b7280" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#C8A8E9" opacity={0.3} />
+                <XAxis dataKey="week" stroke="#F5F5F5" />
+                <YAxis stroke="#F5F5F5" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                    border: 'none', 
+                    backgroundColor: 'rgba(42, 42, 42, 0.95)', 
+                    border: '1px solid rgba(200, 168, 233, 0.3)', 
                     borderRadius: '12px',
-                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
+                    color: '#F5F5F5'
                   }} 
                 />
                 <Legend />
                 <Line 
                   type="monotone" 
                   dataKey="completion" 
-                  stroke="#3B82F6" 
+                  stroke="#C8A8E9" 
                   strokeWidth={3}
-                  dot={{ fill: '#3B82F6', strokeWidth: 2, r: 6 }}
+                  dot={{ fill: '#C8A8E9', strokeWidth: 2, r: 6 }}
                   name="Completion %" 
                 />
                 <Line 
                   type="monotone" 
                   dataKey="hours" 
-                  stroke="#10B981" 
+                  stroke="#F4E76E" 
                   strokeWidth={3}
-                  dot={{ fill: '#10B981', strokeWidth: 2, r: 6 }}
+                  dot={{ fill: '#F4E76E', strokeWidth: 2, r: 6 }}
                   name="Hours Studied" 
                 />
               </LineChart>
@@ -170,50 +171,45 @@ const ProgressAnalytics: React.FC = () => {
         </div>
 
         {/* Subject Progress Chart */}
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-2.5 rounded-xl shadow-lg mr-3">
-              <BookOpen className="h-5 w-5 text-white" />
+        <div className="glass-card rounded-2xl shadow-xl p-6">
+          <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
+            <div className="bg-gradient-to-r from-palette-yellow to-palette-yellow-bright p-2.5 rounded-xl shadow-lg mr-3">
+              <BookOpen className="h-5 w-5 text-palette-dark" />
             </div>
             Subject Performance
           </h3>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={subjectChartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="subject" stroke="#6b7280" />
-                <YAxis stroke="#6b7280" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#C8A8E9" opacity={0.3} />
+                <XAxis dataKey="subject" stroke="#F5F5F5" />
+                <YAxis stroke="#F5F5F5" />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                    border: 'none', 
+                    backgroundColor: 'rgba(42, 42, 42, 0.95)', 
+                    border: '1px solid rgba(200, 168, 233, 0.3)', 
                     borderRadius: '12px',
-                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
+                    color: '#F5F5F5'
                   }} 
                 />
                 <Legend />
                 <Bar 
                   dataKey="completion" 
-                  fill="url(#colorGradient)" 
+                  fill="#C8A8E9" 
                   name="Completion %" 
                   radius={[4, 4, 0, 0]}
                 />
-                <defs>
-                  <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.3}/>
-                  </linearGradient>
-                </defs>
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Time Distribution Chart */}
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-orange-500 to-amber-500 p-2.5 rounded-xl shadow-lg mr-3">
-              <Clock className="h-5 w-5 text-white" />
+        <div className="glass-card rounded-2xl shadow-xl p-6">
+          <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
+            <div className="bg-gradient-to-r from-palette-coral to-palette-coral-light p-2.5 rounded-xl shadow-lg mr-3">
+              <Clock className="h-5 w-5 text-palette-white" />
             </div>
             Time Distribution
           </h3>
@@ -236,10 +232,11 @@ const ProgressAnalytics: React.FC = () => {
                 </Pie>
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                    border: 'none', 
+                    backgroundColor: 'rgba(42, 42, 42, 0.95)', 
+                    border: '1px solid rgba(200, 168, 233, 0.3)', 
                     borderRadius: '12px',
-                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+                    boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
+                    color: '#F5F5F5'
                   }} 
                 />
               </PieChart>
@@ -248,24 +245,24 @@ const ProgressAnalytics: React.FC = () => {
         </div>
 
         {/* Enhanced Study Consistency */}
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-xl p-6 border border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-purple-500 to-violet-500 p-2.5 rounded-xl shadow-lg mr-3">
-              <Activity className="h-5 w-5 text-white" />
+        <div className="glass-card rounded-2xl shadow-xl p-6">
+          <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
+            <div className="bg-gradient-to-r from-palette-purple to-palette-yellow p-2.5 rounded-xl shadow-lg mr-3">
+              <Activity className="h-5 w-5 text-palette-dark" />
             </div>
             Study Consistency
           </h3>
           <div className="space-y-6">
-            <div className="flex justify-between items-center p-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl">
-              <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Planned vs Actual Hours</span>
-              <span className="text-lg font-bold text-gray-900 dark:text-white">
+            <div className="flex justify-between items-center p-4 glass-card-light rounded-xl">
+              <span className="text-sm font-semibold text-palette-text-light/70">Planned vs Actual Hours</span>
+              <span className="text-lg font-bold text-palette-text-light">
                 {analyticsData.totalActualHours}h / {analyticsData.totalPlannedHours}h
               </span>
             </div>
             <div className="relative">
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 overflow-hidden">
+              <div className="w-full bg-palette-dark rounded-full h-4 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-4 rounded-full transition-all duration-700 ease-out shadow-lg"
+                  className="bg-gradient-to-r from-palette-purple to-palette-coral h-4 rounded-full transition-all duration-700 ease-out shadow-lg"
                   style={{ 
                     width: `${Math.min((analyticsData.totalActualHours / analyticsData.totalPlannedHours) * 100, 100)}%` 
                   }}
@@ -274,17 +271,17 @@ const ProgressAnalytics: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-6 mt-8">
-              <div className="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200/50 dark:border-green-700/50">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
+              <div className="text-center p-4 bg-gradient-to-br from-palette-yellow/10 to-palette-yellow/5 rounded-xl border border-palette-yellow/20">
+                <div className="text-3xl font-bold text-palette-yellow mb-2">
                   {Math.round((analyticsData.completedDays / analyticsData.totalDays) * 100)}%
                 </div>
-                <div className="text-sm font-semibold text-gray-600 dark:text-gray-400">Days Completed</div>
+                <div className="text-sm font-semibold text-palette-text-light/70">Days Completed</div>
               </div>
-              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <div className="text-center p-4 bg-gradient-to-br from-palette-purple/10 to-palette-purple/5 rounded-xl border border-palette-purple/20">
+                <div className="text-3xl font-bold text-palette-purple mb-2">
                   {Math.round((analyticsData.totalActualHours / analyticsData.totalPlannedHours) * 100)}%
                 </div>
-                <div className="text-sm font-semibold text-gray-600 dark:text-gray-400">Hours Target</div>
+                <div className="text-sm font-semibold text-palette-text-light/70">Hours Target</div>
               </div>
             </div>
           </div>
@@ -292,48 +289,48 @@ const ProgressAnalytics: React.FC = () => {
       </div>
 
       {/* Enhanced Detailed Subject Analysis */}
-      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
-        <div className="p-6 border-b border-gray-200/50 dark:border-gray-700/50">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-            <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-2.5 rounded-xl shadow-lg mr-3">
-              <Zap className="h-5 w-5 text-white" />
+      <div className="glass-card rounded-2xl shadow-xl overflow-hidden">
+        <div className="p-6 border-b border-palette-purple/20">
+          <h3 className="text-xl font-bold text-palette-text-light flex items-center">
+            <div className="bg-gradient-to-r from-palette-coral to-palette-yellow p-2.5 rounded-xl shadow-lg mr-3">
+              <Zap className="h-5 w-5 text-palette-dark" />
             </div>
             Detailed Subject Analysis
           </h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50/50 dark:bg-gray-700/50">
+            <thead className="bg-palette-dark/50">
               <tr>
-                <th className="text-left py-4 px-6 font-bold text-gray-900 dark:text-white">Subject</th>
-                <th className="text-left py-4 px-6 font-bold text-gray-900 dark:text-white">Progress</th>
-                <th className="text-left py-4 px-6 font-bold text-gray-900 dark:text-white">Planned Hours</th>
-                <th className="text-left py-4 px-6 font-bold text-gray-900 dark:text-white">Actual Hours</th>
-                <th className="text-left py-4 px-6 font-bold text-gray-900 dark:text-white">Efficiency</th>
+                <th className="text-left py-4 px-6 font-bold text-palette-text-light">Subject</th>
+                <th className="text-left py-4 px-6 font-bold text-palette-text-light">Progress</th>
+                <th className="text-left py-4 px-6 font-bold text-palette-text-light">Planned Hours</th>
+                <th className="text-left py-4 px-6 font-bold text-palette-text-light">Actual Hours</th>
+                <th className="text-left py-4 px-6 font-bold text-palette-text-light">Efficiency</th>
               </tr>
             </thead>
             <tbody>
               {Object.entries(analyticsData.subjectProgress).map(([subject, data], index) => (
-                <tr key={subject} className={`border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50/50 dark:hover:bg-gray-700/50 transition-colors ${index % 2 === 0 ? 'bg-white/30 dark:bg-gray-800/30' : ''}`}>
-                  <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">{subject}</td>
+                <tr key={subject} className={`border-b border-palette-purple/20 hover:bg-palette-dark-light/50 transition-colors ${index % 2 === 0 ? 'bg-palette-dark/30' : ''}`}>
+                  <td className="py-4 px-6 font-semibold text-palette-text-light">{subject}</td>
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
-                      <div className="w-20 bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
+                      <div className="w-20 bg-palette-dark rounded-full h-3 overflow-hidden">
                         <div 
-                          className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-500"
+                          className="bg-gradient-to-r from-palette-purple to-palette-coral h-3 rounded-full transition-all duration-500"
                           style={{ width: `${data.completion}%` }}
                         />
                       </div>
-                      <span className="text-sm font-bold text-gray-600 dark:text-gray-400">{Math.round(data.completion)}%</span>
+                      <span className="text-sm font-bold text-palette-text-light/80">{Math.round(data.completion)}%</span>
                     </div>
                   </td>
-                  <td className="py-4 px-6 font-semibold text-gray-600 dark:text-gray-400">{data.planned}h</td>
-                  <td className="py-4 px-6 font-semibold text-gray-600 dark:text-gray-400">{data.actual}h</td>
+                  <td className="py-4 px-6 font-semibold text-palette-text-light/80">{data.planned}h</td>
+                  <td className="py-4 px-6 font-semibold text-palette-text-light/80">{data.actual}h</td>
                   <td className="py-4 px-6">
                     <span className={`px-3 py-1.5 rounded-full text-xs font-bold ${
                       data.actual >= data.planned 
-                        ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white'
-                        : 'bg-gradient-to-r from-yellow-500 to-amber-500 text-white'
+                        ? 'bg-gradient-to-r from-palette-yellow to-palette-yellow-bright text-palette-dark'
+                        : 'bg-gradient-to-r from-palette-coral to-palette-coral-light text-palette-white'
                     }`}>
                       {data.planned > 0 ? Math.round((data.actual / data.planned) * 100) : 0}%
                     </span>

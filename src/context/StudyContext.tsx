@@ -37,7 +37,7 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
   const [currentView, setCurrentView] = useState<'calendar' | 'daily' | 'analytics'>('calendar');
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     const saved = localStorage.getItem('studyPlannerTheme');
-    return (saved as 'light' | 'dark') || 'light';
+    return (saved as 'light' | 'dark') || 'dark'; // Default to dark theme
   });
 
   useEffect(() => {
@@ -46,11 +46,8 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('studyPlannerTheme', theme);
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Always apply dark theme since our palette is designed for dark mode
+    document.documentElement.classList.add('dark');
   }, [theme]);
 
   const updateDayProgress = (date: string, progress: Partial<StudyDay>) => {
@@ -71,7 +68,8 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
   };
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    // Keep dark theme since our palette is designed for it
+    setTheme('dark');
   };
 
   return (

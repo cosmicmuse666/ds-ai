@@ -186,18 +186,18 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
   if (permissionGranted === false) {
     return (
       <div className="text-center py-8">
-        <div className="bg-gradient-to-r from-red-500 to-rose-500 p-4 rounded-2xl w-fit mx-auto mb-4">
-          <MicOff className="h-8 w-8 text-white" />
+        <div className="bg-gradient-to-r from-palette-coral to-palette-coral-light p-4 rounded-2xl w-fit mx-auto mb-4">
+          <MicOff className="h-8 w-8 text-palette-white" />
         </div>
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+        <h3 className="text-lg font-bold text-palette-text-light mb-2">
           Microphone Access Required
         </h3>
-        <p className="text-gray-500 dark:text-gray-400 mb-4">
+        <p className="text-palette-text-light/70 mb-4">
           Please allow microphone access to record voice notes.
         </p>
         <button
           onClick={checkMicrophonePermission}
-          className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+          className="btn-primary px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
         >
           Grant Permission
         </button>
@@ -208,7 +208,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
   return (
     <div className="space-y-6">
       {/* Recording Controls */}
-      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 border border-indigo-200/50 dark:border-gray-600/50">
+      <div className="bg-gradient-to-br from-palette-purple/10 to-palette-coral/10 rounded-2xl p-6 border border-palette-purple/20">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-4 mb-6">
             <button
@@ -216,34 +216,34 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
               disabled={permissionGranted === null}
               className={`relative p-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
                 isRecording
-                  ? 'bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600'
-                  : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600'
+                  ? 'bg-gradient-to-r from-palette-coral to-palette-coral-light hover:from-palette-coral-light hover:to-palette-coral'
+                  : 'bg-gradient-to-r from-palette-purple to-palette-purple-dark hover:from-palette-purple-dark hover:to-palette-purple'
               } ${permissionGranted === null ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isRecording ? (
-                <Square className="h-8 w-8 text-white" />
+                <Square className="h-8 w-8 text-palette-white" />
               ) : (
-                <Mic className="h-8 w-8 text-white" />
+                <Mic className="h-8 w-8 text-palette-white" />
               )}
               {isRecording && (
-                <div className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-25"></div>
+                <div className="absolute inset-0 rounded-full bg-palette-coral animate-ping opacity-25"></div>
               )}
             </button>
           </div>
           
           <div className="space-y-2">
-            <p className="text-lg font-bold text-gray-900 dark:text-white">
+            <p className="text-lg font-bold text-palette-text-light">
               {isRecording ? 'Recording...' : 'Ready to Record'}
             </p>
             {isRecording && (
               <div className="flex items-center justify-center space-x-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <span className="text-2xl font-mono font-bold text-red-600 dark:text-red-400">
+                <div className="w-2 h-2 bg-palette-coral rounded-full animate-pulse"></div>
+                <span className="text-2xl font-mono font-bold text-palette-coral">
                   {formatTime(recordingTime)}
                 </span>
               </div>
             )}
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-palette-text-light/70">
               {isRecording ? 'Click stop when finished' : 'Click to start recording your daily summary'}
             </p>
           </div>
@@ -253,8 +253,8 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
       {/* Voice Notes List */}
       {voiceNotes.length > 0 && (
         <div className="space-y-4">
-          <h4 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-            <Volume2 className="h-5 w-5 mr-2 text-blue-500" />
+          <h4 className="text-lg font-bold text-palette-text-light flex items-center">
+            <Volume2 className="h-5 w-5 mr-2 text-palette-purple" />
             Your Voice Notes ({voiceNotes.length})
           </h4>
           
@@ -262,13 +262,13 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
             {voiceNotes.map((note) => (
               <div
                 key={note.id}
-                className="bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-2xl p-4 border border-gray-200/50 dark:border-gray-600/50 hover:shadow-lg transition-all duration-200"
+                className="glass-card-light backdrop-blur-sm rounded-2xl p-4 border border-palette-purple/20 hover:shadow-lg transition-all duration-200"
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-3">
                     <button
                       onClick={() => playAudio(note)}
-                      className="p-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                      className="btn-secondary p-2 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
                     >
                       {playingId === note.id ? (
                         <Pause className="h-4 w-4" />
@@ -277,10 +277,10 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                       )}
                     </button>
                     <div>
-                      <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                      <p className="text-sm font-semibold text-palette-text-light">
                         {formatDate(note.timestamp)}
                       </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <p className="text-xs text-palette-text-light/70">
                         Duration: {formatTime(note.duration)}
                       </p>
                     </div>
@@ -289,13 +289,13 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => downloadAudio(note)}
-                      className="p-2 rounded-xl text-gray-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-200"
+                      className="p-2 rounded-xl text-palette-text-light/70 hover:text-palette-purple hover:bg-palette-purple/20 transition-all duration-200"
                     >
                       <Download className="h-4 w-4" />
                     </button>
                     <button
                       onClick={() => onVoiceNoteDeleted(note.id)}
-                      className="p-2 rounded-xl text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200"
+                      className="p-2 rounded-xl text-palette-text-light/70 hover:text-palette-coral hover:bg-palette-coral/20 transition-all duration-200"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
@@ -303,31 +303,31 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
                 </div>
 
                 {note.isProcessing ? (
-                  <div className="flex items-center space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                    <Loader2 className="h-4 w-4 text-blue-500 animate-spin" />
-                    <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                  <div className="flex items-center space-x-3 p-3 bg-palette-purple/20 rounded-xl border border-palette-purple/30">
+                    <Loader2 className="h-4 w-4 text-palette-purple animate-spin" />
+                    <span className="text-sm text-palette-purple font-medium">
                       Processing transcription and summary...
                     </span>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {note.transcription && (
-                      <div className="p-3 bg-gray-50 dark:bg-gray-600/50 rounded-xl">
-                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">
+                      <div className="p-3 glass-card-light rounded-xl">
+                        <p className="text-xs font-semibold text-palette-text-light/70 mb-1">
                           TRANSCRIPTION
                         </p>
-                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                        <p className="text-sm text-palette-text-light/90">
                           {note.transcription}
                         </p>
                       </div>
                     )}
                     
                     {note.summary && (
-                      <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50">
-                        <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">
+                      <div className="p-3 bg-gradient-to-r from-palette-purple/20 to-palette-yellow/20 rounded-xl border border-palette-purple/30">
+                        <p className="text-xs font-semibold text-palette-purple mb-1">
                           AI SUMMARY
                         </p>
-                        <p className="text-sm text-blue-800 dark:text-blue-200 font-medium">
+                        <p className="text-sm text-palette-text-light font-medium">
                           {note.summary}
                         </p>
                       </div>

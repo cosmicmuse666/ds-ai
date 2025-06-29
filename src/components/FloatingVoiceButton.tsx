@@ -189,15 +189,15 @@ const FloatingVoiceButton: React.FC = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative p-4 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
+          className="group relative p-4 bg-gradient-to-r from-palette-purple to-palette-coral hover:from-palette-purple-dark hover:to-palette-coral-light text-palette-white rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
         >
           <Mic className="h-6 w-6" />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 animate-ping"></div>
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-palette-purple to-palette-coral opacity-0 group-hover:opacity-20 animate-ping"></div>
           
           {/* Tooltip */}
-          <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+          <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-palette-dark text-palette-text-light text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
             Quick Voice Note
-            <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+            <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-palette-dark"></div>
           </div>
         </button>
       </div>
@@ -212,21 +212,21 @@ const FloatingVoiceButton: React.FC = () => {
           ></div>
           
           {/* Panel */}
-          <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50 w-96 max-w-full animate-slide-up">
+          <div className="relative glass-card backdrop-blur-xl rounded-3xl shadow-2xl w-96 max-w-full animate-slide-up">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200/50 dark:border-gray-700/50">
+            <div className="flex items-center justify-between p-6 border-b border-palette-purple/20">
               <div className="flex items-center space-x-3">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-xl">
-                  <Volume2 className="h-5 w-5 text-white" />
+                <div className="bg-gradient-to-r from-palette-purple to-palette-coral p-2 rounded-xl">
+                  <Volume2 className="h-5 w-5 text-palette-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 dark:text-white">Quick Voice Note</h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Capture your thoughts instantly</p>
+                  <h3 className="font-bold text-palette-text-light">Quick Voice Note</h3>
+                  <p className="text-sm text-palette-text-light/70">Capture your thoughts instantly</p>
                 </div>
               </div>
               <button
                 onClick={closePanel}
-                className="p-2 rounded-xl text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-200"
+                className="p-2 rounded-xl text-palette-text-light/70 hover:text-palette-text-light hover:bg-palette-purple/20 transition-all duration-200"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -239,19 +239,19 @@ const FloatingVoiceButton: React.FC = () => {
                 <div className="text-center space-y-4">
                   {permissionGranted === false ? (
                     <div className="space-y-4">
-                      <div className="bg-gradient-to-r from-red-500 to-rose-500 p-3 rounded-2xl w-fit mx-auto">
-                        <MicOff className="h-6 w-6 text-white" />
+                      <div className="bg-gradient-to-r from-palette-coral to-palette-coral-light p-3 rounded-2xl w-fit mx-auto">
+                        <MicOff className="h-6 w-6 text-palette-white" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900 dark:text-white mb-2">
+                        <p className="font-semibold text-palette-text-light mb-2">
                           Microphone Access Required
                         </p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        <p className="text-sm text-palette-text-light/70 mb-4">
                           Please allow microphone access to record voice notes.
                         </p>
                         <button
                           onClick={checkMicrophonePermission}
-                          className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-200"
+                          className="btn-primary px-4 py-2 rounded-xl font-semibold transition-all duration-200"
                         >
                           Grant Permission
                         </button>
@@ -264,33 +264,33 @@ const FloatingVoiceButton: React.FC = () => {
                         disabled={permissionGranted === null}
                         className={`relative p-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 ${
                           isRecording
-                            ? 'bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-600 hover:to-rose-600'
-                            : 'bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600'
+                            ? 'bg-gradient-to-r from-palette-coral to-palette-coral-light hover:from-palette-coral-light hover:to-palette-coral'
+                            : 'bg-gradient-to-r from-palette-purple to-palette-purple-dark hover:from-palette-purple-dark hover:to-palette-purple'
                         } ${permissionGranted === null ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         {isRecording ? (
-                          <Square className="h-8 w-8 text-white" />
+                          <Square className="h-8 w-8 text-palette-white" />
                         ) : (
-                          <Mic className="h-8 w-8 text-white" />
+                          <Mic className="h-8 w-8 text-palette-white" />
                         )}
                         {isRecording && (
-                          <div className="absolute inset-0 rounded-full bg-red-500 animate-ping opacity-25"></div>
+                          <div className="absolute inset-0 rounded-full bg-palette-coral animate-ping opacity-25"></div>
                         )}
                       </button>
                       
                       <div>
-                        <p className="font-semibold text-gray-900 dark:text-white">
+                        <p className="font-semibold text-palette-text-light">
                           {isRecording ? 'Recording...' : 'Ready to Record'}
                         </p>
                         {isRecording && (
                           <div className="flex items-center justify-center space-x-2 mt-2">
-                            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-xl font-mono font-bold text-red-600 dark:text-red-400">
+                            <div className="w-2 h-2 bg-palette-coral rounded-full animate-pulse"></div>
+                            <span className="text-xl font-mono font-bold text-palette-coral">
                               {formatTime(recordingTime)}
                             </span>
                           </div>
                         )}
-                        <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                        <p className="text-sm text-palette-text-light/70 mt-1">
                           {isRecording ? 'Click stop when finished' : 'Tap to start recording'}
                         </p>
                       </div>
@@ -301,13 +301,13 @@ const FloatingVoiceButton: React.FC = () => {
                 /* Playback and Save Interface */
                 <div className="space-y-4">
                   <div className="text-center">
-                    <div className="bg-gradient-to-r from-green-500 to-emerald-500 p-3 rounded-2xl w-fit mx-auto mb-3">
-                      <Volume2 className="h-6 w-6 text-white" />
+                    <div className="bg-gradient-to-r from-palette-yellow to-palette-yellow-bright p-3 rounded-2xl w-fit mx-auto mb-3">
+                      <Volume2 className="h-6 w-6 text-palette-dark" />
                     </div>
-                    <p className="font-semibold text-gray-900 dark:text-white">
+                    <p className="font-semibold text-palette-text-light">
                       Recording Complete
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p className="text-sm text-palette-text-light/70">
                       Duration: {formatTime(currentNote.duration)}
                     </p>
                   </div>
@@ -316,7 +316,7 @@ const FloatingVoiceButton: React.FC = () => {
                   <div className="flex items-center justify-center space-x-4">
                     <button
                       onClick={playAudio}
-                      className="p-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white transition-all duration-200 shadow-lg hover:shadow-xl"
+                      className="btn-secondary p-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl"
                     >
                       {isPlaying ? (
                         <Pause className="h-5 w-5" />
@@ -326,7 +326,7 @@ const FloatingVoiceButton: React.FC = () => {
                     </button>
                     <button
                       onClick={discardNote}
-                      className="p-3 rounded-xl text-gray-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all duration-200"
+                      className="p-3 rounded-xl text-palette-text-light/70 hover:text-palette-coral hover:bg-palette-coral/20 transition-all duration-200"
                     >
                       <X className="h-5 w-5" />
                     </button>
@@ -334,31 +334,31 @@ const FloatingVoiceButton: React.FC = () => {
 
                   {/* Processing/Results */}
                   {currentNote.isProcessing ? (
-                    <div className="flex items-center justify-center space-x-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
-                      <Loader2 className="h-5 w-5 text-blue-500 animate-spin" />
-                      <span className="text-sm text-blue-600 dark:text-blue-400 font-medium">
+                    <div className="flex items-center justify-center space-x-3 p-4 bg-palette-purple/20 rounded-xl border border-palette-purple/30">
+                      <Loader2 className="h-5 w-5 text-palette-purple animate-spin" />
+                      <span className="text-sm text-palette-purple font-medium">
                         Processing transcription...
                       </span>
                     </div>
                   ) : (
                     <div className="space-y-3">
                       {currentNote.transcription && (
-                        <div className="p-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1">
+                        <div className="p-3 glass-card-light rounded-xl">
+                          <p className="text-xs font-semibold text-palette-text-light/70 mb-1">
                             TRANSCRIPTION
                           </p>
-                          <p className="text-sm text-gray-700 dark:text-gray-300">
+                          <p className="text-sm text-palette-text-light/90">
                             {currentNote.transcription}
                           </p>
                         </div>
                       )}
                       
                       {currentNote.summary && (
-                        <div className="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border border-blue-200/50 dark:border-blue-700/50">
-                          <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">
+                        <div className="p-3 bg-gradient-to-r from-palette-purple/20 to-palette-yellow/20 rounded-xl border border-palette-purple/30">
+                          <p className="text-xs font-semibold text-palette-purple mb-1">
                             AI SUMMARY
                           </p>
-                          <p className="text-sm text-blue-800 dark:text-blue-200 font-medium">
+                          <p className="text-sm text-palette-text-light font-medium">
                             {currentNote.summary}
                           </p>
                         </div>
@@ -367,7 +367,7 @@ const FloatingVoiceButton: React.FC = () => {
                       {/* Save Button */}
                       <button
                         onClick={saveNote}
-                        className="w-full flex items-center justify-center space-x-2 p-3 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+                        className="w-full btn-secondary flex items-center justify-center space-x-2 p-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
                       >
                         <Send className="h-4 w-4" />
                         <span>Save Voice Note</span>
