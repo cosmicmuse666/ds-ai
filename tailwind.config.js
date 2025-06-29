@@ -8,17 +8,24 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1.5' }],
-        'sm': ['0.875rem', { lineHeight: '1.6' }],
-        'base': ['1rem', { lineHeight: '1.6' }],
-        'lg': ['1.125rem', { lineHeight: '1.6' }],
-        'xl': ['1.25rem', { lineHeight: '1.6' }],
-        '2xl': ['1.5rem', { lineHeight: '1.4' }],
-        '3xl': ['1.875rem', { lineHeight: '1.3' }],
+        'xs': ['0.75rem', { lineHeight: '1.5' }], // 12px minimum
+        'sm': ['0.875rem', { lineHeight: '1.6' }], // 14px
+        'base': ['1rem', { lineHeight: '1.6' }], // 16px
+        'lg': ['1.125rem', { lineHeight: '1.6' }], // 18px
+        'xl': ['1.25rem', { lineHeight: '1.6' }], // 20px
+        '2xl': ['1.5rem', { lineHeight: '1.4' }], // 24px
+        '3xl': ['1.875rem', { lineHeight: '1.3' }], // 30px
       },
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
+        // Exact spacing values from specifications
+        '1': '4px',   // 4px gap between grid cells
+        '2': '8px',   // 8px padding inside cells
+        '3': '12px',  // 12px padding for buttons/interactive elements
+        '4': '16px',  // 16px horizontal padding for day names
+        '5': '20px',  // 20px horizontal padding for header
+        '6': '24px',  // 24px padding around calendar container
       },
       animation: {
         'fade-in': 'fadeIn 0.2s ease-in-out',
@@ -69,6 +76,8 @@ export default {
           'text-purple': '#C8A8E9',
           'text-yellow': '#F4E76E',
         },
+        // Today's date highlight color
+        'accent-light': '#F0F0F0',
         primary: {
           50: '#F3F0FF',
           100: '#E1C9F0',
@@ -105,6 +114,17 @@ export default {
           800: '#D84315',
           900: '#BF360C',
         }
+      },
+      // Aspect ratio for uniform 1:1 calendar cells
+      aspectRatio: {
+        'square': '1 / 1',
+      },
+      // Border radius for event containers (6px)
+      borderRadius: {
+        'sm': '6px',
+        'md': '8px',
+        'lg': '12px',
+        'xl': '16px',
       }
     },
   },
