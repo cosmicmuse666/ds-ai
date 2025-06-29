@@ -4,6 +4,7 @@ import { Eye, EyeOff, User, Mail, Lock, Loader2, CheckCircle2, AlertCircle } fro
 import { signUp, signUpSchema } from '../../lib/auth';
 import { z } from 'zod';
 import AuthLayout from './AuthLayout';
+import GoogleSignInButton from './GoogleSignInButton';
 
 const SignUpForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -87,6 +88,10 @@ const SignUpForm: React.FC = () => {
     }
   };
 
+  const handleGoogleError = (error: string) => {
+    setErrors({ submit: error });
+  };
+
   if (success) {
     return (
       <AuthLayout
@@ -129,182 +134,203 @@ const SignUpForm: React.FC = () => {
       title="Create Account"
       subtitle="Start your GATE preparation journey"
     >
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Full Name */}
-        <div>
-          <label htmlFor="fullName" className="block text-sm font-semibold text-palette-text-light mb-2">
-            Full Name (Optional)
-          </label>
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              className="w-full pl-10 pr-4 py-3 border border-palette-medium-orchid/30 rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200"
-              placeholder="Enter your full name"
-            />
+      <div className="space-y-6">
+        {/* Google Sign-Up Button */}
+        <GoogleSignInButton 
+          onError={handleGoogleError}
+          disabled={loading}
+        />
+
+        {/* Divider */}
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-palette-medium-orchid/20"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-4 bg-palette-primary-black text-palette-text-muted font-medium">
+              Or create account with email
+            </span>
           </div>
         </div>
 
-        {/* Username */}
-        <div>
-          <label htmlFor="username" className="block text-sm font-semibold text-palette-text-light mb-2">
-            Username *
-          </label>
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleInputChange}
-              className={`w-full pl-10 pr-4 py-3 border rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200 ${
-                errors.username ? 'border-palette-coral' : 'border-palette-medium-orchid/30'
-              }`}
-              placeholder="Choose a username"
-              required
-            />
+        {/* Email/Password Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Full Name */}
+          <div>
+            <label htmlFor="fullName" className="block text-sm font-semibold text-palette-text-light mb-2">
+              Full Name (Optional)
+            </label>
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                className="w-full pl-10 pr-4 py-3 border border-palette-medium-orchid/30 rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200"
+                placeholder="Enter your full name"
+              />
+            </div>
           </div>
-          {errors.username && (
-            <p className="mt-2 text-sm text-palette-coral flex items-center">
-              <AlertCircle className="h-4 w-4 mr-1" />
-              {errors.username}
-            </p>
-          )}
-        </div>
 
-        {/* Email */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-semibold text-palette-text-light mb-2">
-            Email Address *
-          </label>
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className={`w-full pl-10 pr-4 py-3 border rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200 ${
-                errors.email ? 'border-palette-coral' : 'border-palette-medium-orchid/30'
-              }`}
-              placeholder="Enter your email"
-              required
-            />
+          {/* Username */}
+          <div>
+            <label htmlFor="username" className="block text-sm font-semibold text-palette-text-light mb-2">
+              Username *
+            </label>
+            <div className="relative">
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                className={`w-full pl-10 pr-4 py-3 border rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200 ${
+                  errors.username ? 'border-palette-coral' : 'border-palette-medium-orchid/30'
+                }`}
+                placeholder="Choose a username"
+                required
+              />
+            </div>
+            {errors.username && (
+              <p className="mt-2 text-sm text-palette-coral flex items-center">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                {errors.username}
+              </p>
+            )}
           </div>
-          {errors.email && (
-            <p className="mt-2 text-sm text-palette-coral flex items-center">
-              <AlertCircle className="h-4 w-4 mr-1" />
-              {errors.email}
-            </p>
-          )}
-        </div>
 
-        {/* Password */}
-        <div>
-          <label htmlFor="password" className="block text-sm font-semibold text-palette-text-light mb-2">
-            Password *
-          </label>
-          <div className="relative">
-            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
-            <input
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className={`w-full pl-10 pr-12 py-3 border rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200 ${
-                errors.password ? 'border-palette-coral' : 'border-palette-medium-orchid/30'
-              }`}
-              placeholder="Create a strong password"
-              required
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-palette-text-muted hover:text-palette-text-light transition-colors"
-            >
-              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-            </button>
+          {/* Email */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-semibold text-palette-text-light mb-2">
+              Email Address *
+            </label>
+            <div className="relative">
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className={`w-full pl-10 pr-4 py-3 border rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200 ${
+                  errors.email ? 'border-palette-coral' : 'border-palette-medium-orchid/30'
+                }`}
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            {errors.email && (
+              <p className="mt-2 text-sm text-palette-coral flex items-center">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                {errors.email}
+              </p>
+            )}
           </div>
-          
-          {/* Password Strength Indicator */}
-          {formData.password && (
-            <div className="mt-3">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-palette-text-muted">Password Strength</span>
-                <span className={`text-xs font-semibold ${
-                  passwordStrength.level === 'strong' ? 'text-palette-yellow' :
-                  passwordStrength.level === 'good' ? 'text-palette-medium-orchid' :
-                  passwordStrength.level === 'medium' ? 'text-palette-yellow' :
-                  'text-palette-coral'
-                }`}>
-                  {passwordStrength.text}
-                </span>
+
+          {/* Password */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-semibold text-palette-text-light mb-2">
+              Password *
+            </label>
+            <div className="relative">
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-palette-text-muted" />
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
+                className={`w-full pl-10 pr-12 py-3 border rounded-xl bg-palette-bg-darker text-palette-text-light placeholder-palette-text-muted focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent transition-all duration-200 ${
+                  errors.password ? 'border-palette-coral' : 'border-palette-medium-orchid/30'
+                }`}
+                placeholder="Create a strong password"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-palette-text-muted hover:text-palette-text-light transition-colors"
+              >
+                {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+              </button>
+            </div>
+            
+            {/* Password Strength Indicator */}
+            {formData.password && (
+              <div className="mt-3">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs text-palette-text-muted">Password Strength</span>
+                  <span className={`text-xs font-semibold ${
+                    passwordStrength.level === 'strong' ? 'text-palette-yellow' :
+                    passwordStrength.level === 'good' ? 'text-palette-medium-orchid' :
+                    passwordStrength.level === 'medium' ? 'text-palette-yellow' :
+                    'text-palette-coral'
+                  }`}>
+                    {passwordStrength.text}
+                  </span>
+                </div>
+                <div className="w-full bg-palette-bg-darker rounded-full h-2">
+                  <div 
+                    className={`h-2 rounded-full transition-all duration-300 ${passwordStrength.color}`}
+                    style={{ width: `${(getPasswordStrength(formData.password).level === 'strong' ? 100 : 
+                      getPasswordStrength(formData.password).level === 'good' ? 80 :
+                      getPasswordStrength(formData.password).level === 'medium' ? 60 : 40)}%` }}
+                  />
+                </div>
               </div>
-              <div className="w-full bg-palette-bg-darker rounded-full h-2">
-                <div 
-                  className={`h-2 rounded-full transition-all duration-300 ${passwordStrength.color}`}
-                  style={{ width: `${(getPasswordStrength(formData.password).level === 'strong' ? 100 : 
-                    getPasswordStrength(formData.password).level === 'good' ? 80 :
-                    getPasswordStrength(formData.password).level === 'medium' ? 60 : 40)}%` }}
-                />
-              </div>
+            )}
+            
+            {errors.password && (
+              <p className="mt-2 text-sm text-palette-coral flex items-center">
+                <AlertCircle className="h-4 w-4 mr-1" />
+                {errors.password}
+              </p>
+            )}
+          </div>
+
+          {/* Submit Error */}
+          {errors.submit && (
+            <div className="p-4 bg-palette-coral/10 border border-palette-coral/30 rounded-xl">
+              <p className="text-sm text-palette-coral flex items-center">
+                <AlertCircle className="h-4 w-4 mr-2" />
+                {errors.submit}
+              </p>
             </div>
           )}
-          
-          {errors.password && (
-            <p className="mt-2 text-sm text-palette-coral flex items-center">
-              <AlertCircle className="h-4 w-4 mr-1" />
-              {errors.password}
-            </p>
-          )}
-        </div>
 
-        {/* Submit Error */}
-        {errors.submit && (
-          <div className="p-4 bg-palette-coral/10 border border-palette-coral/30 rounded-xl">
-            <p className="text-sm text-palette-coral flex items-center">
-              <AlertCircle className="h-4 w-4 mr-2" />
-              {errors.submit}
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full btn-primary py-3 rounded-xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="h-5 w-5 mr-2 animate-spin" />
+                Creating Account...
+              </>
+            ) : (
+              'Create Account'
+            )}
+          </button>
+
+          {/* Sign In Link */}
+          <div className="text-center">
+            <p className="text-palette-text-muted">
+              Already have an account?{' '}
+              <Link
+                to="/signin"
+                className="text-palette-medium-orchid hover:text-palette-light-violet font-semibold transition-colors"
+              >
+                Sign In
+              </Link>
             </p>
           </div>
-        )}
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full btn-primary py-3 rounded-xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-        >
-          {loading ? (
-            <>
-              <Loader2 className="h-5 w-5 mr-2 animate-spin" />
-              Creating Account...
-            </>
-          ) : (
-            'Create Account'
-          )}
-        </button>
-
-        {/* Sign In Link */}
-        <div className="text-center">
-          <p className="text-palette-text-muted">
-            Already have an account?{' '}
-            <Link
-              to="/signin"
-              className="text-palette-medium-orchid hover:text-palette-light-violet font-semibold transition-colors"
-            >
-              Sign In
-            </Link>
-          </p>
-        </div>
-      </form>
+        </form>
+      </div>
     </AuthLayout>
   );
 };

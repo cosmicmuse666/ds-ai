@@ -7,6 +7,7 @@ import SignInForm from './components/auth/SignInForm';
 import SignUpForm from './components/auth/SignUpForm';
 import ForgotPasswordForm from './components/auth/ForgotPasswordForm';
 import ResetPasswordForm from './components/auth/ResetPasswordForm';
+import OAuthCallback from './components/auth/OAuthCallback';
 import Header from './components/Header';
 import CalendarView from './components/CalendarView';
 import DailyTaskView from './components/DailyTaskView';
@@ -61,6 +62,7 @@ function App() {
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/forgot-password" element={<ForgotPasswordForm />} />
           <Route path="/reset-password" element={<ResetPasswordForm />} />
+          <Route path="/auth/callback" element={<OAuthCallback />} />
           
           {/* Protected App Routes */}
           <Route path="/" element={<ProtectedApp />} />
