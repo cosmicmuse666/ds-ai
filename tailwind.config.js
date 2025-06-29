@@ -7,6 +7,15 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.5' }],
+        'sm': ['0.875rem', { lineHeight: '1.6' }],
+        'base': ['1rem', { lineHeight: '1.6' }],
+        'lg': ['1.125rem', { lineHeight: '1.6' }],
+        'xl': ['1.25rem', { lineHeight: '1.6' }],
+        '2xl': ['1.5rem', { lineHeight: '1.4' }],
+        '3xl': ['1.875rem', { lineHeight: '1.3' }],
+      },
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
@@ -33,10 +42,12 @@ export default {
           'dark-light': '#3A3A3A',
           yellow: '#F4E76E',
           'yellow-bright': '#F9ED7A',
+          'yellow-dark': '#B8A832',
           purple: '#C8A8E9',
           'purple-dark': '#A688C7',
           coral: '#FF8A65',
           'coral-light': '#FFB74D',
+          'coral-dark': '#E64A19',
           white: '#FFFFFF',
           
           // Background variations
