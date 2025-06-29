@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Calendar, BookOpen, Target } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, BookOpen, Target, TrendingUp, Clock, Award } from 'lucide-react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isToday, addMonths, subMonths } from 'date-fns';
 import { useStudy } from '../context/StudyContext';
 import { subjectColors } from '../data/studySchedule';
@@ -31,13 +31,6 @@ const CalendarView: React.FC = () => {
     return schedule[dateStr];
   };
 
-  const getProgressColor = (progress: number) => {
-    if (progress === 0) return 'bg-gray-200 dark:bg-gray-600';
-    if (progress < 50) return 'bg-red-200 dark:bg-red-800';
-    if (progress < 80) return 'bg-yellow-200 dark:bg-yellow-800';
-    return 'bg-green-200 dark:bg-green-800';
-  };
-
   const getSubjectColor = (subject: string) => {
     return subjectColors[subject] || 'bg-gray-500';
   };
@@ -62,183 +55,216 @@ const CalendarView: React.FC = () => {
       return sum + (dayData?.progress.completionPercentage || 0);
     }, 0) / totalDays;
 
+    const totalHours = monthDays.reduce((sum, date) => {
+      const dateStr = date.toISOString().split('T')[0];
+      const dayData = schedule[dateStr];
+      return sum + (dayData?.progress.actualHours || 0);
+    }, 0);
+
     return {
       totalDays,
       completedDays,
-      averageProgress: Math.round(averageProgress || 0)
+      averageProgress: Math.round(averageProgress || 0),
+      totalHours: Math.round(totalHours * 10) / 10
     };
   }, [currentMonth, schedule, daysInMonth]);
 
+  const statCards = [
+    {
+      label: 'Month Progress',
+      value: `${monthStats.averageProgress}%`,
+      icon: TrendingUp,
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+      textColor: 'text-blue-600 dark:text-blue-400'
+    },
+    {
+      label: 'Days Completed',
+      value: `${monthStats.completedDays}/${monthStats.totalDays}`,
+      icon: Target,
+      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-50 dark:bg-green-900/20',
+      textColor: 'text-green-600 dark:text-green-400'
+    },
+    {
+      label: 'Hours Studied',
+      value: `${monthStats.totalHours}h`,
+      icon: Clock,
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'bg-orange-50 dark:bg-orange-900/20',
+      textColor: 'text-orange-600 dark:text-orange-400'
+    },
+    {
+      label: 'Study Streak',
+      value: '7 days',
+      icon: Award,
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50 dark:bg-purple-900/20',
+      textColor: 'text-purple-600 dark:text-purple-400'
+    }
+  ];
+
   return (
-    <div className="space-y-6">
-      {/* Month Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Month Progress</p>
-              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{monthStats.averageProgress}%</p>
-            </div>
-            <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-lg">
-              <Target className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Days Completed</p>
-              <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-                {monthStats.completedDays}/{monthStats.totalDays}
-              </p>
-            </div>
-            <div className="bg-green-100 dark:bg-green-900 p-3 rounded-lg">
-              <BookOpen className="h-6 w-6 text-green-600 dark:text-green-400" />
-            </div>
-          </div>
-        </div>
-        
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Study Period</p>
-              <p className="text-lg font-bold text-gray-900 dark:text-white">
-                {format(currentMonth, 'MMM yyyy')}
-              </p>
-            </div>
-            <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-lg">
-              <Calendar className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Calendar */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-            <Calendar className="mr-2 h-6 w-6" />
-            {format(currentMonth, 'MMMM yyyy')}
-          </h2>
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={handlePreviousMonth}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              <ChevronLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-            </button>
-            <button
-              onClick={handleNextMonth}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            >
-              <ChevronRight className="h-5 w-5 text-gray-600 dark:text-gray-300" />
-            </button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-7 gap-1 mb-4">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <div key={day} className="p-2 text-center font-medium text-gray-500 dark:text-gray-400">
-              {day}
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-7 gap-1">
-          {Array.from({ length: monthStart.getDay() }).map((_, index) => (
-            <div key={`empty-${index}`} className="h-28"></div>
-          ))}
-          
-          {daysInMonth.map(date => {
-            const dayData = getDayData(date);
-            const progress = dayData?.progress.completionPercentage || 0;
-            const isCurrentMonth = isSameMonth(date, currentMonth);
-            const isTodayDate = isToday(date);
-
-            return (
-              <div
-                key={date.toISOString()}
-                className={`h-28 border border-gray-200 dark:border-gray-600 rounded-lg p-2 cursor-pointer transition-all hover:shadow-md ${
-                  isCurrentMonth 
-                    ? 'bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600' 
-                    : 'bg-gray-50 dark:bg-gray-800'
-                } ${isTodayDate ? 'ring-2 ring-blue-500' : ''}`}
-                onClick={() => handleDateClick(date)}
-              >
-                <div className="flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-1">
-                    <span className={`text-sm font-medium ${
-                      isTodayDate 
-                        ? 'text-blue-600 dark:text-blue-400' 
-                        : isCurrentMonth 
-                          ? 'text-gray-900 dark:text-white' 
-                          : 'text-gray-400 dark:text-gray-500'
-                    }`}>
-                      {format(date, 'd')}
-                    </span>
-                    {dayData && (
-                      <div className={`w-3 h-3 rounded-full ${getSubjectColor(dayData.subject)}`} />
-                    )}
-                  </div>
-                  
-                  {dayData && (
-                    <>
-                      <div className="flex-1 mb-2">
-                        <div className="text-xs font-medium text-gray-700 dark:text-gray-200 mb-1 truncate">
-                          Week {dayData.week}
-                        </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-300 truncate">
-                          {dayData.subject}
-                        </div>
-                        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                          {dayData.tasks.length} tasks
-                        </div>
-                      </div>
-                      
-                      <div className="mt-auto">
-                        <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1.5 mb-1">
-                          <div 
-                            className={`h-1.5 rounded-full transition-all duration-300 ${
-                              progress === 100 ? 'bg-green-500' :
-                              progress >= 50 ? 'bg-yellow-500' : 'bg-red-500'
-                            }`}
-                            style={{ width: `${progress}%` }}
-                          />
-                        </div>
-                        <div className="text-xs text-center text-gray-500 dark:text-gray-400">
-                          {progress}%
-                        </div>
-                      </div>
-                    </>
-                  )}
+    <div className="space-y-8 animate-fade-in">
+      {/* Enhanced Statistics Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {statCards.map(({ label, value, icon: Icon, color, bgColor, textColor }) => (
+          <div key={label} className="group relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" 
+                 style={{ background: `linear-gradient(135deg, var(--tw-gradient-stops))` }} />
+            <div className={`relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200/50 dark:border-gray-700/50 group-hover:scale-105`}>
+              <div className="flex items-center justify-between">
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{label}</p>
+                  <p className="text-3xl font-bold text-gray-900 dark:text-white">{value}</p>
+                </div>
+                <div className={`${bgColor} p-4 rounded-2xl`}>
+                  <Icon className={`h-7 w-7 ${textColor}`} />
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-        {/* Legend */}
-        <div className="mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-sm">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-            <span className="text-gray-600 dark:text-gray-300">Math (Linear Algebra, Calculus)</span>
+      {/* Enhanced Main Calendar */}
+      <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
+        <div className="p-8">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center space-x-4">
+              <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-3 rounded-2xl">
+                <Calendar className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  {format(currentMonth, 'MMMM yyyy')}
+                </h2>
+                <p className="text-gray-500 dark:text-gray-400 mt-1">Your study journey</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2 bg-gray-100 dark:bg-gray-700 rounded-2xl p-1">
+              <button
+                onClick={handlePreviousMonth}
+                className="p-3 rounded-xl hover:bg-white dark:hover:bg-gray-600 transition-all duration-200 hover:scale-105"
+              >
+                <ChevronLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+              </button>
+              <button
+                onClick={handleNextMonth}
+                className="p-3 rounded-xl hover:bg-white dark:hover:bg-gray-600 transition-all duration-200 hover:scale-105"
+              >
+                <ChevronRight className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+              </button>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="text-gray-600 dark:text-gray-300">Stats & Python</span>
+
+          <div className="grid grid-cols-7 gap-2 mb-6">
+            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+              <div key={day} className="p-4 text-center font-semibold text-gray-500 dark:text-gray-400 text-sm">
+                {day}
+              </div>
+            ))}
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-orange-500"></div>
-            <span className="text-gray-600 dark:text-gray-300">DS & Algorithms</span>
+
+          <div className="grid grid-cols-7 gap-2">
+            {Array.from({ length: monthStart.getDay() }).map((_, index) => (
+              <div key={`empty-${index}`} className="h-32"></div>
+            ))}
+            
+            {daysInMonth.map(date => {
+              const dayData = getDayData(date);
+              const progress = dayData?.progress.completionPercentage || 0;
+              const isCurrentMonth = isSameMonth(date, currentMonth);
+              const isTodayDate = isToday(date);
+
+              return (
+                <div
+                  key={date.toISOString()}
+                  className={`group h-32 rounded-2xl p-3 cursor-pointer transition-all duration-300 hover:scale-105 ${
+                    isCurrentMonth 
+                      ? 'bg-white/60 dark:bg-gray-700/60 hover:bg-white dark:hover:bg-gray-700 shadow-lg hover:shadow-xl' 
+                      : 'bg-gray-50/50 dark:bg-gray-800/50'
+                  } ${isTodayDate ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/20' : ''} border border-gray-200/30 dark:border-gray-600/30`}
+                  onClick={() => handleDateClick(date)}
+                >
+                  <div className="flex flex-col h-full">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className={`text-sm font-bold ${
+                        isTodayDate 
+                          ? 'text-blue-600 dark:text-blue-400' 
+                          : isCurrentMonth 
+                            ? 'text-gray-900 dark:text-white' 
+                            : 'text-gray-400 dark:text-gray-500'
+                      }`}>
+                        {format(date, 'd')}
+                      </span>
+                      {dayData && (
+                        <div className={`w-3 h-3 rounded-full ${getSubjectColor(dayData.subject)} shadow-lg`} />
+                      )}
+                    </div>
+                    
+                    {dayData && (
+                      <>
+                        <div className="flex-1 mb-3">
+                          <div className="text-xs font-semibold text-gray-700 dark:text-gray-200 mb-1 truncate">
+                            Week {dayData.week}
+                          </div>
+                          <div className="text-xs text-gray-600 dark:text-gray-300 truncate font-medium">
+                            {dayData.subject}
+                          </div>
+                          <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                            {dayData.tasks.length} tasks
+                          </div>
+                        </div>
+                        
+                        <div className="mt-auto space-y-2">
+                          <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2 overflow-hidden">
+                            <div 
+                              className={`h-2 rounded-full transition-all duration-500 ${
+                                progress === 100 ? 'bg-gradient-to-r from-green-400 to-green-500' :
+                                progress >= 50 ? 'bg-gradient-to-r from-yellow-400 to-yellow-500' : 
+                                'bg-gradient-to-r from-red-400 to-red-500'
+                              }`}
+                              style={{ width: `${progress}%` }}
+                            />
+                          </div>
+                          <div className="text-xs text-center font-semibold text-gray-600 dark:text-gray-300">
+                            {progress}%
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-purple-500"></div>
-            <span className="text-gray-600 dark:text-gray-300">Machine Learning</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <span className="text-gray-600 dark:text-gray-300">AI & DBMS</span>
+
+          {/* Enhanced Legend */}
+          <div className="mt-8 p-6 bg-gray-50/50 dark:bg-gray-700/50 rounded-2xl">
+            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">Subject Legend</h4>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-sm">
+              <div className="flex items-center space-x-3">
+                <div className="w-4 h-4 rounded-full bg-blue-500 shadow-lg"></div>
+                <span className="text-gray-600 dark:text-gray-300 font-medium">Math (Linear Algebra, Calculus)</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-4 h-4 rounded-full bg-green-500 shadow-lg"></div>
+                <span className="text-gray-600 dark:text-gray-300 font-medium">Stats & Python</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-4 h-4 rounded-full bg-orange-500 shadow-lg"></div>
+                <span className="text-gray-600 dark:text-gray-300 font-medium">DS & Algorithms</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-4 h-4 rounded-full bg-purple-500 shadow-lg"></div>
+                <span className="text-gray-600 dark:text-gray-300 font-medium">Machine Learning</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-4 h-4 rounded-full bg-red-500 shadow-lg"></div>
+                <span className="text-gray-600 dark:text-gray-300 font-medium">AI & DBMS</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
