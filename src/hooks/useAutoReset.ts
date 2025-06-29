@@ -1,6 +1,6 @@
-import { useEffect, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useStudy } from '../context/StudyContext';
-import { ProgressHistoryEntry, ResetSystemState } from '../types';
+import { ProgressHistoryEntry } from '../types';
 
 export const useAutoReset = () => {
   const { schedule, updateDayProgress, resetSystemState, updateResetSystemState } = useStudy();
@@ -118,7 +118,7 @@ export const useAutoReset = () => {
         resetHistory: newResetHistory
       });
 
-      showNotification('success', `Daily tasks reset successfully for ${dateStr}`);
+      showNotification('success', `Tasks reset successfully! Progress saved to history.`);
       
       return { success: true, progressEntry };
     } catch (error) {
@@ -151,37 +151,7 @@ export const useAutoReset = () => {
     }
   }, [schedule, updateDayProgress, resetSystemState, updateResetSystemState, calculateStreak, recordProgressHistory, showNotification]);
 
-  const checkAndPerformAutoReset = useCallback(async () => {
-    const now = new Date();
-    const today = now.toISOString().split('T')[0];
-    const lastResetCheck = resetSystemState?.lastResetCheck;
-    
-    // Check if we need to perform auto-reset
-    if (!lastResetCheck || lastResetCheck.split('T')[0] !== today) {
-      const dayData = schedule[today];
-      
-      // Only reset if there's data for today and it hasn't been reset today
-      if (dayData && dayData.lastResetDate?.split('T')[0] !== today) {
-        await resetDailyTasks(today);
-      } else {
-        // Update last check even if no reset was needed
-        updateResetSystemState({
-          lastResetCheck: now.toISOString()
-        });
-      }
-    }
-  }, [schedule, resetSystemState, resetDailyTasks, updateResetSystemState]);
-
-  // Auto-reset check on component mount and every hour
-  useEffect(() => {
-    checkAndPerformAutoReset();
-    
-    const interval = setInterval(checkAndPerformAutoReset, 60 * 60 * 1000); // Check every hour
-    
-    return () => clearInterval(interval);
-  }, [checkAndPerformAutoReset]);
-
-  // Manual reset function for user-triggered resets
+  // Manual reset function for user-triggered resets only
   const manualReset = useCallback(async (dateStr?: string) => {
     const targetDate = dateStr || new Date().toISOString().split('T')[0];
     return await resetDailyTasks(targetDate);
@@ -191,7 +161,6 @@ export const useAutoReset = () => {
     isResetting,
     resetNotification,
     manualReset,
-    checkAndPerformAutoReset,
     dismissNotification: () => setResetNotification(prev => ({ ...prev, show: false }))
   };
 };

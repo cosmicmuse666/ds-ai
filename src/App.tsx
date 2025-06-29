@@ -1,6 +1,5 @@
 import React from 'react';
 import { StudyProvider, useStudy } from './context/StudyContext';
-import { useAutoReset } from './hooks/useAutoReset';
 import Header from './components/Header';
 import CalendarView from './components/CalendarView';
 import DailyTaskView from './components/DailyTaskView';
@@ -9,9 +8,6 @@ import FloatingVoiceButton from './components/FloatingVoiceButton';
 
 const AppContent: React.FC = () => {
   const { currentView } = useStudy();
-  
-  // Initialize auto-reset system
-  useAutoReset();
 
   const renderCurrentView = () => {
     switch (currentView) {
