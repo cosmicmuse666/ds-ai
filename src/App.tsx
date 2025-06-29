@@ -4,6 +4,7 @@ import Header from './components/Header';
 import CalendarView from './components/CalendarView';
 import DailyTaskView from './components/DailyTaskView';
 import ProgressAnalytics from './components/ProgressAnalytics';
+import FloatingVoiceButton from './components/FloatingVoiceButton';
 
 const AppContent: React.FC = () => {
   const { currentView } = useStudy();
@@ -27,6 +28,7 @@ const AppContent: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {renderCurrentView()}
       </main>
+      <FloatingVoiceButton />
     </div>
   );
 };
