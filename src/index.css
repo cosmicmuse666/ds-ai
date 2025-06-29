@@ -97,82 +97,407 @@
     box-shadow: 0 10px 25px rgba(255, 138, 101, 0.3);
   }
 
-  /* Calendar-specific optimizations */
-  .calendar-cell {
-    aspect-ratio: 1;
-    min-height: 120px;
-    padding: 12px;
-    border-radius: 16px;
+  /* Responsive Calendar Grid System */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     transition: all 0.3s ease;
   }
   
-  .calendar-cell:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(176, 130, 255, 0.2);
+  /* Calendar Cell Base Styles */
+  .calendar-cell {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
   }
   
-  .calendar-header {
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(176, 130, 255, 0.2);
+  .calendar-cell:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(176, 130, 255, 0.2);
+  }
+  
+  /* Calendar Cell Content */
+  .calendar-cell-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  /* Calendar Day Names Header */
+  .calendar-day-names {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 2rem;
   }
   
   .calendar-day-name {
-    padding: 12px 16px;
     text-align: center;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    padding: 1.25rem 1rem;
+    color: rgba(245, 245, 245, 0.7);
+    font-size: 0.875rem;
   }
+
+  /* Mobile First Responsive Design */
   
-  .calendar-grid {
-    gap: 12px;
-    padding: 24px;
-  }
-  
-  /* Mobile responsive adjustments */
+  /* Mobile (320px - 640px) */
   @media (max-width: 640px) {
-    .calendar-cell {
-      min-height: 100px;
-      padding: 8px;
-    }
-    
     .calendar-grid {
       gap: 8px;
-      padding: 16px;
+      padding: 1rem;
     }
     
-    .calendar-header {
-      padding: 12px 16px;
+    .calendar-cell {
+      min-height: 100px;
+      border-radius: 1rem;
+    }
+    
+    .calendar-cell-content {
+      padding: 0.75rem;
     }
     
     .calendar-day-name {
-      padding: 8px 12px;
+      padding: 0.75rem 0.5rem;
       font-size: 0.75rem;
     }
-  }
-  
-  /* Tablet responsive adjustments */
-  @media (min-width: 641px) and (max-width: 1024px) {
-    .calendar-cell {
-      min-height: 130px;
-      padding: 10px;
+    
+    .calendar-container {
+      padding: 1rem;
     }
     
+    .calendar-header {
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .calendar-legend {
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+  }
+  
+  /* Small Tablet (641px - 768px) */
+  @media (min-width: 641px) and (max-width: 768px) {
     .calendar-grid {
       gap: 10px;
-      padding: 20px;
+      padding: 1.25rem;
+    }
+    
+    .calendar-cell {
+      min-height: 120px;
+      border-radius: 1.25rem;
+    }
+    
+    .calendar-cell-content {
+      padding: 0.875rem;
+    }
+    
+    .calendar-day-name {
+      padding: 1rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+    
+    .calendar-container {
+      padding: 1.25rem;
+    }
+    
+    .calendar-header {
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    
+    .calendar-legend {
+      padding: 1.75rem;
+      margin-top: 1.75rem;
     }
   }
   
-  /* Desktop optimizations */
-  @media (min-width: 1025px) {
-    .calendar-cell {
-      min-height: 140px;
-      padding: 16px;
+  /* Large Tablet (769px - 1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .calendar-grid {
+      gap: 12px;
+      padding: 1.5rem;
     }
     
+    .calendar-cell {
+      min-height: 140px;
+      border-radius: 1.5rem;
+    }
+    
+    .calendar-cell-content {
+      padding: 1rem;
+    }
+    
+    .calendar-day-name {
+      padding: 1.125rem 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .calendar-container {
+      padding: 1.5rem;
+    }
+    
+    .calendar-header {
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .calendar-legend {
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+  }
+  
+  /* Desktop (1025px - 1440px) */
+  @media (min-width: 1025px) and (max-width: 1440px) {
     .calendar-grid {
       gap: 16px;
-      padding: 32px;
+      padding: 2rem;
+    }
+    
+    .calendar-cell {
+      min-height: 160px;
+      border-radius: 1.75rem;
+    }
+    
+    .calendar-cell-content {
+      padding: 1.25rem;
+    }
+    
+    .calendar-day-name {
+      padding: 1.25rem 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .calendar-container {
+      padding: 2rem;
+    }
+    
+    .calendar-header {
+      padding: 2rem 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .calendar-legend {
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+    }
+  }
+  
+  /* Large Desktop (1441px+) */
+  @media (min-width: 1441px) {
+    .calendar-grid {
+      gap: 20px;
+      padding: 2.5rem;
+    }
+    
+    .calendar-cell {
+      min-height: 180px;
+      border-radius: 2rem;
+    }
+    
+    .calendar-cell-content {
+      padding: 1.5rem;
+    }
+    
+    .calendar-day-name {
+      padding: 1.5rem 1.25rem;
+      font-size: 1rem;
+    }
+    
+    .calendar-container {
+      padding: 2.5rem;
+    }
+    
+    .calendar-header {
+      padding: 2.5rem 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .calendar-legend {
+      padding: 3rem;
+      margin-top: 3rem;
+    }
+  }
+  
+  /* Calendar Cell States */
+  .calendar-cell-today {
+    ring: 2px;
+    ring-color: rgba(176, 130, 255, 1);
+    background: rgba(176, 130, 255, 0.05);
+    box-shadow: 0 0 0 1px rgba(176, 130, 255, 0.3), 0 10px 25px rgba(176, 130, 255, 0.2);
+  }
+  
+  .calendar-cell-current-month {
+    background: rgba(27, 25, 24, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(176, 130, 255, 0.3);
+  }
+  
+  .calendar-cell-other-month {
+    background: rgba(27, 25, 24, 0.3);
+    opacity: 0.5;
+  }
+  
+  .calendar-cell-current-month:hover {
+    background: rgba(42, 42, 42, 0.8);
+    box-shadow: 0 15px 35px rgba(176, 130, 255, 0.15);
+  }
+  
+  /* Calendar Progress Indicators */
+  .calendar-progress-bar {
+    width: 100%;
+    height: 0.625rem;
+    background: rgba(27, 25, 24, 1);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-top: auto;
+  }
+  
+  .calendar-progress-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Calendar Text Sizing */
+  .calendar-date-number {
+    font-weight: 700;
+    line-height: 1;
+  }
+  
+  .calendar-subject-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+  }
+  
+  .calendar-task-count {
+    font-size: 0.6875rem;
+    opacity: 0.8;
+  }
+  
+  .calendar-progress-text {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  
+  /* Responsive Text Sizing */
+  @media (max-width: 640px) {
+    .calendar-date-number {
+      font-size: 0.875rem;
+    }
+    
+    .calendar-subject-text {
+      font-size: 0.625rem;
+    }
+    
+    .calendar-task-count {
+      font-size: 0.5625rem;
+    }
+    
+    .calendar-progress-text {
+      font-size: 0.5625rem;
+    }
+  }
+  
+  @media (min-width: 641px) and (max-width: 768px) {
+    .calendar-date-number {
+      font-size: 1rem;
+    }
+    
+    .calendar-subject-text {
+      font-size: 0.6875rem;
+    }
+    
+    .calendar-task-count {
+      font-size: 0.625rem;
+    }
+    
+    .calendar-progress-text {
+      font-size: 0.625rem;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .calendar-date-number {
+      font-size: 1.125rem;
+    }
+    
+    .calendar-subject-text {
+      font-size: 0.75rem;
+    }
+    
+    .calendar-task-count {
+      font-size: 0.6875rem;
+    }
+    
+    .calendar-progress-text {
+      font-size: 0.6875rem;
+    }
+  }
+  
+  /* Calendar Animation Enhancements */
+  .calendar-cell-enter {
+    animation: calendarCellEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes calendarCellEnter {
+    from {
+      opacity: 0;
+      transform: scale(0.9) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  /* Calendar Container Responsive Spacing */
+  .calendar-main-container {
+    max-width: 100%;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+  }
+  
+  @media (min-width: 640px) {
+    .calendar-main-container {
+      max-width: 640px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .calendar-main-container {
+      max-width: 768px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .calendar-main-container {
+      max-width: 1024px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .calendar-main-container {
+      max-width: 1280px;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .calendar-main-container {
+      max-width: 1536px;
     }
   }
 }
@@ -249,49 +574,72 @@
     box-shadow: 0 10px 25px rgba(255, 138, 101, 0.3);
   }
 
-  /* Spacing utilities for calendar */
-  .calendar-container-padding {
-    padding: 24px;
+  /* Responsive Spacing Utilities */
+  .responsive-padding {
+    padding: 1rem;
   }
   
-  .calendar-cell-padding {
-    padding: 12px;
+  .responsive-margin {
+    margin: 1rem;
   }
   
-  .calendar-row-spacing {
-    margin-bottom: 20px;
+  .responsive-gap {
+    gap: 0.75rem;
   }
   
-  .calendar-element-gap {
-    gap: 12px;
-  }
-  
-  /* Responsive spacing utilities */
-  @media (max-width: 640px) {
-    .calendar-container-padding {
-      padding: 16px;
+  @media (min-width: 640px) {
+    .responsive-padding {
+      padding: 1.5rem;
     }
     
-    .calendar-cell-padding {
-      padding: 8px;
+    .responsive-margin {
+      margin: 1.5rem;
     }
     
-    .calendar-element-gap {
-      gap: 8px;
+    .responsive-gap {
+      gap: 1rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .responsive-padding {
+      padding: 2rem;
+    }
+    
+    .responsive-margin {
+      margin: 2rem;
+    }
+    
+    .responsive-gap {
+      gap: 1.25rem;
     }
   }
   
   @media (min-width: 1024px) {
-    .calendar-container-padding {
-      padding: 32px;
+    .responsive-padding {
+      padding: 2.5rem;
     }
     
-    .calendar-cell-padding {
-      padding: 16px;
+    .responsive-margin {
+      margin: 2.5rem;
     }
     
-    .calendar-element-gap {
-      gap: 16px;
+    .responsive-gap {
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .responsive-padding {
+      padding: 3rem;
+    }
+    
+    .responsive-margin {
+      margin: 3rem;
+    }
+    
+    .responsive-gap {
+      gap: 2rem;
     }
   }
 }
