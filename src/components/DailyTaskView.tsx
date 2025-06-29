@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Circle, Clock, BookOpen, Target, MessageSquare, Calendar, Award, ExternalLink, ChevronRight } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, BookOpen, Target, MessageSquare, Calendar, Award, ExternalLink, ChevronRight, RotateCcw, AlertTriangle } from 'lucide-react';
 import { format } from 'date-fns';
 import { useStudy } from '../context/StudyContext';
 import NotesManager from './NotesManager';
@@ -7,6 +7,7 @@ import NotesManager from './NotesManager';
 const DailyTaskView: React.FC = () => {
   const { schedule, selectedDate, updateDayProgress } = useStudy();
   const [activeTab, setActiveTab] = useState<'tasks' | 'notes'>('tasks');
+  const [showResetConfirmation, setShowResetConfirmation] = useState(false);
 
   if (!selectedDate || !schedule[selectedDate]) {
     return (
@@ -50,6 +51,17 @@ const DailyTaskView: React.FC = () => {
         actualHours: hours
       }
     });
+  };
+
+  const handleResetTasks = () => {
+    updateDayProgress(selectedDate, {
+      progress: {
+        ...dayData.progress,
+        tasksCompleted: 0,
+        completionPercentage: 0
+      }
+    });
+    setShowResetConfirmation(false);
   };
 
   const isTaskCompleted = (taskIndex: number) => {
@@ -119,12 +131,27 @@ const DailyTaskView: React.FC = () => {
                   </div>
                 </div>
               </div>
-              {dayData.progress.completionPercentage === 100 && (
-                <div className="flex items-center space-x-2 bg-palette-yellow/20 px-4 py-2 rounded-2xl border border-palette-yellow/30">
-                  <Award className="h-5 w-5 text-palette-yellow" />
-                  <span className="text-sm font-semibold text-palette-yellow">Day Completed!</span>
-                </div>
-              )}
+              <div className="flex items-center space-x-3">
+                {dayData.progress.completionPercentage === 100 && (
+                  <div className="flex items-center space-x-2 bg-palette-yellow/20 px-4 py-2 rounded-2xl border border-palette-yellow/30">
+                    <Award className="h-5 w-5 text-palette-yellow" />
+                    <span className="text-sm font-semibold text-palette-yellow">Day Completed!</span>
+                  </div>
+                )}
+                {/* Reset Button */}
+                <button
+                  onClick={() => setShowResetConfirmation(true)}
+                  disabled={dayData.progress.tasksCompleted === 0}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-2xl font-semibold text-sm transition-all duration-200 border ${
+                    dayData.progress.tasksCompleted === 0
+                      ? 'bg-palette-text-muted/10 border-palette-text-muted/20 text-palette-text-muted/50 cursor-not-allowed'
+                      : 'bg-palette-coral/20 border-palette-coral/30 text-palette-coral hover:bg-palette-coral/30 hover:scale-105 shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  <span>Reset Tasks</span>
+                </button>
+              </div>
             </div>
 
             <div className="flex items-center space-x-4 mb-6">
@@ -317,6 +344,45 @@ const DailyTaskView: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Reset Confirmation Dialog */}
+      {showResetConfirmation && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowResetConfirmation(false)}></div>
+          
+          <div className="relative glass-card rounded-2xl shadow-2xl p-6 max-w-md w-full animate-scale-in">
+            <div className="text-center">
+              <div className="bg-gradient-to-r from-palette-coral to-palette-coral-light p-3 rounded-2xl w-fit mx-auto mb-4">
+                <AlertTriangle className="h-8 w-8 text-palette-white" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-palette-text-light mb-2">
+                Reset Task Progress?
+              </h3>
+              
+              <p className="text-palette-text-muted mb-6 leading-relaxed">
+                This will clear all completion status for today's tasks. Your task descriptions, 
+                study hours, and notes will remain unchanged. This action cannot be undone.
+              </p>
+              
+              <div className="flex items-center space-x-3">
+                <button
+                  onClick={() => setShowResetConfirmation(false)}
+                  className="flex-1 px-4 py-3 rounded-xl font-semibold text-palette-text-light bg-palette-bg-light hover:bg-palette-bg-darker border border-palette-medium-orchid/20 transition-all duration-200"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleResetTasks}
+                  className="flex-1 px-4 py-3 rounded-xl font-semibold text-palette-white bg-gradient-to-r from-palette-coral to-palette-coral-light hover:from-palette-coral-light hover:to-palette-coral transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Reset Tasks
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
