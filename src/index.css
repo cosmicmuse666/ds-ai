@@ -96,6 +96,85 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(255, 138, 101, 0.3);
   }
+
+  /* Calendar-specific optimizations */
+  .calendar-cell {
+    aspect-ratio: 1;
+    min-height: 120px;
+    padding: 12px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .calendar-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(176, 130, 255, 0.2);
+  }
+  
+  .calendar-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(176, 130, 255, 0.2);
+  }
+  
+  .calendar-day-name {
+    padding: 12px 16px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .calendar-grid {
+    gap: 12px;
+    padding: 24px;
+  }
+  
+  /* Mobile responsive adjustments */
+  @media (max-width: 640px) {
+    .calendar-cell {
+      min-height: 100px;
+      padding: 8px;
+    }
+    
+    .calendar-grid {
+      gap: 8px;
+      padding: 16px;
+    }
+    
+    .calendar-header {
+      padding: 12px 16px;
+    }
+    
+    .calendar-day-name {
+      padding: 8px 12px;
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Tablet responsive adjustments */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .calendar-cell {
+      min-height: 130px;
+      padding: 10px;
+    }
+    
+    .calendar-grid {
+      gap: 10px;
+      padding: 20px;
+    }
+  }
+  
+  /* Desktop optimizations */
+  @media (min-width: 1025px) {
+    .calendar-cell {
+      min-height: 140px;
+      padding: 16px;
+    }
+    
+    .calendar-grid {
+      gap: 16px;
+      padding: 32px;
+    }
+  }
 }
 
 @layer utilities {
@@ -168,5 +247,51 @@
   
   .shadow-coral {
     box-shadow: 0 10px 25px rgba(255, 138, 101, 0.3);
+  }
+
+  /* Spacing utilities for calendar */
+  .calendar-container-padding {
+    padding: 24px;
+  }
+  
+  .calendar-cell-padding {
+    padding: 12px;
+  }
+  
+  .calendar-row-spacing {
+    margin-bottom: 20px;
+  }
+  
+  .calendar-element-gap {
+    gap: 12px;
+  }
+  
+  /* Responsive spacing utilities */
+  @media (max-width: 640px) {
+    .calendar-container-padding {
+      padding: 16px;
+    }
+    
+    .calendar-cell-padding {
+      padding: 8px;
+    }
+    
+    .calendar-element-gap {
+      gap: 8px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .calendar-container-padding {
+      padding: 32px;
+    }
+    
+    .calendar-cell-padding {
+      padding: 16px;
+    }
+    
+    .calendar-element-gap {
+      gap: 16px;
+    }
   }
 }
