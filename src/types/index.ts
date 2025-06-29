@@ -5,9 +5,19 @@ export interface DailyNotes {
   resourceFeedback: string;
   tomorrowFocus: string;
   quickNotes: string;
-  voiceNotes: string[];
+  voiceNotes: VoiceNote[];
   images: string[];
   tags: string[];
+}
+
+export interface VoiceNote {
+  id: string;
+  timestamp: Date;
+  duration: number;
+  audioBlob: Blob;
+  transcription?: string;
+  summary?: string;
+  isProcessing?: boolean;
 }
 
 export interface DailyProgress {
