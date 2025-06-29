@@ -25,9 +25,10 @@ export const generateStudySchedule = (): StudySchedule => {
     week1: [
       {
         subject: 'Linear Algebra',
-        tasks: ['Vector spaces and subspaces basics', 'Linear dependence concepts', 'MIT OCW Linear Algebra video 1-2'],
+        tasks: ['Vector spaces and subspaces basics', 'Linear dependence concepts', 'Watch MIT OCW Linear Algebra video 1-2'],
         resources: [
           'Coursera: Linear Algebra for Machine Learning and Data Science (DeepLearning.AI)',
+          'Coursera: Linear Algebra: Matrix Algebra, Determinants, & Eigenvectors (Johns Hopkins University)',
           'Vector Spaces and Subspaces (with examples) - YouTube',
           'Understanding Vector Spaces - YouTube'
         ]
@@ -36,8 +37,9 @@ export const generateStudySchedule = (): StudySchedule => {
         subject: 'Linear Algebra',
         tasks: ['Vector spaces continued', 'Subspace verification practice', 'Complete 3Blue1Brown Chapter 1'],
         resources: [
-          'Coursera: Linear Algebra: Matrix Algebra, Determinants, & Eigenvectors (Johns Hopkins)',
+          'Coursera: Linear Algebra for Machine Learning and Data Science (DeepLearning.AI)',
           'Vector Spaces and Subspaces (with examples) - YouTube',
+          'Understanding Vector Spaces - YouTube',
           '3Blue1Brown Essence of Linear Algebra'
         ]
       },
@@ -47,7 +49,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy Linear Algebra',
           'Inverse Matrices and Their Properties - YouTube',
-          "Lay's Linear Algebra textbook"
+          "Lay's Linear Algebra textbook",
+          'MIT OCW Linear Algebra'
         ]
       },
       {
@@ -65,7 +68,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'MathInsight.org',
           'How to Find Rank and Nullity of a Matrix | Linear Algebra Exercises - YouTube',
-          "Paul's Online Math Notes"
+          "Paul's Online Math Notes",
+          'MIT OCW Linear Algebra'
         ]
       },
       {
@@ -74,6 +78,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'MathInsight.org',
           'How to Find Rank and Nullity of a Matrix | Linear Algebra Exercises - YouTube',
+          "Paul's Notes",
           'MIT OCW Linear Algebra'
         ]
       },
@@ -83,6 +88,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GATE Overflow',
           'Linear Algebra GATE Questions - YouTube',
+          'Linear Algebra NPTEL assignments',
           'Made Easy Workbooks'
         ]
       }
@@ -94,7 +100,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'Linear Algebra - LU-Decomposition of a Matrix Explained - YouTube',
-          'MIT OCW'
+          'MIT OCW',
+          '3Blue1Brown'
         ]
       },
       {
@@ -103,6 +110,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'Finding Eigenvalues and Eigenvectors - YouTube',
+          'MIT OCW',
           '3Blue1Brown Eigenvalues and Eigenvectors'
         ]
       },
@@ -112,6 +120,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Linear Algebra - LU-Decomposition of a Matrix Explained - YouTube',
           'Finding Eigenvalues and Eigenvectors - YouTube',
+          'Khan Academy',
           'MIT OCW'
         ]
       },
@@ -121,7 +130,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Singular Value Decomposition (SVD): Overview - YouTube',
           'Singular Value Decomposition in 3 minutes | SVD Part 01 - YouTube',
-          'DeepLearning.ai Math for ML'
+          'Essence of LA - YouTube',
+          'DeepLearning.ai Math'
         ]
       },
       {
@@ -130,6 +140,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Linear Algebra: Projections - YouTube',
           'Singular Value Decomposition (SVD): Overview - YouTube',
+          'Essence of LA - YouTube',
           'MIT OCW'
         ]
       },
@@ -138,7 +149,8 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Projections practice', 'Gram-Schmidt process', 'QR decomposition'],
         resources: [
           'Linear Algebra: Projections - YouTube',
-          'DeepLearning.ai Math series',
+          'Essence of LA - YouTube',
+          'DeepLearning.ai Math',
           'MIT OCW'
         ]
       },
@@ -148,7 +160,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           '1300 Linear Algebra MCQs Solution - YouTube',
           'GateOverflow',
-          'Made Easy Workbooks'
+          'Made Easy Workbooks',
+          'NPTEL assignments'
         ]
       }
     ],
@@ -160,7 +173,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           "Paul's Online Notes",
           'Limits and Continuity - YouTube',
-          'Khan Academy Calculus'
+          'Khan Academy Calculus',
+          'MIT OCW Calculus'
         ]
       },
       {
@@ -169,6 +183,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           "Paul's Online Notes",
           'What Is Derivatives In Calculus In Layman Terms? - YouTube',
+          'Khan Academy',
           'MIT OCW Calculus'
         ]
       },
@@ -178,7 +193,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           "Paul's Online Notes",
           'Taylor series | Chapter 11, Essence of calculus - YouTube',
-          'Khan Academy'
+          'Khan Academy',
+          'MIT OCW Calculus'
         ]
       },
       {
@@ -187,7 +203,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'Introduction to Maxima and Minima for Calculus - YouTube',
-          "Prof. Gilbert's lectures"
+          "Prof. Gilbert's lectures",
+          "Paul's Notes"
         ]
       },
       {
@@ -196,6 +213,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'Introduction to Maxima and Minima for Calculus - YouTube',
+          "Prof. Gilbert's lectures",
           "Paul's Notes"
         ]
       },
@@ -205,7 +223,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Gradient Descent - Machine Learning Crash Course - YouTube',
           'Convex Optimization - YouTube',
-          "Andrew Ng's ML Math"
+          "Andrew Ng's ML Math",
+          'DeepL.ai Math series'
         ]
       },
       {
@@ -214,7 +233,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All week resources',
           'Practice problems',
-          'GATE PYQs'
+          'GATE PYQs',
+          'Convex Optimization Boyd'
         ]
       }
     ],
@@ -226,7 +246,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'edX: Probability - The Science of Uncertainty and Data (MITx)',
           'edX: Introduction to Probability (HarvardX)',
-          "Blitzstein's Harvard Stats"
+          "Blitzstein's Harvard Stats",
+          '3Blue1Brown - Bayes'
         ]
       },
       {
@@ -234,8 +255,9 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Probability axioms', 'Conditional probability', 'Independence'],
         resources: [
           "Blitzstein's Harvard Stats",
-          '3Blue1Brown - Bayes theorem',
-          'Khan Academy'
+          '3Blue1Brown - Bayes',
+          'Khan Academy',
+          'edX: Probability - The Science of Uncertainty and Data (MITx)'
         ]
       },
       {
@@ -243,8 +265,9 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Bayes theorem', 'Law of total probability', 'Applications and examples'],
         resources: [
           "Blitzstein's Harvard Stats",
-          '3Blue1Brown - Bayes theorem',
-          'Khan Academy'
+          '3Blue1Brown - Bayes',
+          'Khan Academy',
+          'edX: Introduction to Probability (HarvardX)'
         ]
       },
       {
@@ -253,7 +276,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'NPTEL - Prob & Stats',
-          'Harvard Stat110'
+          'Harvard Stat110',
+          "Blitzstein's Harvard Stats"
         ]
       },
       {
@@ -262,7 +286,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'NPTEL - Prob & Stats',
-          'Harvard Stat110'
+          'Harvard Stat110',
+          "Blitzstein's Harvard Stats"
         ]
       },
       {
@@ -271,7 +296,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Khan Academy',
           'NPTEL - Prob & Stats',
-          'Harvard Stat110'
+          'Harvard Stat110',
+          "Blitzstein's Harvard Stats"
         ]
       },
       {
@@ -280,7 +306,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'PYQs',
           'GATEOverflow',
-          'ISLR Exercises'
+          'ISLR Exercises',
+          'Harvard Stat110'
         ]
       }
     ]
@@ -295,6 +322,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Bernoulli distribution', 'Binomial distribution', 'Properties and applications'],
         resources: [
           'Coursera: Introduction to Statistics (Stanford University)',
+          'Coursera: Basic Statistics (University of Amsterdam)',
           'Bernoulli Distribution Probability Modeling Explained - YouTube',
           'Binomial Distribution EXPLAINED in UNDER 15 MINUTES! - YouTube'
         ]
@@ -303,8 +331,9 @@ export const generateStudySchedule = (): StudySchedule => {
         subject: 'Statistics',
         tasks: ['Normal distribution', 'Standard normal', 'Z-scores and applications'],
         resources: [
-          'Coursera: Basic Statistics (University of Amsterdam)',
-          'Understanding the normal distribution - statistics help - YouTube',
+          'Coursera: The Power of Statistics (Google)',
+          'Understanding the normal distribution - statistics help #Statistics #Probability - YouTube',
+          'ISLR book',
           'Khan Academy'
         ]
       },
@@ -312,8 +341,9 @@ export const generateStudySchedule = (): StudySchedule => {
         subject: 'Statistics',
         tasks: ['Distribution relationships', 'Central Limit Theorem', 'Sampling distributions'],
         resources: [
-          'Coursera: The Power of Statistics (Google)',
           'The Central Limit Theorem, Clearly Explained!!! - YouTube',
+          'ISLR book',
+          'Khan Academy',
           'StatQuest'
         ]
       },
@@ -321,26 +351,29 @@ export const generateStudySchedule = (): StudySchedule => {
         subject: 'Statistics',
         tasks: ['Poisson distribution', 'Exponential distribution', 'Applications in real world'],
         resources: [
-          'Harvard Stat110',
           'Introduction to Poisson Distribution - Probability & Statistics - YouTube',
-          'The Exponential Distribution - YouTube'
+          'The Exponential Distribution - YouTube',
+          'Harvard Stat110',
+          'StatQuest'
         ]
       },
       {
         subject: 'Statistics',
         tasks: ['t-distribution', 'Chi-square distribution', 'F-distribution'],
         resources: [
-          'Harvard Stat110',
           "Student's T Distribution - YouTube",
-          'The Square of the Normal Distribution - YouTube'
+          'The Square of the Normal Distribution - YouTube',
+          'Harvard Stat110',
+          'StatQuest'
         ]
       },
       {
         subject: 'Statistics',
         tasks: ['Hypothesis testing', 'Type I and II errors', 'p-values and significance'],
         resources: [
-          'Harvard Stat110',
           'Hypothesis Testing Explained in 60 Seconds - YouTube',
+          'Harvard Stat110',
+          'StatQuest',
           'Khan Academy'
         ]
       },
@@ -349,6 +382,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Statistics GATE PYQs', 'Week 5 assessment', 'Prepare for Python'],
         resources: [
           'GATE DA 25: Practice and PYQs: Probability and Statistics Part 2 - YouTube',
+          'GATE PYQs',
           'GATEOverflow',
           'ISLR Exercises'
         ]
@@ -362,7 +396,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GeeksforGeeks: 10 Best Python Data Science Courses Online [2025]',
           'Python Tutorial: Learn Python For Data Science - YouTube',
-          'Python.org Docs'
+          'Python.org Docs',
+          'RealPython'
         ]
       },
       {
@@ -371,7 +406,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Coursera: Applied Data Science with Python (University of Michigan)',
           'Recursion for Python Beginners with Recursive Function Examples - YouTube',
-          '#40 Python Tutorial for Beginners | Recursion - YouTube'
+          '#40 Python Tutorial for Beginners | Recursion - YouTube',
+          'Python.org Docs'
         ]
       },
       {
@@ -380,6 +416,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'DataCamp: Data Scientist with Python',
           'Recursion for Python Beginners with Recursive Function Examples - YouTube',
+          '#40 Python Tutorial for Beginners | Recursion - YouTube',
           'GeeksforGeeks'
         ]
       },
@@ -389,6 +426,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Python NumPy Tutorial - YouTube',
           'Datacamp',
+          'Jupyter Notebooks',
           'NumPy docs'
         ]
       },
@@ -398,6 +436,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Pandas Tutorial (Data Analysis In Python) - YouTube',
           'Datacamp',
+          'Kaggle Notebooks',
           'Pandas docs'
         ]
       },
@@ -406,6 +445,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Object-oriented programming', 'Classes and objects', 'Inheritance'],
         resources: [
           'Python Object Oriented Programming (OOP) - For Beginners - YouTube',
+          'Datacamp',
           'RealPython',
           'Python OOP tutorials'
         ]
@@ -416,7 +456,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Creating a Command Line Utility In Python | Python for AI #77 - YouTube',
           'Building a Basic Command Line Calculator in Python - YouTube',
-          'Data Cleaning with Python Pandas: Hands-On Tutorial with Real World Data - YouTube'
+          'Data Cleaning with Python Pandas: Hands-On Tutorial with Real World Data - YouTube',
+          'Project-based learning'
         ]
       }
     ]
@@ -431,6 +472,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Arrays and dynamic arrays', 'Time complexity analysis', 'Array operations'],
         resources: [
           'Deep Dive into the Array Data Structure - YouTube',
+          'GFG',
           'Python Tutor Visualizer',
           'LeetCode'
         ]
@@ -441,7 +483,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GFG',
           'Python Tutor Visualizer',
-          'HackerRank'
+          'HackerRank',
+          'Stack data structure tutorials'
         ]
       },
       {
@@ -449,6 +492,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Queues and deques', 'Circular queues', 'Priority queues intro'],
         resources: [
           'Queue Data Structure Tutorial - What is a Queue? - YouTube',
+          'GFG',
           'Python Tutor Visualizer',
           'HackerRank'
         ]
@@ -459,7 +503,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GFG',
           'Python Tutor Visualizer',
-          'LeetCode'
+          'LeetCode',
+          'Linked list tutorials'
         ]
       },
       {
@@ -468,7 +513,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GFG',
           'LeetCode',
-          'HackerRank'
+          'HackerRank',
+          'Linked list problem sets'
         ]
       },
       {
@@ -476,6 +522,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Trees introduction', 'Binary trees', 'Tree terminology'],
         resources: [
           'Binary Search Tree Explained | Data Structures for Beginners - YouTube',
+          'GFG',
           'Visualgo',
           'MIT OCW Algorithms'
         ]
@@ -486,6 +533,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Binary tree traversal - breadth-first and depth-first strategies - YouTube',
           'Depth-First Search Algorithm: Graph or Tree traversal and search - YouTube',
+          'GFG',
           'Tree practice problems'
         ]
       }
@@ -497,6 +545,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Binary search trees', 'BST operations', 'AVL trees intro'],
         resources: [
           'Binary Search Trees | C++ | Java | Data Structures and Algorithms | Placements - YouTube',
+          'GFG',
           'Visualgo',
           'MIT OCW'
         ]
@@ -507,7 +556,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'LeetCode',
           'GFG',
-          'Tree problem sets'
+          'Tree problem sets',
+          'Binary tree practice'
         ]
       },
       {
@@ -515,6 +565,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Hash tables theory', 'Hash functions', 'Collision resolution'],
         resources: [
           'Data Structures: Hash Tables - YouTube',
+          'GFG',
           'MIT OCW Algorithms',
           'Hash table visualizations'
         ]
@@ -524,6 +575,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Heaps and priority queues', 'Min/max heaps', 'Heap operations'],
         resources: [
           'The Heap Data Structure: A Comprehensive Tutorial - YouTube',
+          'GFG',
           'Visualgo',
           'Heap implementations'
         ]
@@ -533,6 +585,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Hashing applications', 'Hash maps in practice', 'Performance analysis'],
         resources: [
           'Understanding and implementing a Hash Table (in C) - YouTube',
+          'GFG',
           'LeetCode hashing',
           'Practice sets'
         ]
@@ -543,7 +596,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'LeetCode',
           'HackerRank',
-          'Practice sets'
+          'Practice sets',
+          'Hash table problems'
         ]
       },
       {
@@ -551,6 +605,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Data structures quiz', 'Week 8 revision', 'Algorithm prep'],
         resources: [
           'Top 20+ Data structure Questions & Answer | Tpoint Tech - YouTube',
+          'All week resources',
           'Quiz platforms',
           'Revision notes'
         ]
@@ -563,6 +618,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Sorting algorithms intro', 'Bubble sort', 'Selection sort'],
         resources: [
           'Bubble Sort Algorithm Explained (Full Code Included) - Python Algorithms Series for Beginners - YouTube',
+          'GFG',
           'Visualgo',
           'Sorting visualizations'
         ]
@@ -572,6 +628,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Insertion sort', 'Sorting analysis', 'Stability in sorting'],
         resources: [
           'Insertion sort in 2 minutes - YouTube',
+          'GFG',
           'MIT OCW Algorithms',
           'Algorithm analysis'
         ]
@@ -581,6 +638,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Merge sort algorithm', 'Divide and conquer', 'Merge sort analysis'],
         resources: [
           'Understanding Mergesort: Sorting Made Simple | Recursion Series - YouTube',
+          'GFG',
           'MIT OCW',
           'Merge sort implementations'
         ]
@@ -590,6 +648,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Quick sort algorithm', 'Partitioning', 'Quick sort analysis'],
         resources: [
           '2.8.1 QuickSort Algorithm - YouTube',
+          'GFG',
           'MIT OCW',
           'Quick sort visualizations'
         ]
@@ -599,6 +658,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Sorting patterns practice', 'LeetCode sorting', 'Comparison of algorithms'],
         resources: [
           'LeetCode Patterns - YouTube',
+          'LeetCode',
           'Sorting problem sets',
           'Performance comparisons'
         ]
@@ -609,6 +669,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Learn Linear Search in 3 minutes ⬇️ - YouTube',
           'Binary Search Algorithm in 100 Seconds - YouTube',
+          'GFG',
           'Search implementations'
         ]
       },
@@ -618,7 +679,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GFG',
           'LeetCode binary search',
-          'Search problem practice'
+          'Search problem practice',
+          'Advanced search algorithms'
         ]
       }
     ],
@@ -629,6 +691,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Recursion patterns', 'Recursive thinking', 'Base cases'],
         resources: [
           'Algorithms: Recursion - YouTube',
+          'GFG',
           'Recursion visualizations',
           'Recursive problem solving'
         ]
@@ -639,6 +702,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Divide and Conquer: The Art of Breaking Down Problems | Recursion Series - YouTube',
           'MIT OCW Algorithms',
+          'D&C examples',
           'Complexity analysis'
         ]
       },
@@ -648,7 +712,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'GFG',
           'Backtracking problems',
-          'Advanced recursion'
+          'Advanced recursion',
+          'Recursive algorithms'
         ]
       },
       {
@@ -656,6 +721,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Graph representation', 'Adjacency matrix/list', 'Graph basics'],
         resources: [
           'Graph in Data Structure | BFS & DFS Algorithms | Learn Coding - YouTube',
+          'GFG',
           'Graph theory basics',
           'Graph implementations'
         ]
@@ -666,6 +732,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Binary tree traversal - breadth-first and depth-first strategies - YouTube',
           'Depth-First Search Algorithm: Graph or Tree traversal and search - YouTube',
+          'GFG',
           'Visualgo graphs'
         ]
       },
@@ -674,6 +741,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Shortest path algorithms', 'Dijkstra algorithm', 'Path finding'],
         resources: [
           "How Dijkstra's Algorithm Works - YouTube",
+          'GFG',
           'Dijkstra implementations',
           'Shortest path problems'
         ]
@@ -684,7 +752,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'LeetCode graphs',
           'Graph problem sets',
-          'Applications'
+          'Applications',
+          'Graph algorithms practice'
         ]
       }
     ]
@@ -700,7 +769,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Andrew Ng Coursera ML Course',
           'Kaggle: https://www.kaggle.com/',
-          'fast.ai: Practical Deep Learning'
+          'fast.ai: Offers free, practical deep learning courses',
+          'ISLR Book'
         ]
       },
       {
@@ -708,8 +778,9 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Simple linear regression', 'Least squares', 'Cost functions'],
         resources: [
           'Linear Regression, Clearly Explained!!! - YouTube',
-          'ISLR Book',
-          'Coursera ML Week 1'
+          'ISLR',
+          'Coursera ML Week 1',
+          'Linear regression theory'
         ]
       },
       {
@@ -718,6 +789,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Multiple Regression for beginners - YouTube',
           'ISLR',
+          'Coursera ML Week 2',
           'MLR implementations'
         ]
       },
@@ -727,6 +799,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Regularization Part 1: Ridge (L2) Regression - YouTube',
           'Bias-Variance Trade-off - Explained - YouTube',
+          'ISLR',
           'Coursera ML Week 3'
         ]
       },
@@ -736,7 +809,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'ISLR',
           'Scikit-learn docs',
-          'Regularization comparison'
+          'Regularization comparison',
+          'Feature selection techniques'
         ]
       },
       {
@@ -744,6 +818,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Logistic regression', 'Sigmoid function', 'Classification basics'],
         resources: [
           'StatQuest: Logistic Regression - YouTube',
+          'StatQuest',
           'Sklearn',
           'Logistic regression theory'
         ]
@@ -754,6 +829,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'K Nearest Neighbors (KNN) in 10 Minutes (Beginner Friendly) - YouTube',
           'Simple Explanation of the K-Nearest Neighbors (KNN) Algorithm - YouTube',
+          'ISLR',
           'Distance learning'
         ]
       }
@@ -765,6 +841,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Naive Bayes, Clearly Explained!!! - YouTube',
           'StatQuest',
+          'Sklearn',
           'NB applications'
         ]
       },
@@ -774,7 +851,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'ISLR',
           'LDA theory',
-          'Discriminant analysis'
+          'Discriminant analysis',
+          'Dimensionality reduction techniques'
         ]
       },
       {
@@ -783,6 +861,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Support Vector Machines Part 1 (of 3): Main Ideas!!! - YouTube',
           'Support Vector Machine (SVM) in 2 minutes - YouTube',
+          'Hands-on ML',
           'Kernel methods'
         ]
       },
@@ -791,6 +870,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Decision trees', 'Information gain', 'Tree pruning'],
         resources: [
           'Decision Trees in Machine Learning | Introduction - YouTube',
+          'ISLR',
           'Decision tree algorithms',
           'Tree implementations'
         ]
@@ -800,6 +880,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Cross-validation', 'k-fold CV', 'Model selection'],
         resources: [
           'Machine Learning Fundamentals: Cross Validation - YouTube',
+          'ISLR',
           'CV techniques',
           'Model evaluation'
         ]
@@ -809,6 +890,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Neural networks intro', 'Perceptron', 'Multi-layer perceptrons'],
         resources: [
           'What is Multilayer Perceptron (MLP) in Machine Learning? - YouTube',
+          'DeepLearning.ai',
           "Karpathy's NN videos",
           'NN basics'
         ]
@@ -818,6 +900,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Feedforward networks', 'Backpropagation', 'NN training'],
         resources: [
           'Feedforward Neural Networks Explained | Learn FNNs in Simple Terms - YouTube',
+          'DeepLearning.ai',
           "Karpathy's NN videos",
           'NN implementations'
         ]
@@ -831,6 +914,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'K-Means Algorithm Simple Explanation - YouTube',
           'Josh Starmer StatQuest',
+          'Sklearn docs',
           'Clustering theory'
         ]
       },
@@ -840,6 +924,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'What is Hierarchical Clustering in Machine Learning? - YouTube',
           'StatQuest',
+          'Sklearn clustering',
           'Hierarchical methods'
         ]
       },
@@ -849,7 +934,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Sklearn docs',
           'DBSCAN theory',
-          'Clustering algorithms'
+          'Clustering algorithms',
+          'Density-based methods'
         ]
       },
       {
@@ -858,6 +944,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Principal Component Analysis (PCA) - YouTube',
           'StatQuest',
+          'PCA implementations',
           'Dimensionality reduction'
         ]
       },
@@ -867,7 +954,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Sklearn PCA',
           'PCA practice',
-          'Feature engineering'
+          'Feature engineering',
+          'Variance analysis'
         ]
       },
       {
@@ -876,7 +964,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           't-SNE theory',
           'Manifold learning',
-          'Data visualization'
+          'Data visualization',
+          'Dimensionality reduction techniques'
         ]
       },
       {
@@ -885,6 +974,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Machine Learning End to End Project | Full Course | iNeuron - YouTube',
           'End-to-End Machine Learning Project – AI, MLOps - YouTube',
+          'Kaggle datasets',
           'ML workflow'
         ]
       }
@@ -896,7 +986,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Pandas',
           'Sklearn preprocessing',
-          'Data preparation'
+          'Data preparation',
+          'Feature engineering techniques'
         ]
       },
       {
@@ -905,7 +996,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Sklearn',
           'Model comparison',
-          'ML pipeline'
+          'ML pipeline',
+          'Algorithm selection'
         ]
       },
       {
@@ -914,7 +1006,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Sklearn',
           'Hyperparameter optimization',
-          'Model tuning'
+          'Model tuning',
+          'Grid search techniques'
         ]
       },
       {
@@ -923,7 +1016,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Sklearn metrics',
           'Model evaluation',
-          'Performance measures'
+          'Performance measures',
+          'Evaluation techniques'
         ]
       },
       {
@@ -932,7 +1026,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Model interpretation',
           'Feature analysis',
-          'Results presentation'
+          'Results presentation',
+          'Model explainability'
         ]
       },
       {
@@ -941,7 +1036,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Documentation best practices',
           'Code structure',
-          'Project presentation'
+          'Project presentation',
+          'Technical writing'
         ]
       },
       {
@@ -950,7 +1046,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Project finalization',
           'Code review',
-          'Month 4 review'
+          'Month 4 review',
+          'ML assessment'
         ]
       }
     ]
@@ -966,7 +1063,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AIMA Book',
           'Stanford CS221',
-          'AI fundamentals'
+          'AI fundamentals',
+          'Intelligent agents theory'
         ]
       },
       {
@@ -975,6 +1073,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AI Search Algorithms - YouTube',
           'AIMA Book',
+          'Search algorithms',
           'AI search theory'
         ]
       },
@@ -984,7 +1083,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AIMA Book',
           'A* implementations',
-          'Heuristic search'
+          'Heuristic search',
+          'Informed search algorithms'
         ]
       },
       {
@@ -993,7 +1093,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AIMA Book',
           'Local search algorithms',
-          'Optimization methods'
+          'Optimization methods',
+          'Metaheuristic algorithms'
         ]
       },
       {
@@ -1002,7 +1103,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AIMA Book',
           'CSP theory',
-          'Constraint programming'
+          'Constraint programming',
+          'Backtracking algorithms'
         ]
       },
       {
@@ -1011,6 +1113,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'PROPOSITIONAL LOGIC | Artificial Intelligence | GATE | PL with example | Hindi tutorial - YouTube',
           'AIMA Book',
+          'Logic in AI',
           'Reasoning systems'
         ]
       },
@@ -1020,6 +1123,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Predicate logic in AI | First order logic in Artificial Intelligence | fol examples - YouTube',
           'AIMA Book',
+          'FOL theory',
           'Knowledge systems'
         ]
       }
@@ -1031,6 +1135,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Introduction to Adversarial Search || Artificial Intelligence - YouTube',
           'AIMA Book',
+          'Game AI',
           'Adversarial algorithms'
         ]
       },
@@ -1040,7 +1145,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AIMA Book',
           'Game optimization',
-          'Pruning techniques'
+          'Pruning techniques',
+          'Game tree search'
         ]
       },
       {
@@ -1049,6 +1155,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Understanding AI: Probabilistic Models Explained Simply - YouTube',
           'CS221 Stanford',
+          'Bayesian AI',
           'Probabilistic models'
         ]
       },
@@ -1058,7 +1165,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AIMA Book',
           'Markov models',
-          'Sequential AI'
+          'Sequential AI',
+          'HMM theory'
         ]
       },
       {
@@ -1066,6 +1174,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Sampling methods', 'Monte Carlo', 'MCMC algorithms'],
         resources: [
           'Sampling Techniques Explained With Detailed Examples | Intellipaat - YouTube',
+          'Sampling theory',
           'Monte Carlo methods',
           'MCMC'
         ]
@@ -1075,6 +1184,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['AI problem solving', 'Case studies', 'AI applications'],
         resources: [
           'COMP 3200 / 6980 - Intro to Artificial Intelligence - Lecture 03 - Problem Solving and Search',
+          'AIMA problems',
           'AI case studies',
           'Real-world AI'
         ]
@@ -1085,7 +1195,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'AI review materials',
           'Practice problems',
-          'Week assessment'
+          'Week assessment',
+          'AI fundamentals review'
         ]
       }
     ],
@@ -1095,9 +1206,10 @@ export const generateStudySchedule = (): StudySchedule => {
         subject: 'DBMS',
         tasks: ['Database concepts', 'DBMS architecture', 'Data models'],
         resources: [
-          'PlacementPreparation.io: 10 Best Websites to Learn DBMS in 2025',
+          'PlacementPreparation.io: 10 Best Websites to Learn DBMS in 2025 [Free + Paid]',
           'DBMS by Navathe',
-          'Database fundamentals'
+          'Database fundamentals',
+          'DBMS theory'
         ]
       },
       {
@@ -1106,6 +1218,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Entity Relationship Diagram Tutorial - YouTube',
           'GFG DBMS',
+          'ER modeling',
           'Database design'
         ]
       },
@@ -1115,7 +1228,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Database design',
           'Schema mapping',
-          'Relational model'
+          'Relational model',
+          'Table normalization'
         ]
       },
       {
@@ -1123,6 +1237,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['Relational algebra', 'Selection and projection', 'Join operations'],
         resources: [
           'Relational Algebra in DBMS with Examples-Relational Algebra in DBMS-Relational Algebra Operations - YouTube',
+          'Relational algebra',
           'Database operations',
           'Query theory'
         ]
@@ -1133,6 +1248,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'SQL Tutorial for Beginners | Future of Data & AI | Data Science Dojo - YouTube',
           'SQLZoo',
+          'SQL tutorials',
           'Database queries'
         ]
       },
@@ -1142,7 +1258,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'LeetCode SQL',
           'Advanced SQL',
-          'Query optimization'
+          'Query optimization',
+          'Complex queries'
         ]
       },
       {
@@ -1151,7 +1268,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'LeetCode SQL',
           'SQL practice',
-          'Query problems'
+          'Query problems',
+          'Database exercises'
         ]
       }
     ],
@@ -1162,7 +1280,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Normalization theory',
           'Database normalization',
-          'FD theory'
+          'FD theory',
+          'Normal forms'
         ]
       },
       {
@@ -1171,7 +1290,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Advanced normalization',
           'Database decomposition',
-          'Normal forms'
+          'Normal forms',
+          'Lossless decomposition'
         ]
       },
       {
@@ -1180,7 +1300,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Transaction theory',
           'DBMS transactions',
-          'Concurrency'
+          'Concurrency',
+          'ACID properties'
         ]
       },
       {
@@ -1189,7 +1310,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Database indexing',
           'B-tree structures',
-          'Performance tuning'
+          'Performance tuning',
+          'Index optimization'
         ]
       },
       {
@@ -1198,6 +1320,7 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'Data Warehouse - The Ultimate Guide [2025] | Master Data Modeling - YouTube',
           'IBM DW Tutorial',
+          'Data warehousing',
           'OLAP concepts'
         ]
       },
@@ -1206,6 +1329,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['ETL processes', 'Data integration', 'Warehouse design'],
         resources: [
           'What is Data Mapping and Transformation? (Data Transformation) - YouTube',
+          'ETL theory',
           'Data integration',
           'Warehouse architecture'
         ]
@@ -1215,6 +1339,7 @@ export const generateStudySchedule = (): StudySchedule => {
         tasks: ['DBMS review', 'SQL practice', 'Month 5 assessment'],
         resources: [
           'What is a database schema? - YouTube',
+          'DBMS review',
           'SQL problems',
           'Database assessment'
         ]
@@ -1232,7 +1357,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All Linear Algebra resources from Month 1',
           'Reinforcement Learning by David Silver (YouTube)',
-          'CS 285: Deep Reinforcement Learning (UC Berkeley)'
+          'CS 285: Deep Reinforcement Learning (UC Berkeley)',
+          'Linear algebra formula compilation'
         ]
       },
       {
@@ -1241,7 +1367,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All Calculus resources from Month 1',
           'Reinforcement Learning: An Introduction by Sutton and Barto',
-          'Time Series Analysis courses on Coursera/edX'
+          'Time Series Analysis courses on Coursera/edX',
+          'Optimization review'
         ]
       },
       {
@@ -1250,7 +1377,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All Probability/Statistics resources from Months 1-2',
           'Forecasting: Principles and Practice by Hyndman and Athanasopoulos',
-          'NoSQL databases explained for beginners - YouTube'
+          'NoSQL databases explained for beginners - YouTube',
+          'Statistics formula sheet'
         ]
       },
       {
@@ -1259,7 +1387,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All Python resources from Month 2',
           'MongoDB University courses',
-          'Kaggle datasets for practice'
+          'Kaggle datasets for practice',
+          'Python cheat sheets'
         ]
       },
       {
@@ -1268,7 +1397,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All DS resources from Month 3',
           'UCI Machine Learning Repository',
-          'Advanced topic exploration'
+          'Advanced topic exploration',
+          'DS complexity analysis'
         ]
       },
       {
@@ -1277,7 +1407,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All Algorithm resources from Month 3',
           'Advanced algorithms practice',
-          'Competitive programming'
+          'Competitive programming',
+          'Algorithm complexity review'
         ]
       },
       {
@@ -1286,7 +1417,8 @@ export const generateStudySchedule = (): StudySchedule => {
         resources: [
           'All ML resources from Month 4',
           'Advanced ML topics',
-          'Deep learning introduction'
+          'Deep learning introduction',
+          'ML algorithm comparison'
         ]
       }
     ]
@@ -1392,7 +1524,8 @@ export const generateStudySchedule = (): StudySchedule => {
           'All previous month resources',
           'GATE PYQs',
           'Reinforcement Learning resources',
-          'Time Series Analysis materials'
+          'Time Series Analysis materials',
+          'NoSQL database tutorials'
         ];
       } else if (week <= 26) {
         // Late December: Advanced Topics
@@ -1404,9 +1537,13 @@ export const generateStudySchedule = (): StudySchedule => {
           'Error log summary'
         ];
         resources = [
-          'NoSQL database tutorials',
-          'Advanced ML topics',
-          'Deep learning introduction',
+          'Reinforcement Learning by David Silver (YouTube)',
+          'CS 285: Deep Reinforcement Learning (UC Berkeley)',
+          'Reinforcement Learning: An Introduction by Sutton and Barto',
+          'Time Series Analysis courses on Coursera/edX',
+          'Forecasting: Principles and Practice by Hyndman and Athanasopoulos',
+          'NoSQL databases explained for beginners - YouTube',
+          'MongoDB University courses',
           'Kaggle competitions'
         ];
       } else {
@@ -1422,7 +1559,9 @@ export const generateStudySchedule = (): StudySchedule => {
           'All previous resources',
           'GATE PYQs',
           'Mock test platforms',
-          'Formula sheets'
+          'Formula sheets',
+          'GATEOverflow',
+          'Made Easy test series'
         ];
       }
       
