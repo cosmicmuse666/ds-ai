@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { CheckCircle2, Circle, Clock, BookOpen, Target, MessageSquare, Calendar, Award, ExternalLink, ChevronRight, RotateCcw, AlertTriangle } from 'lucide-react';
 import { format } from 'date-fns';
 import { useStudy } from '../context/StudyContext';
+import { useAutoReset } from '../hooks/useAutoReset';
 import NotesManager from './NotesManager';
+import ResetNotification from './ResetNotification';
 
 const DailyTaskView: React.FC = () => {
   const { schedule, selectedDate, updateDayProgress } = useStudy();
+  const { isResetting, resetNotification, manualReset, dismissNotification } = useAutoReset();
   const [activeTab, setActiveTab] = useState<'tasks' | 'notes'>('tasks');
   const [showResetConfirmation, setShowResetConfirmation] = useState(false);
 
@@ -53,15 +56,13 @@ const DailyTaskView: React.FC = () => {
     });
   };
 
-  const handleResetTasks = () => {
-    updateDayProgress(selectedDate, {
-      progress: {
-        ...dayData.progress,
-        tasksCompleted: 0,
-        completionPercentage: 0
-      }
-    });
+  const handleManualReset = async () => {
+    const result = await manualReset(selectedDate);
     setShowResetConfirmation(false);
+    
+    if (result.success) {
+      // Reset was successful, notification will be shown by the hook
+    }
   };
 
   const isTaskCompleted = (taskIndex: number) => {
@@ -114,6 +115,14 @@ const DailyTaskView: React.FC = () => {
 
   return (
     <div className="animate-fade-in">
+      {/* Reset Notification */}
+      <ResetNotification
+        show={resetNotification.show}
+        type={resetNotification.type}
+        message={resetNotification.message}
+        onDismiss={dismissNotification}
+      />
+
       <div className="glass-card rounded-3xl shadow-xl overflow-hidden">
         {/* Enhanced Header */}
         <div className="relative p-8 bg-gradient-to-r from-palette-bg-darker/50 to-palette-bg-light/50 border-b border-palette-medium-orchid/20">
@@ -129,8 +138,15 @@ const DailyTaskView: React.FC = () => {
                     <Calendar className="h-4 w-4" />
                     <span>Week {dayData.week} • {dayData.month}</span>
                   </div>
+                  {dayData.lastResetDate && (
+                    <div className="flex items-center space-x-2">
+                      <RotateCcw className="h-4 w-4" />
+                      <span>Last reset: {format(new Date(dayData.lastResetDate), 'h:mm a')}</span>
+                    </div>
+                  )}
                 </div>
               </div>
+              
               <div className="flex items-center space-x-3">
                 {dayData.progress.completionPercentage === 100 && (
                   <div className="flex items-center space-x-2 bg-palette-yellow/20 px-4 py-2 rounded-2xl border border-palette-yellow/30">
@@ -138,18 +154,19 @@ const DailyTaskView: React.FC = () => {
                     <span className="text-sm font-semibold text-palette-yellow">Day Completed!</span>
                   </div>
                 )}
-                {/* Reset Button */}
+                
+                {/* Enhanced Reset Button */}
                 <button
                   onClick={() => setShowResetConfirmation(true)}
-                  disabled={dayData.progress.tasksCompleted === 0}
+                  disabled={dayData.progress.tasksCompleted === 0 || isResetting}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-2xl font-semibold text-sm transition-all duration-200 border ${
-                    dayData.progress.tasksCompleted === 0
+                    dayData.progress.tasksCompleted === 0 || isResetting
                       ? 'bg-palette-text-muted/10 border-palette-text-muted/20 text-palette-text-muted/50 cursor-not-allowed'
                       : 'bg-palette-coral/20 border-palette-coral/30 text-palette-coral hover:bg-palette-coral/30 hover:scale-105 shadow-lg hover:shadow-xl'
                   }`}
                 >
-                  <RotateCcw className="h-4 w-4" />
-                  <span>Reset Tasks</span>
+                  <RotateCcw className={`h-4 w-4 ${isResetting ? 'animate-spin' : ''}`} />
+                  <span>{isResetting ? 'Resetting...' : 'Reset Tasks'}</span>
                 </button>
               </div>
             </div>
@@ -229,9 +246,10 @@ const DailyTaskView: React.FC = () => {
                     >
                       <button
                         onClick={() => handleTaskToggle(index)}
+                        disabled={isResetting}
                         className={`mt-1 transition-all duration-200 hover:scale-110 ${
                           isTaskCompleted(index) ? 'text-palette-yellow' : 'text-palette-medium-orchid hover:text-palette-light-violet'
-                        }`}
+                        } ${isResetting ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         {isTaskCompleted(index) ? (
                           <CheckCircle2 className="h-6 w-6" />
@@ -280,7 +298,8 @@ const DailyTaskView: React.FC = () => {
                         max="12"
                         value={dayData.progress.actualHours}
                         onChange={(e) => handleHoursUpdate(parseFloat(e.target.value) || 0)}
-                        className="w-24 px-3 py-2 text-sm border border-palette-medium-orchid/30 rounded-xl bg-palette-bg-darker text-palette-text-light font-semibold text-center focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent"
+                        disabled={isResetting}
+                        className="w-24 px-3 py-2 text-sm border border-palette-medium-orchid/30 rounded-xl bg-palette-bg-darker text-palette-text-light font-semibold text-center focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent disabled:opacity-50"
                       />
                     </div>
                     <div className="pt-4 border-t border-palette-medium-orchid/20">
@@ -345,7 +364,7 @@ const DailyTaskView: React.FC = () => {
         </div>
       </div>
 
-      {/* Reset Confirmation Dialog */}
+      {/* Enhanced Reset Confirmation Dialog */}
       {showResetConfirmation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setShowResetConfirmation(false)}></div>
@@ -360,10 +379,28 @@ const DailyTaskView: React.FC = () => {
                 Reset Task Progress?
               </h3>
               
-              <p className="text-palette-text-muted mb-6 leading-relaxed">
-                This will clear all completion status for today's tasks. Your task descriptions, 
-                study hours, and notes will remain unchanged. This action cannot be undone.
-              </p>
+              <div className="text-left bg-palette-bg-light/50 rounded-xl p-4 mb-6">
+                <p className="text-sm text-palette-text-muted mb-3">
+                  This action will:
+                </p>
+                <ul className="text-sm text-palette-text-light space-y-1">
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-palette-coral rounded-full"></div>
+                    <span>Clear all task completion status</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-palette-yellow rounded-full"></div>
+                    <span>Save current progress to history</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <div className="w-1.5 h-1.5 bg-palette-medium-orchid rounded-full"></div>
+                    <span>Preserve notes and study hours</span>
+                  </li>
+                </ul>
+                <p className="text-xs text-palette-text-muted mt-3">
+                  This action cannot be undone.
+                </p>
+              </div>
               
               <div className="flex items-center space-x-3">
                 <button
@@ -373,10 +410,11 @@ const DailyTaskView: React.FC = () => {
                   Cancel
                 </button>
                 <button
-                  onClick={handleResetTasks}
-                  className="flex-1 px-4 py-3 rounded-xl font-semibold text-palette-white bg-gradient-to-r from-palette-coral to-palette-coral-light hover:from-palette-coral-light hover:to-palette-coral transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                  onClick={handleManualReset}
+                  disabled={isResetting}
+                  className="flex-1 px-4 py-3 rounded-xl font-semibold text-palette-white bg-gradient-to-r from-palette-coral to-palette-coral-light hover:from-palette-coral-light hover:to-palette-coral transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Reset Tasks
+                  {isResetting ? 'Resetting...' : 'Reset Tasks'}
                 </button>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { StudySchedule, StudyDay } from '../types';
+import { StudySchedule, StudyDay, ResetSystemState } from '../types';
 import { studySchedule as initialSchedule } from '../data/studySchedule';
 
 interface StudyContextType {
@@ -11,6 +11,8 @@ interface StudyContextType {
   setCurrentView: (view: 'calendar' | 'daily' | 'analytics') => void;
   theme: 'dark';
   toggleTheme: () => void;
+  resetSystemState: ResetSystemState | null;
+  updateResetSystemState: (updates: Partial<ResetSystemState>) => void;
 }
 
 const StudyContext = createContext<StudyContextType | undefined>(undefined);
@@ -33,6 +35,18 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
     return saved ? JSON.parse(saved) : initialSchedule;
   });
   
+  const [resetSystemState, setResetSystemState] = useState<ResetSystemState | null>(() => {
+    const saved = localStorage.getItem('gateResetSystemState');
+    return saved ? JSON.parse(saved) : {
+      lastResetCheck: '',
+      currentStreak: 0,
+      totalDaysCompleted: 0,
+      averageCompletionRate: 0,
+      lastResetStatus: null,
+      resetHistory: []
+    };
+  });
+  
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [currentView, setCurrentView] = useState<'calendar' | 'daily' | 'analytics'>('calendar');
   const [theme] = useState<'dark'>('dark'); // Always dark mode
@@ -40,6 +54,12 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('gateStudySchedule', JSON.stringify(schedule));
   }, [schedule]);
+
+  useEffect(() => {
+    if (resetSystemState) {
+      localStorage.setItem('gateResetSystemState', JSON.stringify(resetSystemState));
+    }
+  }, [resetSystemState]);
 
   useEffect(() => {
     // Always apply dark theme since our palette is designed for dark mode only
@@ -56,12 +76,19 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
         progress: {
           ...prev[date]?.progress,
           ...progress.progress,
-          completionPercentage: progress.progress?.tasksCompleted 
-            ? Math.round((progress.progress.tasksCompleted / (prev[date]?.progress.totalTasks || 1)) * 100)
+          completionPercentage: progress.progress?.tasksCompleted !== undefined
+            ? Math.round((progress.progress.tasksCompleted / (prev[date]?.tasks.length || 1)) * 100)
             : prev[date]?.progress.completionPercentage || 0
         }
       }
     }));
+  };
+
+  const updateResetSystemState = (updates: Partial<ResetSystemState>) => {
+    setResetSystemState(prev => ({
+      ...prev,
+      ...updates
+    } as ResetSystemState));
   };
 
   const toggleTheme = () => {
@@ -78,7 +105,9 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
       currentView,
       setCurrentView,
       theme,
-      toggleTheme
+      toggleTheme,
+      resetSystemState,
+      updateResetSystemState
     }}>
       {children}
     </StudyContext.Provider>

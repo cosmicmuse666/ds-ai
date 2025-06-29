@@ -2,10 +2,11 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, Target, Clock, Award, Calendar, BookOpen, Activity, Zap } from 'lucide-react';
 import { useStudy } from '../context/StudyContext';
+import ProgressHistoryPanel from './ProgressHistoryPanel';
 import { subjectColors } from '../data/studySchedule';
 
 const ProgressAnalytics: React.FC = () => {
-  const { schedule } = useStudy();
+  const { schedule, resetSystemState } = useStudy();
 
   // Calculate analytics data
   const analyticsData = React.useMemo(() => {
@@ -76,8 +77,8 @@ const ProgressAnalytics: React.FC = () => {
       label: 'Overall Progress',
       value: `${analyticsData.averageCompletion}%`,
       icon: TrendingUp,
-      gradient: 'from-palette-purple to-palette-purple-dark',
-      bgColor: 'from-palette-purple/10 to-palette-purple/5'
+      gradient: 'from-palette-medium-orchid to-palette-light-violet',
+      bgColor: 'from-palette-medium-orchid/10 to-palette-medium-orchid/5'
     },
     {
       label: 'Days Completed',
@@ -94,11 +95,11 @@ const ProgressAnalytics: React.FC = () => {
       bgColor: 'from-palette-coral/10 to-palette-coral/5'
     },
     {
-      label: 'Study Streak',
-      value: '7 days',
+      label: 'Current Streak',
+      value: `${resetSystemState?.currentStreak || 0} days`,
       icon: Award,
-      gradient: 'from-palette-purple to-palette-coral',
-      bgColor: 'from-palette-purple/10 to-palette-coral/5'
+      gradient: 'from-palette-medium-orchid to-palette-coral',
+      bgColor: 'from-palette-medium-orchid/10 to-palette-coral/5'
     }
   ];
 
@@ -115,7 +116,7 @@ const ProgressAnalytics: React.FC = () => {
                   <p className="text-3xl font-bold text-palette-text-light">{value}</p>
                 </div>
                 <div className={`bg-gradient-to-r ${gradient} p-4 rounded-2xl shadow-lg`}>
-                  <Icon className="h-7 w-7 text-palette-dark" />
+                  <Icon className="h-7 w-7 text-palette-primary-black" />
                 </div>
               </div>
             </div>
@@ -123,12 +124,15 @@ const ProgressAnalytics: React.FC = () => {
         ))}
       </div>
 
+      {/* Progress History Panel */}
+      <ProgressHistoryPanel />
+
       {/* Enhanced Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Weekly Progress Chart */}
         <div className="glass-card rounded-2xl shadow-xl p-6">
           <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-palette-purple to-palette-coral p-2.5 rounded-xl shadow-lg mr-3">
+            <div className="bg-gradient-to-r from-palette-medium-orchid to-palette-coral p-2.5 rounded-xl shadow-lg mr-3">
               <TrendingUp className="h-5 w-5 text-palette-white" />
             </div>
             Weekly Progress Trend
@@ -174,7 +178,7 @@ const ProgressAnalytics: React.FC = () => {
         <div className="glass-card rounded-2xl shadow-xl p-6">
           <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
             <div className="bg-gradient-to-r from-palette-yellow to-palette-yellow-bright p-2.5 rounded-xl shadow-lg mr-3">
-              <BookOpen className="h-5 w-5 text-palette-dark" />
+              <BookOpen className="h-5 w-5 text-palette-primary-black" />
             </div>
             Subject Performance
           </h3>
@@ -247,8 +251,8 @@ const ProgressAnalytics: React.FC = () => {
         {/* Enhanced Study Consistency */}
         <div className="glass-card rounded-2xl shadow-xl p-6">
           <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-palette-purple to-palette-yellow p-2.5 rounded-xl shadow-lg mr-3">
-              <Activity className="h-5 w-5 text-palette-dark" />
+            <div className="bg-gradient-to-r from-palette-medium-orchid to-palette-yellow p-2.5 rounded-xl shadow-lg mr-3">
+              <Activity className="h-5 w-5 text-palette-primary-black" />
             </div>
             Study Consistency
           </h3>
@@ -260,9 +264,9 @@ const ProgressAnalytics: React.FC = () => {
               </span>
             </div>
             <div className="relative">
-              <div className="w-full bg-palette-dark rounded-full h-4 overflow-hidden">
+              <div className="w-full bg-palette-bg-darker rounded-full h-4 overflow-hidden">
                 <div 
-                  className="bg-gradient-to-r from-palette-purple to-palette-coral h-4 rounded-full transition-all duration-700 ease-out shadow-lg"
+                  className="bg-gradient-to-r from-palette-medium-orchid to-palette-coral h-4 rounded-full transition-all duration-700 ease-out shadow-lg"
                   style={{ 
                     width: `${Math.min((analyticsData.totalActualHours / analyticsData.totalPlannedHours) * 100, 100)}%` 
                   }}
@@ -277,8 +281,8 @@ const ProgressAnalytics: React.FC = () => {
                 </div>
                 <div className="text-sm font-semibold text-palette-text-light/70">Days Completed</div>
               </div>
-              <div className="text-center p-4 bg-gradient-to-br from-palette-purple/10 to-palette-purple/5 rounded-xl border border-palette-purple/20">
-                <div className="text-3xl font-bold text-palette-purple mb-2">
+              <div className="text-center p-4 bg-gradient-to-br from-palette-medium-orchid/10 to-palette-medium-orchid/5 rounded-xl border border-palette-medium-orchid/20">
+                <div className="text-3xl font-bold text-palette-medium-orchid mb-2">
                   {Math.round((analyticsData.totalActualHours / analyticsData.totalPlannedHours) * 100)}%
                 </div>
                 <div className="text-sm font-semibold text-palette-text-light/70">Hours Target</div>
@@ -290,17 +294,17 @@ const ProgressAnalytics: React.FC = () => {
 
       {/* Enhanced Detailed Subject Analysis */}
       <div className="glass-card rounded-2xl shadow-xl overflow-hidden">
-        <div className="p-6 border-b border-palette-purple/20">
+        <div className="p-6 border-b border-palette-medium-orchid/20">
           <h3 className="text-xl font-bold text-palette-text-light flex items-center">
             <div className="bg-gradient-to-r from-palette-coral to-palette-yellow p-2.5 rounded-xl shadow-lg mr-3">
-              <Zap className="h-5 w-5 text-palette-dark" />
+              <Zap className="h-5 w-5 text-palette-primary-black" />
             </div>
             Detailed Subject Analysis
           </h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-palette-dark/50">
+            <thead className="bg-palette-bg-darker/50">
               <tr>
                 <th className="text-left py-4 px-6 font-bold text-palette-text-light">Subject</th>
                 <th className="text-left py-4 px-6 font-bold text-palette-text-light">Progress</th>
@@ -311,13 +315,13 @@ const ProgressAnalytics: React.FC = () => {
             </thead>
             <tbody>
               {Object.entries(analyticsData.subjectProgress).map(([subject, data], index) => (
-                <tr key={subject} className={`border-b border-palette-purple/20 hover:bg-palette-dark-light/50 transition-colors ${index % 2 === 0 ? 'bg-palette-dark/30' : ''}`}>
+                <tr key={subject} className={`border-b border-palette-medium-orchid/20 hover:bg-palette-bg-darker/50 transition-colors ${index % 2 === 0 ? 'bg-palette-bg-darker/30' : ''}`}>
                   <td className="py-4 px-6 font-semibold text-palette-text-light">{subject}</td>
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
-                      <div className="w-20 bg-palette-dark rounded-full h-3 overflow-hidden">
+                      <div className="w-20 bg-palette-bg-darker rounded-full h-3 overflow-hidden">
                         <div 
-                          className="bg-gradient-to-r from-palette-purple to-palette-coral h-3 rounded-full transition-all duration-500"
+                          className="bg-gradient-to-r from-palette-medium-orchid to-palette-coral h-3 rounded-full transition-all duration-500"
                           style={{ width: `${data.completion}%` }}
                         />
                       </div>
@@ -329,7 +333,7 @@ const ProgressAnalytics: React.FC = () => {
                   <td className="py-4 px-6">
                     <span className={`px-3 py-1.5 rounded-full text-xs font-bold ${
                       data.actual >= data.planned 
-                        ? 'bg-gradient-to-r from-palette-yellow to-palette-yellow-bright text-palette-dark'
+                        ? 'bg-gradient-to-r from-palette-yellow to-palette-yellow-bright text-palette-primary-black'
                         : 'bg-gradient-to-r from-palette-coral to-palette-coral-light text-palette-white'
                     }`}>
                       {data.planned > 0 ? Math.round((data.actual / data.planned) * 100) : 0}%
