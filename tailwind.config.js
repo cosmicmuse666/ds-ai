@@ -7,25 +7,9 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1.5' }], // 12px minimum
-        'sm': ['0.875rem', { lineHeight: '1.6' }], // 14px
-        'base': ['1rem', { lineHeight: '1.6' }], // 16px
-        'lg': ['1.125rem', { lineHeight: '1.6' }], // 18px
-        'xl': ['1.25rem', { lineHeight: '1.6' }], // 20px
-        '2xl': ['1.5rem', { lineHeight: '1.4' }], // 24px
-        '3xl': ['1.875rem', { lineHeight: '1.3' }], // 30px
-      },
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
-        // Exact spacing values from specifications
-        '1': '4px',   // 4px gap between grid cells
-        '2': '8px',   // 8px padding inside cells
-        '3': '12px',  // 12px padding for buttons/interactive elements
-        '4': '16px',  // 16px horizontal padding for day names
-        '5': '20px',  // 20px horizontal padding for header
-        '6': '24px',  // 24px padding around calendar container
       },
       animation: {
         'fade-in': 'fadeIn 0.2s ease-in-out',
@@ -42,53 +26,49 @@ export default {
         },
       },
       colors: {
-        // Custom palette from design
+        // Exact colors from the palette image
         palette: {
-          // Main colors
-          dark: '#2A2A2A',
-          'dark-light': '#3A3A3A',
+          // Main colors from the palette
+          'primary-black': '#1B1918',
+          'medium-orchid': '#B082FF',
+          'light-violet': '#DBC6FF',
+          'ivory': '#FFFFF3',
+          
+          // Additional colors for UI elements
           yellow: '#F4E76E',
           'yellow-bright': '#F9ED7A',
           'yellow-dark': '#B8A832',
-          purple: '#C8A8E9',
-          'purple-dark': '#A688C7',
           coral: '#FF8A65',
           'coral-light': '#FFB74D',
           'coral-dark': '#E64A19',
-          white: '#FFFFFF',
           
           // Background variations
-          'bg-dark': '#1A1A1A',
-          'bg-purple': '#C8A8E9',
-          'bg-yellow': '#F4E76E',
-          'bg-coral': '#FF8A65',
-          
-          // Button variations
-          'btn-purple-light': '#E1C9F0',
-          'btn-purple': '#A688C7',
-          'btn-yellow-light': '#F9ED7A',
-          'btn-yellow': '#E6D55A',
-          'btn-gray': '#8A8A8A',
-          'btn-gray-dark': '#6A6A6A',
+          'bg-dark': '#1B1918',
+          'bg-darker': '#0F0E0D',
+          'bg-light': '#2A2826',
           
           // Text colors
-          'text-light': '#F5F5F5',
-          'text-purple': '#C8A8E9',
-          'text-yellow': '#F4E76E',
+          'text-light': '#FFFFF3',
+          'text-muted': '#B8B5B2',
+          'text-accent': '#B082FF',
+          
+          // Button variations
+          'btn-primary': '#B082FF',
+          'btn-primary-hover': '#DBC6FF',
+          'btn-secondary': '#F4E76E',
+          'btn-accent': '#FF8A65',
         },
-        // Today's date highlight color
-        'accent-light': '#F0F0F0',
         primary: {
-          50: '#F3F0FF',
-          100: '#E1C9F0',
-          200: '#C8A8E9',
-          300: '#A688C7',
-          400: '#8B5CF6',
-          500: '#7C3AED',
-          600: '#6D28D9',
-          700: '#5B21B6',
-          800: '#4C1D95',
-          900: '#3C1A78',
+          50: '#F8F6FF',
+          100: '#F0EBFF',
+          200: '#E4D9FF',
+          300: '#DBC6FF',
+          400: '#C8A8FF',
+          500: '#B082FF',
+          600: '#9B5FFF',
+          700: '#8A4AE6',
+          800: '#7A3FCC',
+          900: '#6B35B3',
         },
         secondary: {
           50: '#FFFBEB',
@@ -114,17 +94,6 @@ export default {
           800: '#D84315',
           900: '#BF360C',
         }
-      },
-      // Aspect ratio for uniform 1:1 calendar cells
-      aspectRatio: {
-        'square': '1 / 1',
-      },
-      // Border radius for event containers (6px)
-      borderRadius: {
-        'sm': '6px',
-        'md': '8px',
-        'lg': '12px',
-        'xl': '16px',
       }
     },
   },

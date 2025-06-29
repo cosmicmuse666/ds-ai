@@ -9,7 +9,7 @@ interface StudyContextType {
   setSelectedDate: (date: string | null) => void;
   currentView: 'calendar' | 'daily' | 'analytics';
   setCurrentView: (view: 'calendar' | 'daily' | 'analytics') => void;
-  theme: 'light' | 'dark';
+  theme: 'dark';
   toggleTheme: () => void;
 }
 
@@ -35,20 +35,17 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
   
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [currentView, setCurrentView] = useState<'calendar' | 'daily' | 'analytics'>('calendar');
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    const saved = localStorage.getItem('studyPlannerTheme');
-    return (saved as 'light' | 'dark') || 'dark'; // Default to dark theme
-  });
+  const [theme] = useState<'dark'>('dark'); // Always dark mode
 
   useEffect(() => {
     localStorage.setItem('gateStudySchedule', JSON.stringify(schedule));
   }, [schedule]);
 
   useEffect(() => {
-    localStorage.setItem('studyPlannerTheme', theme);
-    // Always apply dark theme since our palette is designed for dark mode
+    // Always apply dark theme since our palette is designed for dark mode only
     document.documentElement.classList.add('dark');
-  }, [theme]);
+    document.body.style.backgroundColor = '#1B1918';
+  }, []);
 
   const updateDayProgress = (date: string, progress: Partial<StudyDay>) => {
     setSchedule(prev => ({
@@ -68,8 +65,8 @@ export const StudyProvider: React.FC<StudyProviderProps> = ({ children }) => {
   };
 
   const toggleTheme = () => {
-    // Keep dark theme since our palette is designed for it
-    setTheme('dark');
+    // Keep dark theme since our palette is designed for it only
+    console.log('Theme is locked to dark mode for this design');
   };
 
   return (

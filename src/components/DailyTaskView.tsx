@@ -12,13 +12,13 @@ const DailyTaskView: React.FC = () => {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="glass-card rounded-3xl shadow-xl p-12 text-center max-w-md mx-auto">
-          <div className="bg-gradient-to-r from-palette-purple to-palette-yellow p-4 rounded-2xl w-fit mx-auto mb-6">
-            <BookOpen className="h-12 w-12 text-palette-dark" />
+          <div className="bg-gradient-to-r from-palette-medium-orchid to-palette-yellow p-4 rounded-2xl w-fit mx-auto mb-6">
+            <BookOpen className="h-12 w-12 text-palette-primary-black" />
           </div>
           <h3 className="text-2xl font-bold text-palette-text-light mb-4">
             No Date Selected
           </h3>
-          <p className="text-palette-text-light/70 leading-relaxed">
+          <p className="text-palette-text-muted leading-relaxed">
             Select a date from the calendar to view daily tasks and track your progress.
           </p>
         </div>
@@ -84,35 +84,35 @@ const DailyTaskView: React.FC = () => {
 
   const getSubjectColor = (subject: string) => {
     const colors: { [key: string]: string } = {
-      'Linear Algebra': 'from-palette-purple to-palette-purple-dark text-palette-dark',
-      'Calculus': 'from-palette-purple to-palette-purple-dark text-palette-dark',
-      'Probability': 'from-palette-yellow to-palette-yellow-bright text-palette-dark',
-      'Statistics': 'from-palette-yellow to-palette-yellow-bright text-palette-dark',
-      'Python': 'from-palette-yellow to-palette-yellow-bright text-palette-dark',
-      'Data Structures': 'from-palette-coral to-palette-coral-light text-palette-white',
-      'Algorithms': 'from-palette-coral to-palette-coral-light text-palette-white',
-      'Machine Learning': 'from-palette-purple to-palette-purple-dark text-palette-dark',
-      'AI': 'from-palette-coral to-palette-coral-light text-palette-white',
-      'DBMS': 'from-palette-coral to-palette-coral-light text-palette-white',
-      'Review': 'from-palette-btn-gray to-palette-btn-gray-dark text-palette-white',
-      'Mock Tests': 'from-palette-btn-gray to-palette-btn-gray-dark text-palette-white'
+      'Linear Algebra': 'from-palette-medium-orchid to-palette-light-violet text-palette-primary-black',
+      'Calculus': 'from-palette-medium-orchid to-palette-light-violet text-palette-primary-black',
+      'Probability': 'from-palette-yellow to-palette-yellow-bright text-palette-primary-black',
+      'Statistics': 'from-palette-yellow to-palette-yellow-bright text-palette-primary-black',
+      'Python': 'from-palette-yellow to-palette-yellow-bright text-palette-primary-black',
+      'Data Structures': 'from-palette-coral to-palette-coral-light text-palette-ivory',
+      'Algorithms': 'from-palette-coral to-palette-coral-light text-palette-ivory',
+      'Machine Learning': 'from-palette-medium-orchid to-palette-light-violet text-palette-primary-black',
+      'AI': 'from-palette-coral to-palette-coral-light text-palette-ivory',
+      'DBMS': 'from-palette-coral to-palette-coral-light text-palette-ivory',
+      'Review': 'from-palette-bg-light to-palette-text-muted text-palette-ivory',
+      'Mock Tests': 'from-palette-bg-light to-palette-text-muted text-palette-ivory'
     };
-    return colors[subject] || 'from-palette-btn-gray to-palette-btn-gray-dark text-palette-white';
+    return colors[subject] || 'from-palette-bg-light to-palette-text-muted text-palette-ivory';
   };
 
   return (
     <div className="animate-fade-in">
       <div className="glass-card rounded-3xl shadow-xl overflow-hidden">
         {/* Enhanced Header */}
-        <div className="relative p-8 bg-gradient-to-r from-palette-dark/50 to-palette-dark-light/50 border-b border-palette-purple/20">
-          <div className="absolute inset-0 bg-gradient-to-r from-palette-purple/5 to-palette-yellow/5"></div>
+        <div className="relative p-8 bg-gradient-to-r from-palette-bg-darker/50 to-palette-bg-light/50 border-b border-palette-medium-orchid/20">
+          <div className="absolute inset-0 bg-gradient-to-r from-palette-medium-orchid/5 to-palette-yellow/5"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-3xl font-bold text-palette-text-light mb-2">
                   {format(selectedDateObj, 'EEEE, MMMM d, yyyy')}
                 </h2>
-                <div className="flex items-center space-x-4 text-sm text-palette-text-light/70">
+                <div className="flex items-center space-x-4 text-sm text-palette-text-muted">
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-4 w-4" />
                     <span>Week {dayData.week} • {dayData.month}</span>
@@ -132,27 +132,27 @@ const DailyTaskView: React.FC = () => {
                 <span className="font-semibold text-sm">{dayData.subject}</span>
               </div>
               <div className="flex items-center space-x-2 glass-card-light px-3 py-2 rounded-xl">
-                <Clock className="h-4 w-4 text-palette-text-light/70" />
-                <span className="text-sm text-palette-text-light/80">Target: {dayData.plannedHours}h</span>
+                <Clock className="h-4 w-4 text-palette-text-muted" />
+                <span className="text-sm text-palette-text-muted">Target: {dayData.plannedHours}h</span>
               </div>
             </div>
 
             {/* Enhanced Progress Bar */}
             <div className="space-y-3 mb-8">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-palette-text-light/80">Daily Progress</span>
+                <span className="text-sm font-medium text-palette-text-muted">Daily Progress</span>
                 <span className="text-2xl font-bold text-palette-text-light">
                   {dayData.progress.completionPercentage}%
                 </span>
               </div>
               <div className="relative">
-                <div className="w-full bg-palette-dark rounded-full h-4 overflow-hidden">
+                <div className="w-full bg-palette-bg-darker rounded-full h-4 overflow-hidden">
                   <div 
                     className={`h-4 rounded-full transition-all duration-700 ease-out ${
                       dayData.progress.completionPercentage === 100 
                         ? 'bg-gradient-to-r from-palette-yellow to-palette-yellow-bright shadow-yellow' 
                         : dayData.progress.completionPercentage >= 50 
-                          ? 'bg-gradient-to-r from-palette-purple to-palette-purple-dark shadow-purple' 
+                          ? 'bg-gradient-to-r from-palette-medium-orchid to-palette-light-violet shadow-purple' 
                           : 'bg-gradient-to-r from-palette-coral to-palette-coral-light shadow-coral'
                     }`}
                     style={{ width: `${dayData.progress.completionPercentage}%` }}
@@ -170,7 +170,7 @@ const DailyTaskView: React.FC = () => {
                   className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
                     activeTab === id
                       ? 'btn-primary shadow-purple'
-                      : 'text-palette-text-light/80 hover:bg-palette-purple/20 hover:text-palette-purple'
+                      : 'text-palette-text-muted hover:bg-palette-medium-orchid/20 hover:text-palette-medium-orchid'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -187,7 +187,7 @@ const DailyTaskView: React.FC = () => {
               {/* Enhanced Task List */}
               <div>
                 <h3 className="text-xl font-bold text-palette-text-light mb-6 flex items-center">
-                  <Target className="h-6 w-6 mr-3 text-palette-purple" />
+                  <Target className="h-6 w-6 mr-3 text-palette-medium-orchid" />
                   Daily Tasks ({dayData.progress.tasksCompleted}/{dayData.tasks.length})
                 </h3>
                 <div className="space-y-3">
@@ -197,13 +197,13 @@ const DailyTaskView: React.FC = () => {
                       className={`group flex items-start space-x-4 p-5 rounded-2xl transition-all duration-300 border ${
                         isTaskCompleted(index)
                           ? 'bg-palette-yellow/10 border-palette-yellow/30'
-                          : 'glass-card-light hover:bg-palette-dark-light border-palette-purple/20 hover:shadow-lg'
+                          : 'glass-card-light hover:bg-palette-bg-light border-palette-medium-orchid/20 hover:shadow-lg'
                       }`}
                     >
                       <button
                         onClick={() => handleTaskToggle(index)}
                         className={`mt-1 transition-all duration-200 hover:scale-110 ${
-                          isTaskCompleted(index) ? 'text-palette-yellow' : 'text-palette-purple hover:text-palette-purple-dark'
+                          isTaskCompleted(index) ? 'text-palette-yellow' : 'text-palette-medium-orchid hover:text-palette-light-violet'
                         }`}
                       >
                         {isTaskCompleted(index) ? (
@@ -215,14 +215,14 @@ const DailyTaskView: React.FC = () => {
                       <div className="flex-1">
                         <p className={`font-medium ${
                           isTaskCompleted(index)
-                            ? 'line-through text-palette-text-light/50'
+                            ? 'line-through text-palette-text-muted'
                             : 'text-palette-text-light'
                         }`}>
                           {task}
                         </p>
                       </div>
                       <ChevronRight className={`h-5 w-5 transition-all duration-200 ${
-                        isTaskCompleted(index) ? 'text-palette-yellow/60' : 'text-palette-text-light/40 group-hover:text-palette-text-light/60'
+                        isTaskCompleted(index) ? 'text-palette-yellow/60' : 'text-palette-text-muted group-hover:text-palette-text-light'
                       }`} />
                     </div>
                   ))}
@@ -231,18 +231,18 @@ const DailyTaskView: React.FC = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Enhanced Time Tracking */}
-                <div className="bg-gradient-to-br from-palette-purple/10 to-palette-purple/5 rounded-2xl p-6 border border-palette-purple/20">
+                <div className="bg-gradient-to-br from-palette-medium-orchid/10 to-palette-medium-orchid/5 rounded-2xl p-6 border border-palette-medium-orchid/20">
                   <h4 className="font-bold text-palette-text-light mb-6 flex items-center">
-                    <Clock className="h-5 w-5 mr-3 text-palette-purple" />
+                    <Clock className="h-5 w-5 mr-3 text-palette-medium-orchid" />
                     Time Tracking
                   </h4>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-3 glass-card-light rounded-xl">
-                      <span className="text-sm font-medium text-palette-text-light/70">Planned Hours:</span>
+                      <span className="text-sm font-medium text-palette-text-muted">Planned Hours:</span>
                       <span className="font-bold text-palette-text-light">{dayData.plannedHours}h</span>
                     </div>
                     <div className="flex items-center justify-between p-3 glass-card-light rounded-xl">
-                      <label htmlFor="actual-hours" className="text-sm font-medium text-palette-text-light/70">
+                      <label htmlFor="actual-hours" className="text-sm font-medium text-palette-text-muted">
                         Actual Hours:
                       </label>
                       <input
@@ -253,12 +253,12 @@ const DailyTaskView: React.FC = () => {
                         max="12"
                         value={dayData.progress.actualHours}
                         onChange={(e) => handleHoursUpdate(parseFloat(e.target.value) || 0)}
-                        className="w-24 px-3 py-2 text-sm border border-palette-purple/30 rounded-xl bg-palette-dark text-palette-text-light font-semibold text-center focus:ring-2 focus:ring-palette-purple focus:border-transparent"
+                        className="w-24 px-3 py-2 text-sm border border-palette-medium-orchid/30 rounded-xl bg-palette-bg-darker text-palette-text-light font-semibold text-center focus:ring-2 focus:ring-palette-medium-orchid focus:border-transparent"
                       />
                     </div>
-                    <div className="pt-4 border-t border-palette-purple/20">
+                    <div className="pt-4 border-t border-palette-medium-orchid/20">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-palette-text-light/70">Efficiency:</span>
+                        <span className="text-sm font-medium text-palette-text-muted">Efficiency:</span>
                         <span className={`font-bold text-lg ${
                           dayData.progress.actualHours >= dayData.plannedHours 
                             ? 'text-palette-yellow' 
@@ -300,7 +300,7 @@ const DailyTaskView: React.FC = () => {
                       }
                       
                       return (
-                        <div key={index} className="flex items-center space-x-3 text-sm text-palette-text-light/80 p-3 rounded-xl glass-card-light border border-palette-purple/20">
+                        <div key={index} className="flex items-center space-x-3 text-sm text-palette-text-muted p-3 rounded-xl glass-card-light border border-palette-medium-orchid/20">
                           <span className="text-lg">📚</span>
                           <span className="flex-1 font-medium">{resource}</span>
                         </div>
