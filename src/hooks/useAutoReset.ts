@@ -44,11 +44,28 @@ export const useAutoReset = () => {
     return Math.round((actualHours / plannedHours) * 100);
   }, []);
 
+  const calculateNotesMetrics = useCallback((notes: any) => {
+    const allText = Object.values(notes)
+      .filter(value => typeof value === 'string')
+      .join(' ');
+    
+    const wordCount = allText.split(' ').filter(word => word.length > 0).length;
+    const tags = notes.tags || [];
+    
+    let quality: 'light' | 'medium' | 'deep' = 'light';
+    if (wordCount > 200) quality = 'deep';
+    else if (wordCount > 100) quality = 'medium';
+    
+    return { wordCount, tags, quality };
+  }, []);
+
   const recordProgressHistory = useCallback((
     date: string, 
     dayData: any, 
     streak: number
   ): ProgressHistoryEntry => {
+    const notesMetrics = calculateNotesMetrics(dayData.notes);
+    
     return {
       date,
       completionPercentage: dayData.progress.completionPercentage,
@@ -59,9 +76,12 @@ export const useAutoReset = () => {
       subject: dayData.subject,
       streak,
       efficiency: calculateEfficiency(dayData.progress.actualHours, dayData.plannedHours),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      notesWordCount: notesMetrics.wordCount,
+      notesTags: notesMetrics.tags,
+      notesQuality: notesMetrics.quality
     };
-  }, [calculateEfficiency]);
+  }, [calculateEfficiency, calculateNotesMetrics]);
 
   const resetDailyTasks = useCallback(async (dateStr: string) => {
     try {
@@ -84,7 +104,7 @@ export const useAutoReset = () => {
         progressEntry
       ].slice(-30); // Keep last 30 entries
 
-      // Reset tasks while preserving all other data
+      // Reset tasks while preserving all other data (including notes)
       const resetProgress = {
         tasksCompleted: 0,
         totalTasks: dayData.tasks.length,
@@ -118,7 +138,7 @@ export const useAutoReset = () => {
         resetHistory: newResetHistory
       });
 
-      showNotification('success', `Tasks reset successfully! Progress saved to history.`);
+      showNotification('success', `Tasks reset successfully! Progress and notes preserved in history.`);
       
       return { success: true, progressEntry };
     } catch (error) {

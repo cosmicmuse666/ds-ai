@@ -38,6 +38,9 @@ export interface ProgressHistoryEntry {
   streak: number;
   efficiency: number;
   timestamp: string;
+  notesWordCount?: number;
+  notesTags?: string[];
+  notesQuality?: 'light' | 'medium' | 'deep';
 }
 
 export interface StudyDay {
