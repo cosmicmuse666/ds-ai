@@ -26,74 +26,130 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Linear Algebra',
         tasks: ['Vector spaces and subspaces basics', 'Linear dependence concepts', 'MIT OCW Linear Algebra video 1-2'],
-        resources: ['MIT OCW Linear Algebra', '3Blue1Brown series', 'Khan Academy']
+        resources: [
+          'Coursera: Linear Algebra for Machine Learning and Data Science (DeepLearning.AI)',
+          'Vector Spaces and Subspaces (with examples) - YouTube',
+          'Understanding Vector Spaces - YouTube'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Vector spaces continued', 'Subspace verification practice', 'Complete 3Blue1Brown Chapter 1'],
-        resources: ['MIT OCW Linear Algebra', '3Blue1Brown series', 'Khan Academy']
+        resources: [
+          'Coursera: Linear Algebra: Matrix Algebra, Determinants, & Eigenvectors (Johns Hopkins)',
+          'Vector Spaces and Subspaces (with examples) - YouTube',
+          '3Blue1Brown Essence of Linear Algebra'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Matrix operations review', 'Inverse matrices', 'Special matrices (symmetric, orthogonal)'],
-        resources: ['Khan Academy', "Lay's Linear Algebra", 'MIT OCW']
+        resources: [
+          'Khan Academy Linear Algebra',
+          'Inverse Matrices and Their Properties - YouTube',
+          "Lay's Linear Algebra textbook"
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Matrix operations practice', 'Determinants and properties', 'Rank and nullity introduction'],
-        resources: ['Khan Academy', "Lay's Linear Algebra", 'MIT OCW']
+        resources: [
+          'Khan Academy Linear Algebra',
+          'Inverse Matrices and Their Properties - YouTube',
+          'MIT OCW Linear Algebra'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Quadratic forms', 'Rank and nullity deep dive', 'Matrix decomposition basics'],
-        resources: ['MathInsight.org', "Paul's Notes", 'MIT OCW']
+        resources: [
+          'MathInsight.org',
+          'How to Find Rank and Nullity of a Matrix | Linear Algebra Exercises - YouTube',
+          "Paul's Online Math Notes"
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Quadratic forms practice', 'Positive definite matrices', 'Applications in optimization'],
-        resources: ['MathInsight.org', "Paul's Notes", 'MIT OCW']
+        resources: [
+          'MathInsight.org',
+          'How to Find Rank and Nullity of a Matrix | Linear Algebra Exercises - YouTube',
+          'MIT OCW Linear Algebra'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Week 1 practice set', 'GATE PYQs - Linear Algebra', 'Concept review and consolidation'],
-        resources: ['GATE Overflow', 'Linear Algebra NPTEL assignments', 'Made Easy Workbooks']
+        resources: [
+          'GATE Overflow',
+          'Linear Algebra GATE Questions - YouTube',
+          'Made Easy Workbooks'
+        ]
       }
     ],
     week2: [
       {
         subject: 'Linear Algebra',
         tasks: ['LU decomposition theory', 'Eigenvalues introduction', 'Characteristic polynomials'],
-        resources: ['Khan Academy', 'MIT OCW', '3Blue1Brown']
+        resources: [
+          'Khan Academy',
+          'Linear Algebra - LU-Decomposition of a Matrix Explained - YouTube',
+          'MIT OCW'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Eigenvalues computation', 'Eigenvectors and eigenspaces', 'Diagonalization'],
-        resources: ['Khan Academy', 'MIT OCW', '3Blue1Brown']
+        resources: [
+          'Khan Academy',
+          'Finding Eigenvalues and Eigenvectors - YouTube',
+          '3Blue1Brown Eigenvalues and Eigenvectors'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['LU decomposition practice', 'Applications of eigenvalues', 'Matrix powers using diagonalization'],
-        resources: ['Khan Academy', 'MIT OCW', '3Blue1Brown']
+        resources: [
+          'Linear Algebra - LU-Decomposition of a Matrix Explained - YouTube',
+          'Finding Eigenvalues and Eigenvectors - YouTube',
+          'MIT OCW'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['SVD introduction', 'Singular values and vectors', 'Low-rank approximations'],
-        resources: ['Essence of LA - YouTube', 'DeepLearning.ai Math', 'MIT OCW']
+        resources: [
+          'Singular Value Decomposition (SVD): Overview - YouTube',
+          'Singular Value Decomposition in 3 minutes | SVD Part 01 - YouTube',
+          'DeepLearning.ai Math for ML'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['SVD applications', 'Projections and least squares', 'Orthogonal projections'],
-        resources: ['Essence of LA - YouTube', 'DeepLearning.ai Math', 'MIT OCW']
+        resources: [
+          'Linear Algebra: Projections - YouTube',
+          'Singular Value Decomposition (SVD): Overview - YouTube',
+          'MIT OCW'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Projections practice', 'Gram-Schmidt process', 'QR decomposition'],
-        resources: ['Essence of LA - YouTube', 'DeepLearning.ai Math', 'MIT OCW']
+        resources: [
+          'Linear Algebra: Projections - YouTube',
+          'DeepLearning.ai Math series',
+          'MIT OCW'
+        ]
       },
       {
         subject: 'Linear Algebra',
         tasks: ['Linear Algebra recap', 'MCQ practice', 'Week 2 assessment'],
-        resources: ['GateOverflow', 'Made Easy Workbooks', 'NPTEL assignments']
+        resources: [
+          '1300 Linear Algebra MCQs Solution - YouTube',
+          'GateOverflow',
+          'Made Easy Workbooks'
+        ]
       }
     ],
     // Week 3: Calculus & Optimization (Days 15-21)
@@ -101,37 +157,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Calculus',
         tasks: ['Limits and continuity review', 'Multivariable limits', 'Epsilon-delta definition'],
-        resources: ["Paul's Online Notes", 'Khan Academy', 'MIT OCW Calculus']
+        resources: [
+          "Paul's Online Notes",
+          'Limits and Continuity - YouTube',
+          'Khan Academy Calculus'
+        ]
       },
       {
         subject: 'Calculus',
         tasks: ['Partial derivatives', 'Chain rule multivariable', 'Implicit differentiation'],
-        resources: ["Paul's Online Notes", 'Khan Academy', 'MIT OCW Calculus']
+        resources: [
+          "Paul's Online Notes",
+          'What Is Derivatives In Calculus In Layman Terms? - YouTube',
+          'MIT OCW Calculus'
+        ]
       },
       {
         subject: 'Calculus',
         tasks: ['Taylor series multivariable', 'Error analysis', 'Approximation methods'],
-        resources: ["Paul's Online Notes", 'Khan Academy', 'MIT OCW Calculus']
+        resources: [
+          "Paul's Online Notes",
+          'Taylor series | Chapter 11, Essence of calculus - YouTube',
+          'Khan Academy'
+        ]
       },
       {
         subject: 'Calculus',
         tasks: ['Maxima and minima', 'Critical points', 'Second derivative test'],
-        resources: ['Khan Academy', "Prof. Gilbert's lectures", 'Paul\'s Notes']
+        resources: [
+          'Khan Academy',
+          'Introduction to Maxima and Minima for Calculus - YouTube',
+          "Prof. Gilbert's lectures"
+        ]
       },
       {
         subject: 'Calculus',
         tasks: ['Constrained optimization', 'Lagrange multipliers', 'Applications in ML'],
-        resources: ['Khan Academy', "Prof. Gilbert's lectures", 'Paul\'s Notes']
+        resources: [
+          'Khan Academy',
+          'Introduction to Maxima and Minima for Calculus - YouTube',
+          "Paul's Notes"
+        ]
       },
       {
         subject: 'Calculus',
         tasks: ['Gradient descent theory', 'Convexity concepts', 'Optimization algorithms'],
-        resources: ["Andrew Ng's ML Math", 'DeepL.ai Math series', 'Convex Optimization Boyd']
+        resources: [
+          'Gradient Descent - Machine Learning Crash Course - YouTube',
+          'Convex Optimization - YouTube',
+          "Andrew Ng's ML Math"
+        ]
       },
       {
         subject: 'Calculus',
         tasks: ['Calculus week review', 'Optimization practice problems', 'Integration to probability prep'],
-        resources: ['All week resources', 'Practice problems', 'GATE PYQs']
+        resources: [
+          'All week resources',
+          'Practice problems',
+          'GATE PYQs'
+        ]
       }
     ],
     // Week 4: Probability Basics (Days 22-28)
@@ -139,37 +223,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Probability',
         tasks: ['Counting principles', 'Permutations and combinations', 'Sample spaces'],
-        resources: ["Blitzstein's Harvard Stats", '3Blue1Brown - Bayes', 'Khan Academy']
+        resources: [
+          'edX: Probability - The Science of Uncertainty and Data (MITx)',
+          'edX: Introduction to Probability (HarvardX)',
+          "Blitzstein's Harvard Stats"
+        ]
       },
       {
         subject: 'Probability',
         tasks: ['Probability axioms', 'Conditional probability', 'Independence'],
-        resources: ["Blitzstein's Harvard Stats", '3Blue1Brown - Bayes', 'Khan Academy']
+        resources: [
+          "Blitzstein's Harvard Stats",
+          '3Blue1Brown - Bayes theorem',
+          'Khan Academy'
+        ]
       },
       {
         subject: 'Probability',
         tasks: ['Bayes theorem', 'Law of total probability', 'Applications and examples'],
-        resources: ["Blitzstein's Harvard Stats", '3Blue1Brown - Bayes', 'Khan Academy']
+        resources: [
+          "Blitzstein's Harvard Stats",
+          '3Blue1Brown - Bayes theorem',
+          'Khan Academy'
+        ]
       },
       {
         subject: 'Probability',
         tasks: ['Random variables', 'Expectation and linearity', 'Variance properties'],
-        resources: ['Khan Academy', 'NPTEL - Prob & Stats', 'Harvard Stat110']
+        resources: [
+          'Khan Academy',
+          'NPTEL - Prob & Stats',
+          'Harvard Stat110'
+        ]
       },
       {
         subject: 'Probability',
         tasks: ['Mean, median, mode', 'Standard deviation', 'Moments of distributions'],
-        resources: ['Khan Academy', 'NPTEL - Prob & Stats', 'Harvard Stat110']
+        resources: [
+          'Khan Academy',
+          'NPTEL - Prob & Stats',
+          'Harvard Stat110'
+        ]
       },
       {
         subject: 'Probability',
         tasks: ['Covariance and correlation', 'Joint distributions', 'Independence of RVs'],
-        resources: ['Khan Academy', 'NPTEL - Prob & Stats', 'Harvard Stat110']
+        resources: [
+          'Khan Academy',
+          'NPTEL - Prob & Stats',
+          'Harvard Stat110'
+        ]
       },
       {
         subject: 'Probability',
         tasks: ['Probability quiz', 'GATE PYQs practice', 'Month 1 review preparation'],
-        resources: ['PYQs', 'GATEOverflow', 'ISLR Exercises']
+        resources: [
+          'PYQs',
+          'GATEOverflow',
+          'ISLR Exercises'
+        ]
       }
     ]
   };
@@ -181,37 +293,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Statistics',
         tasks: ['Bernoulli distribution', 'Binomial distribution', 'Properties and applications'],
-        resources: ['ISLR book', 'Khan Academy', 'StatQuest']
+        resources: [
+          'Coursera: Introduction to Statistics (Stanford University)',
+          'Bernoulli Distribution Probability Modeling Explained - YouTube',
+          'Binomial Distribution EXPLAINED in UNDER 15 MINUTES! - YouTube'
+        ]
       },
       {
         subject: 'Statistics',
         tasks: ['Normal distribution', 'Standard normal', 'Z-scores and applications'],
-        resources: ['ISLR book', 'Khan Academy', 'StatQuest']
+        resources: [
+          'Coursera: Basic Statistics (University of Amsterdam)',
+          'Understanding the normal distribution - statistics help - YouTube',
+          'Khan Academy'
+        ]
       },
       {
         subject: 'Statistics',
         tasks: ['Distribution relationships', 'Central Limit Theorem', 'Sampling distributions'],
-        resources: ['ISLR book', 'Khan Academy', 'StatQuest']
+        resources: [
+          'Coursera: The Power of Statistics (Google)',
+          'The Central Limit Theorem, Clearly Explained!!! - YouTube',
+          'StatQuest'
+        ]
       },
       {
         subject: 'Statistics',
         tasks: ['Poisson distribution', 'Exponential distribution', 'Applications in real world'],
-        resources: ['Harvard Stat110', 'StatQuest', 'Khan Academy']
+        resources: [
+          'Harvard Stat110',
+          'Introduction to Poisson Distribution - Probability & Statistics - YouTube',
+          'The Exponential Distribution - YouTube'
+        ]
       },
       {
         subject: 'Statistics',
         tasks: ['t-distribution', 'Chi-square distribution', 'F-distribution'],
-        resources: ['Harvard Stat110', 'StatQuest', 'Khan Academy']
+        resources: [
+          'Harvard Stat110',
+          "Student's T Distribution - YouTube",
+          'The Square of the Normal Distribution - YouTube'
+        ]
       },
       {
         subject: 'Statistics',
         tasks: ['Hypothesis testing', 'Type I and II errors', 'p-values and significance'],
-        resources: ['Harvard Stat110', 'StatQuest', 'Khan Academy']
+        resources: [
+          'Harvard Stat110',
+          'Hypothesis Testing Explained in 60 Seconds - YouTube',
+          'Khan Academy'
+        ]
       },
       {
         subject: 'Statistics',
         tasks: ['Statistics GATE PYQs', 'Week 5 assessment', 'Prepare for Python'],
-        resources: ['GATE PYQs', 'GATEOverflow', 'ISLR Exercises']
+        resources: [
+          'GATE DA 25: Practice and PYQs: Probability and Statistics Part 2 - YouTube',
+          'GATEOverflow',
+          'ISLR Exercises'
+        ]
       }
     ],
     // Week 6: Python Programming I (Days 36-42)
@@ -219,37 +359,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Python',
         tasks: ['Python syntax basics', 'Variables and data types', 'Control structures'],
-        resources: ['Python.org Docs', 'RealPython', 'Python Tutor']
+        resources: [
+          'GeeksforGeeks: 10 Best Python Data Science Courses Online [2025]',
+          'Python Tutorial: Learn Python For Data Science - YouTube',
+          'Python.org Docs'
+        ]
       },
       {
         subject: 'Python',
         tasks: ['Functions and scope', 'Recursion basics', 'Lambda functions'],
-        resources: ['Python.org Docs', 'RealPython', 'Python Tutor']
+        resources: [
+          'Coursera: Applied Data Science with Python (University of Michigan)',
+          'Recursion for Python Beginners with Recursive Function Examples - YouTube',
+          '#40 Python Tutorial for Beginners | Recursion - YouTube'
+        ]
       },
       {
         subject: 'Python',
         tasks: ['Recursion advanced', 'Dynamic programming intro', 'Memoization'],
-        resources: ['Python.org Docs', 'RealPython', 'GeeksforGeeks']
+        resources: [
+          'DataCamp: Data Scientist with Python',
+          'Recursion for Python Beginners with Recursive Function Examples - YouTube',
+          'GeeksforGeeks'
+        ]
       },
       {
         subject: 'Python',
         tasks: ['NumPy basics', 'Arrays and operations', 'Broadcasting'],
-        resources: ['Datacamp', 'Jupyter Notebooks', 'NumPy docs']
+        resources: [
+          'Python NumPy Tutorial - YouTube',
+          'Datacamp',
+          'NumPy docs'
+        ]
       },
       {
         subject: 'Python',
         tasks: ['Pandas introduction', 'DataFrames and Series', 'Data manipulation'],
-        resources: ['Datacamp', 'Kaggle Notebooks', 'Pandas docs']
+        resources: [
+          'Pandas Tutorial (Data Analysis In Python) - YouTube',
+          'Datacamp',
+          'Pandas docs'
+        ]
       },
       {
         subject: 'Python',
         tasks: ['Object-oriented programming', 'Classes and objects', 'Inheritance'],
-        resources: ['Datacamp', 'RealPython', 'Python OOP tutorials']
+        resources: [
+          'Python Object Oriented Programming (OOP) - For Beginners - YouTube',
+          'RealPython',
+          'Python OOP tutorials'
+        ]
       },
       {
         subject: 'Python',
         tasks: ['Build CLI Calculator', 'CSV Data Cleaner project', 'Code review and optimization'],
-        resources: ['Project-based learning', 'GitHub', 'Code review practices']
+        resources: [
+          'Creating a Command Line Utility In Python | Python for AI #77 - YouTube',
+          'Building a Basic Command Line Calculator in Python - YouTube',
+          'Data Cleaning with Python Pandas: Hands-On Tutorial with Real World Data - YouTube'
+        ]
       }
     ]
   };
@@ -261,37 +429,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Data Structures',
         tasks: ['Arrays and dynamic arrays', 'Time complexity analysis', 'Array operations'],
-        resources: ['GFG', 'Python Tutor Visualizer', 'LeetCode']
+        resources: [
+          'Deep Dive into the Array Data Structure - YouTube',
+          'Python Tutor Visualizer',
+          'LeetCode'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Stacks implementation', 'Stack applications', 'Expression evaluation'],
-        resources: ['GFG', 'Python Tutor Visualizer', 'HackerRank']
+        resources: [
+          'GFG',
+          'Python Tutor Visualizer',
+          'HackerRank'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Queues and deques', 'Circular queues', 'Priority queues intro'],
-        resources: ['GFG', 'Python Tutor Visualizer', 'HackerRank']
+        resources: [
+          'Queue Data Structure Tutorial - What is a Queue? - YouTube',
+          'Python Tutor Visualizer',
+          'HackerRank'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Linked lists basics', 'Singly and doubly linked', 'List operations'],
-        resources: ['GFG', 'Python Tutor Visualizer', 'LeetCode']
+        resources: [
+          'GFG',
+          'Python Tutor Visualizer',
+          'LeetCode'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Linked list problems', 'Cycle detection', 'Merging lists'],
-        resources: ['GFG', 'LeetCode', 'HackerRank']
+        resources: [
+          'GFG',
+          'LeetCode',
+          'HackerRank'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Trees introduction', 'Binary trees', 'Tree terminology'],
-        resources: ['GFG', 'Visualgo', 'MIT OCW Algorithms']
+        resources: [
+          'Binary Search Tree Explained | Data Structures for Beginners - YouTube',
+          'Visualgo',
+          'MIT OCW Algorithms'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Tree traversals', 'Pre/In/Post order', 'BFS and DFS on trees'],
-        resources: ['GFG', 'Visualgo', 'Tree practice problems']
+        resources: [
+          'Binary tree traversal - breadth-first and depth-first strategies - YouTube',
+          'Depth-First Search Algorithm: Graph or Tree traversal and search - YouTube',
+          'Tree practice problems'
+        ]
       }
     ],
     // Week 8: Data Structures II (Days 50-56)
@@ -299,37 +495,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Data Structures',
         tasks: ['Binary search trees', 'BST operations', 'AVL trees intro'],
-        resources: ['GFG', 'Visualgo', 'MIT OCW']
+        resources: [
+          'Binary Search Trees | C++ | Java | Data Structures and Algorithms | Placements - YouTube',
+          'Visualgo',
+          'MIT OCW'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Tree problems practice', 'Height and depth', 'Lowest common ancestor'],
-        resources: ['LeetCode', 'GFG', 'Tree problem sets']
+        resources: [
+          'LeetCode',
+          'GFG',
+          'Tree problem sets'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Hash tables theory', 'Hash functions', 'Collision resolution'],
-        resources: ['GFG', 'MIT OCW Algorithms', 'Hash table visualizations']
+        resources: [
+          'Data Structures: Hash Tables - YouTube',
+          'MIT OCW Algorithms',
+          'Hash table visualizations'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Heaps and priority queues', 'Min/max heaps', 'Heap operations'],
-        resources: ['GFG', 'Visualgo', 'Heap implementations']
+        resources: [
+          'The Heap Data Structure: A Comprehensive Tutorial - YouTube',
+          'Visualgo',
+          'Heap implementations'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Hashing applications', 'Hash maps in practice', 'Performance analysis'],
-        resources: ['GFG', 'LeetCode hashing', 'Practice sets']
+        resources: [
+          'Understanding and implementing a Hash Table (in C) - YouTube',
+          'LeetCode hashing',
+          'Practice sets'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Hashing practice problems', 'Two sum variants', 'Frequency counting'],
-        resources: ['LeetCode', 'HackerRank', 'Practice sets']
+        resources: [
+          'LeetCode',
+          'HackerRank',
+          'Practice sets'
+        ]
       },
       {
         subject: 'Data Structures',
         tasks: ['Data structures quiz', 'Week 8 revision', 'Algorithm prep'],
-        resources: ['All week resources', 'Quiz platforms', 'Revision notes']
+        resources: [
+          'Top 20+ Data structure Questions & Answer | Tpoint Tech - YouTube',
+          'Quiz platforms',
+          'Revision notes'
+        ]
       }
     ],
     // Week 9: Algorithms I (Days 57-63)
@@ -337,37 +561,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Algorithms',
         tasks: ['Sorting algorithms intro', 'Bubble sort', 'Selection sort'],
-        resources: ['GFG', 'Visualgo', 'Sorting visualizations']
+        resources: [
+          'Bubble Sort Algorithm Explained (Full Code Included) - Python Algorithms Series for Beginners - YouTube',
+          'Visualgo',
+          'Sorting visualizations'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Insertion sort', 'Sorting analysis', 'Stability in sorting'],
-        resources: ['GFG', 'MIT OCW Algorithms', 'Algorithm analysis']
+        resources: [
+          'Insertion sort in 2 minutes - YouTube',
+          'MIT OCW Algorithms',
+          'Algorithm analysis'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Merge sort algorithm', 'Divide and conquer', 'Merge sort analysis'],
-        resources: ['GFG', 'MIT OCW', 'Merge sort implementations']
+        resources: [
+          'Understanding Mergesort: Sorting Made Simple | Recursion Series - YouTube',
+          'MIT OCW',
+          'Merge sort implementations'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Quick sort algorithm', 'Partitioning', 'Quick sort analysis'],
-        resources: ['GFG', 'MIT OCW', 'Quick sort visualizations']
+        resources: [
+          '2.8.1 QuickSort Algorithm - YouTube',
+          'MIT OCW',
+          'Quick sort visualizations'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Sorting patterns practice', 'LeetCode sorting', 'Comparison of algorithms'],
-        resources: ['LeetCode', 'Sorting problem sets', 'Performance comparisons']
+        resources: [
+          'LeetCode Patterns - YouTube',
+          'Sorting problem sets',
+          'Performance comparisons'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Linear search', 'Binary search', 'Search variations'],
-        resources: ['GFG', 'Binary search patterns', 'Search implementations']
+        resources: [
+          'Learn Linear Search in 3 minutes ⬇️ - YouTube',
+          'Binary Search Algorithm in 100 Seconds - YouTube',
+          'Search implementations'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Ternary search', 'Search problems', 'Advanced searching'],
-        resources: ['GFG', 'LeetCode binary search', 'Search problem practice']
+        resources: [
+          'GFG',
+          'LeetCode binary search',
+          'Search problem practice'
+        ]
       }
     ],
     // Week 10: Algorithms II + Graph Theory (Days 64-70)
@@ -375,37 +627,65 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Algorithms',
         tasks: ['Recursion patterns', 'Recursive thinking', 'Base cases'],
-        resources: ['GFG', 'Recursion visualizations', 'Recursive problem solving']
+        resources: [
+          'Algorithms: Recursion - YouTube',
+          'Recursion visualizations',
+          'Recursive problem solving'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Divide and conquer', 'Master theorem', 'D&C applications'],
-        resources: ['MIT OCW Algorithms', 'D&C examples', 'Complexity analysis']
+        resources: [
+          'Divide and Conquer: The Art of Breaking Down Problems | Recursion Series - YouTube',
+          'MIT OCW Algorithms',
+          'Complexity analysis'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Advanced recursion', 'Backtracking intro', 'Recursive optimization'],
-        resources: ['GFG', 'Backtracking problems', 'Advanced recursion']
+        resources: [
+          'GFG',
+          'Backtracking problems',
+          'Advanced recursion'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Graph representation', 'Adjacency matrix/list', 'Graph basics'],
-        resources: ['GFG', 'Graph theory basics', 'Graph implementations']
+        resources: [
+          'Graph in Data Structure | BFS & DFS Algorithms | Learn Coding - YouTube',
+          'Graph theory basics',
+          'Graph implementations'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['BFS on graphs', 'DFS on graphs', 'Graph traversal applications'],
-        resources: ['GFG', 'Graph traversal', 'Visualgo graphs']
+        resources: [
+          'Binary tree traversal - breadth-first and depth-first strategies - YouTube',
+          'Depth-First Search Algorithm: Graph or Tree traversal and search - YouTube',
+          'Visualgo graphs'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Shortest path algorithms', 'Dijkstra algorithm', 'Path finding'],
-        resources: ['GFG', 'Dijkstra implementations', 'Shortest path problems']
+        resources: [
+          "How Dijkstra's Algorithm Works - YouTube",
+          'Dijkstra implementations',
+          'Shortest path problems'
+        ]
       },
       {
         subject: 'Algorithms',
         tasks: ['Graph applications', 'Connected components', 'Graph problems practice'],
-        resources: ['LeetCode graphs', 'Graph problem sets', 'Applications']
+        resources: [
+          'LeetCode graphs',
+          'Graph problem sets',
+          'Applications'
+        ]
       }
     ]
   };
@@ -417,74 +697,130 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Machine Learning',
         tasks: ['ML introduction', 'Supervised vs unsupervised', 'Types of learning'],
-        resources: ['Andrew Ng Coursera', 'ISLR Book', 'ML basics']
+        resources: [
+          'Andrew Ng Coursera ML Course',
+          'Kaggle: https://www.kaggle.com/',
+          'fast.ai: Practical Deep Learning'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Simple linear regression', 'Least squares', 'Cost functions'],
-        resources: ['ISLR', 'Coursera ML Week 1', 'Linear regression theory']
+        resources: [
+          'Linear Regression, Clearly Explained!!! - YouTube',
+          'ISLR Book',
+          'Coursera ML Week 1'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Multiple linear regression', 'Feature scaling', 'Normal equation'],
-        resources: ['ISLR', 'Coursera ML Week 2', 'MLR implementations']
+        resources: [
+          'Multiple Regression for beginners - YouTube',
+          'ISLR',
+          'MLR implementations'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Ridge regression', 'Regularization', 'Bias-variance tradeoff'],
-        resources: ['ISLR', 'Coursera ML Week 3', 'Regularization techniques']
+        resources: [
+          'Regularization Part 1: Ridge (L2) Regression - YouTube',
+          'Bias-Variance Trade-off - Explained - YouTube',
+          'Coursera ML Week 3'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Lasso regression', 'Elastic net', 'Feature selection'],
-        resources: ['ISLR', 'Scikit-learn docs', 'Regularization comparison']
+        resources: [
+          'ISLR',
+          'Scikit-learn docs',
+          'Regularization comparison'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Logistic regression', 'Sigmoid function', 'Classification basics'],
-        resources: ['StatQuest', 'Sklearn', 'Logistic regression theory']
+        resources: [
+          'StatQuest: Logistic Regression - YouTube',
+          'Sklearn',
+          'Logistic regression theory'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['k-NN algorithm', 'Distance metrics', 'Curse of dimensionality'],
-        resources: ['ISLR', 'k-NN implementations', 'Distance learning']
+        resources: [
+          'K Nearest Neighbors (KNN) in 10 Minutes (Beginner Friendly) - YouTube',
+          'Simple Explanation of the K-Nearest Neighbors (KNN) Algorithm - YouTube',
+          'Distance learning'
+        ]
       }
     ],
     week12: [
       {
         subject: 'Machine Learning',
         tasks: ['Naive Bayes', 'Bayes classifier', 'Text classification'],
-        resources: ['StatQuest', 'Sklearn', 'NB applications']
+        resources: [
+          'Naive Bayes, Clearly Explained!!! - YouTube',
+          'StatQuest',
+          'NB applications'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Linear Discriminant Analysis', 'QDA', 'Dimensionality reduction'],
-        resources: ['ISLR', 'LDA theory', 'Discriminant analysis']
+        resources: [
+          'ISLR',
+          'LDA theory',
+          'Discriminant analysis'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Support Vector Machines', 'Kernel trick', 'SVM theory'],
-        resources: ['Hands-on ML', 'SVM visualizations', 'Kernel methods']
+        resources: [
+          'Support Vector Machines Part 1 (of 3): Main Ideas!!! - YouTube',
+          'Support Vector Machine (SVM) in 2 minutes - YouTube',
+          'Kernel methods'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Decision trees', 'Information gain', 'Tree pruning'],
-        resources: ['ISLR', 'Decision tree algorithms', 'Tree implementations']
+        resources: [
+          'Decision Trees in Machine Learning | Introduction - YouTube',
+          'Decision tree algorithms',
+          'Tree implementations'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Cross-validation', 'k-fold CV', 'Model selection'],
-        resources: ['ISLR', 'CV techniques', 'Model evaluation']
+        resources: [
+          'Machine Learning Fundamentals: Cross Validation - YouTube',
+          'CV techniques',
+          'Model evaluation'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Neural networks intro', 'Perceptron', 'Multi-layer perceptrons'],
-        resources: ['DeepLearning.ai', "Karpathy's NN videos", 'NN basics']
+        resources: [
+          'What is Multilayer Perceptron (MLP) in Machine Learning? - YouTube',
+          "Karpathy's NN videos",
+          'NN basics'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Feedforward networks', 'Backpropagation', 'NN training'],
-        resources: ['DeepLearning.ai', "Karpathy's NN videos", 'NN implementations']
+        resources: [
+          'Feedforward Neural Networks Explained | Learn FNNs in Simple Terms - YouTube',
+          "Karpathy's NN videos",
+          'NN implementations'
+        ]
       }
     ],
     // Week 13-14: Unsupervised + Project (Days 85-98)
@@ -492,74 +828,130 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'Machine Learning',
         tasks: ['Clustering introduction', 'k-means algorithm', 'Cluster evaluation'],
-        resources: ['Josh Starmer StatQuest', 'Sklearn docs', 'Clustering theory']
+        resources: [
+          'K-Means Algorithm Simple Explanation - YouTube',
+          'Josh Starmer StatQuest',
+          'Clustering theory'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Hierarchical clustering', 'Dendrograms', 'Linkage methods'],
-        resources: ['StatQuest', 'Sklearn clustering', 'Hierarchical methods']
+        resources: [
+          'What is Hierarchical Clustering in Machine Learning? - YouTube',
+          'StatQuest',
+          'Hierarchical methods'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['DBSCAN clustering', 'Density-based clustering', 'Cluster comparison'],
-        resources: ['Sklearn docs', 'DBSCAN theory', 'Clustering algorithms']
+        resources: [
+          'Sklearn docs',
+          'DBSCAN theory',
+          'Clustering algorithms'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Principal Component Analysis', 'Dimensionality reduction', 'PCA theory'],
-        resources: ['StatQuest', 'PCA implementations', 'Dimensionality reduction']
+        resources: [
+          'Principal Component Analysis (PCA) - YouTube',
+          'StatQuest',
+          'Dimensionality reduction'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['PCA applications', 'Feature extraction', 'Variance explained'],
-        resources: ['Sklearn PCA', 'PCA practice', 'Feature engineering']
+        resources: [
+          'Sklearn PCA',
+          'PCA practice',
+          'Feature engineering'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['t-SNE', 'Manifold learning', 'Visualization techniques'],
-        resources: ['t-SNE theory', 'Manifold learning', 'Data visualization']
+        resources: [
+          't-SNE theory',
+          'Manifold learning',
+          'Data visualization'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['ML project planning', 'Dataset selection', 'Problem formulation'],
-        resources: ['Kaggle datasets', 'Project guidelines', 'ML workflow']
+        resources: [
+          'Machine Learning End to End Project | Full Course | iNeuron - YouTube',
+          'End-to-End Machine Learning Project – AI, MLOps - YouTube',
+          'ML workflow'
+        ]
       }
     ],
     week14: [
       {
         subject: 'Machine Learning',
         tasks: ['Data preprocessing', 'Feature engineering', 'Data cleaning'],
-        resources: ['Pandas', 'Sklearn preprocessing', 'Data preparation']
+        resources: [
+          'Pandas',
+          'Sklearn preprocessing',
+          'Data preparation'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Model selection', 'Algorithm comparison', 'Baseline models'],
-        resources: ['Sklearn', 'Model comparison', 'ML pipeline']
+        resources: [
+          'Sklearn',
+          'Model comparison',
+          'ML pipeline'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Model training', 'Hyperparameter tuning', 'Grid search'],
-        resources: ['Sklearn', 'Hyperparameter optimization', 'Model tuning']
+        resources: [
+          'Sklearn',
+          'Hyperparameter optimization',
+          'Model tuning'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Model evaluation', 'Metrics selection', 'Performance analysis'],
-        resources: ['Sklearn metrics', 'Model evaluation', 'Performance measures']
+        resources: [
+          'Sklearn metrics',
+          'Model evaluation',
+          'Performance measures'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Model interpretation', 'Feature importance', 'Results analysis'],
-        resources: ['Model interpretation', 'Feature analysis', 'Results presentation']
+        resources: [
+          'Model interpretation',
+          'Feature analysis',
+          'Results presentation'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Project documentation', 'Code organization', 'Presentation prep'],
-        resources: ['Documentation best practices', 'Code structure', 'Project presentation']
+        resources: [
+          'Documentation best practices',
+          'Code structure',
+          'Project presentation'
+        ]
       },
       {
         subject: 'Machine Learning',
         tasks: ['Project completion', 'Final review', 'ML month assessment'],
-        resources: ['Project finalization', 'Code review', 'Month 4 review']
+        resources: [
+          'Project finalization',
+          'Code review',
+          'Month 4 review'
+        ]
       }
     ]
   };
@@ -571,74 +963,130 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'AI',
         tasks: ['AI introduction', 'Intelligent agents', 'Problem-solving agents'],
-        resources: ['AIMA Book', 'Stanford CS221', 'AI fundamentals']
+        resources: [
+          'AIMA Book',
+          'Stanford CS221',
+          'AI fundamentals'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Search algorithms', 'Uninformed search', 'BFS and DFS'],
-        resources: ['AIMA Book', 'Search algorithms', 'AI search theory']
+        resources: [
+          'AI Search Algorithms - YouTube',
+          'AIMA Book',
+          'AI search theory'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Informed search', 'A* algorithm', 'Heuristic functions'],
-        resources: ['AIMA Book', 'A* implementations', 'Heuristic search']
+        resources: [
+          'AIMA Book',
+          'A* implementations',
+          'Heuristic search'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Local search', 'Hill climbing', 'Simulated annealing'],
-        resources: ['AIMA Book', 'Local search algorithms', 'Optimization methods']
+        resources: [
+          'AIMA Book',
+          'Local search algorithms',
+          'Optimization methods'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Constraint satisfaction', 'CSP algorithms', 'Backtracking search'],
-        resources: ['AIMA Book', 'CSP theory', 'Constraint programming']
+        resources: [
+          'AIMA Book',
+          'CSP theory',
+          'Constraint programming'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Logic and reasoning', 'Propositional logic', 'Logical inference'],
-        resources: ['AIMA Book', 'Logic in AI', 'Reasoning systems']
+        resources: [
+          'PROPOSITIONAL LOGIC | Artificial Intelligence | GATE | PL with example | Hindi tutorial - YouTube',
+          'AIMA Book',
+          'Reasoning systems'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['First-order logic', 'Predicate logic', 'Knowledge representation'],
-        resources: ['AIMA Book', 'FOL theory', 'Knowledge systems']
+        resources: [
+          'Predicate logic in AI | First order logic in Artificial Intelligence | fol examples - YouTube',
+          'AIMA Book',
+          'Knowledge systems'
+        ]
       }
     ],
     week16: [
       {
         subject: 'AI',
         tasks: ['Adversarial search', 'Game theory', 'Minimax algorithm'],
-        resources: ['AIMA Book', 'Game AI', 'Adversarial algorithms']
+        resources: [
+          'Introduction to Adversarial Search || Artificial Intelligence - YouTube',
+          'AIMA Book',
+          'Adversarial algorithms'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Alpha-beta pruning', 'Game optimization', 'Evaluation functions'],
-        resources: ['AIMA Book', 'Game optimization', 'Pruning techniques']
+        resources: [
+          'AIMA Book',
+          'Game optimization',
+          'Pruning techniques'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Probabilistic reasoning', 'Bayesian networks', 'Uncertainty'],
-        resources: ['CS221 Stanford', 'Bayesian AI', 'Probabilistic models']
+        resources: [
+          'Understanding AI: Probabilistic Models Explained Simply - YouTube',
+          'CS221 Stanford',
+          'Probabilistic models'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Markov models', 'Hidden Markov Models', 'Sequential data'],
-        resources: ['AIMA Book', 'Markov models', 'Sequential AI']
+        resources: [
+          'AIMA Book',
+          'Markov models',
+          'Sequential AI'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['Sampling methods', 'Monte Carlo', 'MCMC algorithms'],
-        resources: ['Sampling theory', 'Monte Carlo methods', 'MCMC']
+        resources: [
+          'Sampling Techniques Explained With Detailed Examples | Intellipaat - YouTube',
+          'Monte Carlo methods',
+          'MCMC'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['AI problem solving', 'Case studies', 'AI applications'],
-        resources: ['AIMA problems', 'AI case studies', 'Real-world AI']
+        resources: [
+          'COMP 3200 / 6980 - Intro to Artificial Intelligence - Lecture 03 - Problem Solving and Search',
+          'AI case studies',
+          'Real-world AI'
+        ]
       },
       {
         subject: 'AI',
         tasks: ['AI week review', 'Reasoning practice', 'DBMS preparation'],
-        resources: ['AI review materials', 'Practice problems', 'Week assessment']
+        resources: [
+          'AI review materials',
+          'Practice problems',
+          'Week assessment'
+        ]
       }
     ],
     // Week 17-18: DBMS + Warehousing (Days 113-126)
@@ -646,74 +1094,200 @@ export const generateStudySchedule = (): StudySchedule => {
       {
         subject: 'DBMS',
         tasks: ['Database concepts', 'DBMS architecture', 'Data models'],
-        resources: ['DBMS by Navathe', 'Database fundamentals', 'DBMS theory']
+        resources: [
+          'PlacementPreparation.io: 10 Best Websites to Learn DBMS in 2025',
+          'DBMS by Navathe',
+          'Database fundamentals'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['Entity-Relationship model', 'ER diagrams', 'Relationship types'],
-        resources: ['GFG DBMS', 'ER modeling', 'Database design']
+        resources: [
+          'Entity Relationship Diagram Tutorial - YouTube',
+          'GFG DBMS',
+          'Database design'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['ER to relational mapping', 'Schema conversion', 'Table design'],
-        resources: ['Database design', 'Schema mapping', 'Relational model']
+        resources: [
+          'Database design',
+          'Schema mapping',
+          'Relational model'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['Relational algebra', 'Selection and projection', 'Join operations'],
-        resources: ['Relational algebra', 'Database operations', 'Query theory']
+        resources: [
+          'Relational Algebra in DBMS with Examples-Relational Algebra in DBMS-Relational Algebra Operations - YouTube',
+          'Database operations',
+          'Query theory'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['SQL basics', 'DDL and DML', 'Basic queries'],
-        resources: ['SQLZoo', 'SQL tutorials', 'Database queries']
+        resources: [
+          'SQL Tutorial for Beginners | Future of Data & AI | Data Science Dojo - YouTube',
+          'SQLZoo',
+          'Database queries'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['Advanced SQL', 'Joins and subqueries', 'Aggregate functions'],
-        resources: ['LeetCode SQL', 'Advanced SQL', 'Query optimization']
+        resources: [
+          'LeetCode SQL',
+          'Advanced SQL',
+          'Query optimization'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['SQL practice', 'Complex queries', 'Database problems'],
-        resources: ['LeetCode SQL', 'SQL practice', 'Query problems']
+        resources: [
+          'LeetCode SQL',
+          'SQL practice',
+          'Query problems'
+        ]
       }
     ],
     week18: [
       {
         subject: 'DBMS',
         tasks: ['Normalization theory', 'Functional dependencies', '1NF, 2NF, 3NF'],
-        resources: ['Normalization theory', 'Database normalization', 'FD theory']
+        resources: [
+          'Normalization theory',
+          'Database normalization',
+          'FD theory'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['BCNF and 4NF', 'Decomposition', 'Lossless joins'],
-        resources: ['Advanced normalization', 'Database decomposition', 'Normal forms']
+        resources: [
+          'Advanced normalization',
+          'Database decomposition',
+          'Normal forms'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['Transaction management', 'ACID properties', 'Concurrency control'],
-        resources: ['Transaction theory', 'DBMS transactions', 'Concurrency']
+        resources: [
+          'Transaction theory',
+          'DBMS transactions',
+          'Concurrency'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['Indexing and hashing', 'B-trees', 'Database performance'],
-        resources: ['Database indexing', 'B-tree structures', 'Performance tuning']
+        resources: [
+          'Database indexing',
+          'B-tree structures',
+          'Performance tuning'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['Data warehousing', 'OLAP vs OLTP', 'Dimensional modeling'],
-        resources: ['IBM DW Tutorial', 'Data warehousing', 'OLAP concepts']
+        resources: [
+          'Data Warehouse - The Ultimate Guide [2025] | Master Data Modeling - YouTube',
+          'IBM DW Tutorial',
+          'OLAP concepts'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['ETL processes', 'Data integration', 'Warehouse design'],
-        resources: ['ETL theory', 'Data integration', 'Warehouse architecture']
+        resources: [
+          'What is Data Mapping and Transformation? (Data Transformation) - YouTube',
+          'Data integration',
+          'Warehouse architecture'
+        ]
       },
       {
         subject: 'DBMS',
         tasks: ['DBMS review', 'SQL practice', 'Month 5 assessment'],
-        resources: ['DBMS review', 'SQL problems', 'Database assessment']
+        resources: [
+          'What is a database schema? - YouTube',
+          'SQL problems',
+          'Database assessment'
+        ]
+      }
+    ]
+  };
+
+  // Month 6 (December): Advanced Topics
+  const month6Plan = {
+    // Week 19-22: Review + Advanced Topics
+    week19: [
+      {
+        subject: 'Review',
+        tasks: ['Linear Algebra review', 'Key concepts consolidation', 'Formula sheet creation'],
+        resources: [
+          'All Linear Algebra resources from Month 1',
+          'Reinforcement Learning by David Silver (YouTube)',
+          'CS 285: Deep Reinforcement Learning (UC Berkeley)'
+        ]
+      },
+      {
+        subject: 'Review',
+        tasks: ['Calculus review', 'Optimization techniques', 'Applications in ML'],
+        resources: [
+          'All Calculus resources from Month 1',
+          'Reinforcement Learning: An Introduction by Sutton and Barto',
+          'Time Series Analysis courses on Coursera/edX'
+        ]
+      },
+      {
+        subject: 'Review',
+        tasks: ['Probability and Statistics review', 'Distribution properties', 'Hypothesis testing'],
+        resources: [
+          'All Probability/Statistics resources from Months 1-2',
+          'Forecasting: Principles and Practice by Hyndman and Athanasopoulos',
+          'NoSQL databases explained for beginners - YouTube'
+        ]
+      },
+      {
+        subject: 'Review',
+        tasks: ['Python programming review', 'Data structures in Python', 'Libraries recap'],
+        resources: [
+          'All Python resources from Month 2',
+          'MongoDB University courses',
+          'Kaggle datasets for practice'
+        ]
+      },
+      {
+        subject: 'Review',
+        tasks: ['Data Structures review', 'Algorithm complexity', 'Implementation practice'],
+        resources: [
+          'All DS resources from Month 3',
+          'UCI Machine Learning Repository',
+          'Advanced topic exploration'
+        ]
+      },
+      {
+        subject: 'Review',
+        tasks: ['Algorithms review', 'Graph algorithms', 'Dynamic programming'],
+        resources: [
+          'All Algorithm resources from Month 3',
+          'Advanced algorithms practice',
+          'Competitive programming'
+        ]
+      },
+      {
+        subject: 'Review',
+        tasks: ['Machine Learning review', 'Model comparison', 'Feature engineering'],
+        resources: [
+          'All ML resources from Month 4',
+          'Advanced ML topics',
+          'Deep learning introduction'
+        ]
       }
     ]
   };
@@ -790,15 +1364,19 @@ export const generateStudySchedule = (): StudySchedule => {
   addDaysToSchedule(month5Plan.week17, 17, 'DBMS');
   addDaysToSchedule(month5Plan.week18, 18, 'DBMS');
 
+  // Month 6: Advanced Topics and Review
+  addDaysToSchedule(month6Plan.week19, 19, 'Review');
+
   // Continue with remaining months (December-January) - Review and Mock Tests
   // Month 6-8: Review, Advanced Topics, and Mock Tests
-  for (let week = 19; week <= 30; week++) {
+  for (let week = 20; week <= 30; week++) {
     for (let day = 0; day < 7; day++) {
       const dateStr = currentDate.toISOString().split('T')[0];
       const isWeekday = currentDate.getDay() >= 1 && currentDate.getDay() <= 5;
       
       let subject = 'Review';
       let tasks: string[] = [];
+      let resources: string[] = [];
       
       if (week <= 22) {
         // December: Subject Review
@@ -810,6 +1388,12 @@ export const generateStudySchedule = (): StudySchedule => {
           `Formula consolidation`,
           `Weak area identification`
         ];
+        resources = [
+          'All previous month resources',
+          'GATE PYQs',
+          'Reinforcement Learning resources',
+          'Time Series Analysis materials'
+        ];
       } else if (week <= 26) {
         // Late December: Advanced Topics
         subject = 'Review';
@@ -818,6 +1402,12 @@ export const generateStudySchedule = (): StudySchedule => {
           'Interdisciplinary connections',
           'Formula notebook compilation',
           'Error log summary'
+        ];
+        resources = [
+          'NoSQL database tutorials',
+          'Advanced ML topics',
+          'Deep learning introduction',
+          'Kaggle competitions'
         ];
       } else {
         // January: Mock Tests and Final Prep
@@ -828,6 +1418,12 @@ export const generateStudySchedule = (): StudySchedule => {
           'Concept reinforcement',
           'Strategy refinement'
         ];
+        resources = [
+          'All previous resources',
+          'GATE PYQs',
+          'Mock test platforms',
+          'Formula sheets'
+        ];
       }
       
       schedule[dateStr] = {
@@ -835,7 +1431,7 @@ export const generateStudySchedule = (): StudySchedule => {
         month: currentDate.toLocaleDateString('en-US', { month: 'long' }),
         subject: subject,
         tasks: tasks,
-        resources: ['All previous resources', 'GATE PYQs', 'Mock test platforms', 'Formula sheets'],
+        resources: resources,
         plannedHours: isWeekday ? 2.5 : 4.0,
         weekday: isWeekday,
         notes: {
