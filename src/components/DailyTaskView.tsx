@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Circle, Clock, BookOpen, Target, MessageSquare, Calendar, Award } from 'lucide-react';
+import { CheckCircle2, Circle, Clock, BookOpen, Target, MessageSquare, Calendar, Award, ExternalLink } from 'lucide-react';
 import { format } from 'date-fns';
 import { useStudy } from '../context/StudyContext';
 import NotesManager from './NotesManager';
@@ -50,6 +50,27 @@ const DailyTaskView: React.FC = () => {
 
   const isTaskCompleted = (taskIndex: number) => {
     return taskIndex < dayData.progress.tasksCompleted;
+  };
+
+  const isClickableLink = (resource: string) => {
+    return resource.startsWith('http://') || resource.startsWith('https://');
+  };
+
+  const extractLinkInfo = (resource: string) => {
+    if (isClickableLink(resource)) {
+      const parts = resource.split(' - ');
+      if (parts.length > 1) {
+        return {
+          url: parts[0],
+          title: parts.slice(1).join(' - ')
+        };
+      }
+      return {
+        url: resource,
+        title: 'External Link'
+      };
+    }
+    return null;
   };
 
   const tabs = [
@@ -226,14 +247,33 @@ const DailyTaskView: React.FC = () => {
               <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
                 <h4 className="font-medium text-gray-900 dark:text-white mb-4 flex items-center">
                   <BookOpen className="h-4 w-4 mr-2" />
-                  Study Resources
+                  Study Resources ({dayData.resources.length})
                 </h4>
-                <div className="space-y-2">
-                  {dayData.resources.map((resource, index) => (
-                    <div key={index} className="text-sm text-blue-600 dark:text-blue-400 hover:underline cursor-pointer p-2 rounded hover:bg-blue-50 dark:hover:bg-blue-900 transition-colors">
-                      📚 {resource}
-                    </div>
-                  ))}
+                <div className="space-y-2 max-h-64 overflow-y-auto">
+                  {dayData.resources.map((resource, index) => {
+                    const linkInfo = extractLinkInfo(resource);
+                    
+                    if (linkInfo) {
+                      return (
+                        <a
+                          key={index}
+                          href={linkInfo.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 text-sm text-blue-600 dark:text-blue-400 hover:underline cursor-pointer p-2 rounded hover:bg-blue-50 dark:hover:bg-blue-900 transition-colors group"
+                        >
+                          <ExternalLink className="h-4 w-4 flex-shrink-0" />
+                          <span className="flex-1 truncate">{linkInfo.title}</span>
+                        </a>
+                      );
+                    }
+                    
+                    return (
+                      <div key={index} className="text-sm text-gray-700 dark:text-gray-300 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                        📚 {resource}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
